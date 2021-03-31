@@ -1,63 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { ReactComponent as arrow } from '../image/icon/arrow-circle-left-solid.svg';
-
-//SECTION> DATA Template
-// 商品分類表
-const commoditiesInfo = {
-	food: [
-		//UNDONE> 圖片網址未補完
-		{
-			nameTc: '飲品',
-			nameEng: 'Drink',
-			imgUrl:
-				'./img/_Temporary_pic/food/maddi-bazzocco-5o4WVPa0qGQ-unsplash.jpg',
-		},
-		{
-			nameTc: '糕點',
-			nameEng: 'Cake',
-			imgUrl:
-				'./img/_Temporary_pic/food/corleto-peanut-butter-g0NcZr1eYbI-unsplash.jpg',
-		},
-		{
-			nameTc: '布丁',
-			nameEng: 'Pudding',
-			imgUrl:
-				'./img/_Temporary_pic/food/priyanka-singh-sZCcZFQ9Hrc-unsplash.jpg',
-		},
-		{
-			nameTc: '餅乾',
-			nameEng: 'Cookies',
-			imgUrl: './img/_Temporary_pic/food/mae-mu-ppOPjqAJ3Mw-unsplash.jpg',
-		},
-	],
-	room: [
-		{
-			nameTc: '個人琴房',
-			nameEng: 'Personal Practice Room',
-			imgUrl:
-				'./img/_Temporary_pic/room/kara-eads-L7EwHkq1B2s-unsplash.jpg',
-		},
-		{
-			nameTc: '室內樂琴房',
-			nameEng: 'Chamber Music Practice Room',
-			imgUrl:
-				'./img/_Temporary_pic/room/kari-shea-tOVmshavtoo-unsplash.jpg',
-		},
-		{
-			nameTc: '團練室',
-			nameEng: 'Group Practice Room',
-			imgUrl:
-				'./img/_Temporary_pic/room/michael-oxendine-GHCVUtBECuY-unsplash.jpg',
-		},
-		{
-			nameTc: '演奏廳',
-			nameEng: 'Concert Hall',
-			imgUrl:
-				'./img/_Temporary_pic/room/roberto-nickson-rEJxpBskj3Q-unsplash.jpg',
-		},
-	],
-};
+// Data Template
+import { commoditiesInfo } from '../dataTemplate';
 
 //SECTION> CSS Component
 const Container = styled.div`

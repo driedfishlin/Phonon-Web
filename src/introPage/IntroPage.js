@@ -20,6 +20,12 @@ const Container = styled.div`
 	overflow: hidden;
 `;
 
+// const SectionContainer = styled.div`
+// 	width: 1280px;
+// 	overflow: hidden;
+// 	margin: 0 auto;
+// `;
+
 const Section = styled.div(props => ({
 	height: props.height,
 	background: props.bgc,
@@ -38,7 +44,7 @@ const SideNavBarContainer = styled.div`
 `;
 
 //SECTION> REACT COMPONENT
-
+//FIXME> 要檢查是否會有需要優化效能的部分
 const IntroPage = props => {
 	//PART> Element Selector
 	const phononIndexSection = useRef(null),
@@ -175,8 +181,6 @@ const IntroPage = props => {
 			console.log(backArrow);
 			document.documentElement.style.overflowY = 'auto';
 			sideNavBar.current.style.pointerEvents = 'none';
-			// backArrow.current.style.color = 'black';
-			// backArrow.current.style.transform = 'scale(1.1) rotate(20deg)';
 			setTimeout(() => (sideNavBar.current.style.left = '100%'), 200);
 			setTimeout(() => (sideNavBar.current.style.opacity = '0'), 200);
 			setTimeout(() => (sideNavBar.current.style.width = '0'), 200);
@@ -205,6 +209,7 @@ const IntroPage = props => {
 					arrowEl={backArrow}
 				/>
 			</SideNavBarContainer>
+			{/* <SectionContainer> */}
 			<Section height={'100vh'} bgc={'#F47C4F'} ref={phononIndexSection}>
 				<IntroSectionMain />
 			</Section>
@@ -221,6 +226,7 @@ const IntroPage = props => {
 				ref={phononCoffeeSection}
 			/>
 			<Section height={'200px'} bgc={'#3C4566'} ref={footerSection} />
+			{/* </SectionContainer> */}
 		</Container>
 	);
 };

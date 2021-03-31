@@ -5,12 +5,8 @@ import NavigationTextButton from './NavigationTextButton';
 // SVG
 import { ReactComponent as phononLogo } from './../../../image/logo/phonon_art_logo_text_white.svg';
 
-//SECTION> Data Template
-const navListItem = [
-	{ name: '關於聲子' },
-	{ name: '琴房預約' },
-	{ name: '餐點訂製' },
-];
+// Data Template
+import { navListItem } from '../../../dataTemplate';
 
 //SECTION> CSS Component
 const Container = styled.div`

@@ -1,32 +1,36 @@
 import React from 'react';
 import styled from '@emotion/styled';
-
 import { ReactComponent as FilterSVG } from '../../image/filter/filter_01.svg';
-
-//SECTION> COMPONENT
+// Component
 import IntroSectionContent from './IntroSectionContent';
+import ImgCarousel from '../component/carousel/ImgCarousel';
+// Data Template
+import { introPageCarouselImg } from '../../dataTemplate';
+const imgList = introPageCarouselImg.introSection;
 
 //SECTION> CSS COMPONENT
 const Container = styled.div`
 	position: relative;
-	width: 1024px;
 	height: 100%;
 	margin: 0 auto;
-	padding-top: 170px;
 `;
 const Filter = styled(FilterSVG)`
 	width: 1400px;
 	position: absolute;
 	top: 20px;
-	left: 400px;
+	left: 500px;
 	transform: rotate(-13deg);
+	& > path {
+		fill: rgba(225, 225, 225, 0.5);
+	}
 `;
 
 const IntroSectionMain = () => {
 	return (
 		<Container>
 			<IntroSectionContent />
-			<Filter></Filter>
+			<ImgCarousel imgList={imgList} />
+			{/* <Filter></Filter> */}
 		</Container>
 	);
 };

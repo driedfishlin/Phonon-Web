@@ -5,13 +5,23 @@ import styled from '@emotion/styled';
 import { ReactComponent as PhononLogo } from './../../image/logo/phonon_art_logo.svg';
 
 //SECTION> CSS COMPONENT
-const Container = styled.div``;
+// width: 1280px;
+// margin: 0 auto;
+// padding-top: 170px;
+// padding-left: 200px;
+const Container = styled.div`
+	position: absolute;
+	top: 20vh;
+	left: 15vw;
+`;
 const Logo = styled(PhononLogo)`
 	width: 170px;
 	padding-left: 20px;
 	transform: skewX(-17deg) rotate(-17deg) scale(1, 1.3);
 `;
 const TextContent = styled.div`
+	position: relative;
+	top: 70px;
 	transform: translate(-90px, 0px) skewX(-17deg) rotate(-17deg)
 		scale(0.9, 1.1);
 	padding-left: 40px;
