@@ -5,14 +5,14 @@ import NavigationTextButton from './UIElement/NavigationTextButton';
 // SVG
 import { ReactComponent as phononLogo } from './../../../image/logo/phonon_art_logo_text_white.svg';
 
-//PART> Data Template
+//SECTION> Data Template
 const navListItem = [
 	{ name: '關於聲子' },
 	{ name: '琴房預約' },
 	{ name: '餐點訂製' },
 ];
 
-//PART> CSS Component
+//SECTION> CSS Component
 const Container = styled.div`
 	width: 100%;
 	position: fixed;
@@ -33,15 +33,7 @@ const Container = styled.div`
 	}
 `;
 
-// SVG
 const Logo = styled(phononLogo)`
-	position: absolute;
-	top: 10px;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 50px;
-	cursor: pointer;
-	padding: 10px 20px;
 	& path {
 		fill: white;
 	}
@@ -55,18 +47,32 @@ const Logo = styled(phononLogo)`
 	}
 `;
 
-//PART> React Component
-const MinNavigationBar = ({ target }) => {
+const h1Style = {
+	position: 'absolute',
+	top: '10px',
+	left: '50%',
+	transform: 'translateX(-50%)',
+	width: '50px',
+	cursor: 'pointer',
+	padding: '10px 20px',
+	fontSize: '0px',
+};
+
+//SECTION> React Component
+const MinNavigationBar = ({ clickFn }) => {
 	return (
 		<Container>
-			<Logo />
+			<h1 style={h1Style}>
+				聲子藝棧
+				<Logo />
+			</h1>
 			<ul>
-				{/* //FIXME> key 值不應用 index，但是非浮動選單，應該可容許 */}
 				{navListItem.map((item, index) => (
 					<NavigationTextButton
 						text={item.name}
-						key={index}
-						target={target}
+						key={item.name}
+						// 給予後面兩顆按鈕 callback
+						clickFn={index ? clickFn : null}
 					/>
 				))}
 			</ul>

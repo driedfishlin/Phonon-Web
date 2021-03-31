@@ -26,20 +26,10 @@ const Anchor = styled.a`
 	}
 `;
 
-const scrollToSection = section => {
-	return () => {
-		console.log(section.current.offsetTop);
-		window.scrollTo({
-			top: section.current.offsetTop,
-			behavior: 'smooth',
-		});
-	};
-};
-
-const NavigationTextButton = ({ text, target }) => {
+const NavigationTextButton = ({ text, clickFn }) => {
 	return (
 		<Button>
-			<Anchor onClick={scrollToSection(target)}>{text}</Anchor>
+			<Anchor onClick={clickFn ? clickFn : null}>{text}</Anchor>
 		</Button>
 	);
 };

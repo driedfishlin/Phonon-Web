@@ -1,6 +1,6 @@
 // import './App.css';
-//PART> React Component
-import CommoditiesGroup from './introPage/shared/component/CommoditiesGroup';
+//SECTION> React Component
+
 import IntroPage from './introPage/IntroPage';
 
 function App() {

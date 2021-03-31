@@ -3,10 +3,10 @@ import styled from '@emotion/styled';
 
 import { ReactComponent as FilterSVG } from '../../image/filter/filter_01.svg';
 
-//PART> COMPONENT
+//SECTION> COMPONENT
 import IntroSectionContent from './IntroSectionContent';
 
-//PART> CSS COMPONENT
+//SECTION> CSS COMPONENT
 const Container = styled.div`
 	position: relative;
 	width: 1024px;

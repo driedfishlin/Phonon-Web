@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { ReactComponent as arrow } from '../../../image/icon/arrow-circle-left-solid.svg';
 
-//PART> DATA Template
+//SECTION> DATA Template
 // 商品分類表
 const commoditiesInfo = {
 	food: [
@@ -58,16 +59,15 @@ const commoditiesInfo = {
 	],
 };
 
-//PART> CSS Component
-//BUG> 高度設 100% 無效
+//SECTION> CSS Component
 const Container = styled.div`
 	display: flex;
-	height: 100vh;
+	height: 100%;
 `;
 // 頁面區塊，每一塊為一種產品分類
 const Item = styled.div`
 	flex: 1 0 5%;
-	transition: flex 0.5s;
+	transition: flex 0.5s 0.1s;
 	overflow: hidden;
 	position: relative;
 	cursor: pointer;
@@ -111,8 +111,8 @@ const CommodityNameTc = styled.h6`
 	line-height: 50px;
 	font-weight: 600;
 	transform: translateY(-20px);
-	transition: opacity 0.2s, transform 0s 0.2s;
-	opacity: 0;
+	transition: transform 0s 0.2s;
+	opacity: 1;
 	user-select: none;
 `;
 const CommodityNameEng = styled.p`
@@ -150,44 +150,66 @@ const BackButton = styled.a`
 	font-size: 25px;
 	white-space: nowrap;
 	text-decoration: none;
+	cursor: pointer;
 	& > p {
-		font-size: 30px;
-		cursor: pointer;
 		user-select: none;
-		font-weight: 600;
-		font-family: 'Noto Serif TC', serif;
-		transition: transform 0.2s;
-		filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.3));
+		transition: opacity 0.5s;
+		filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.8));
 		line-height: 40px;
-		text-align: center;
-		width: 40px;
-		height: 40px;
-		border: 2px solid white;
-		border-radius: 50%;
-		& > span {
-			visibility: hidden;
-			opacity: 0;
-			left: 50px;
-			top: 2px;
-			position: absolute;
-			font-size: 20px;
-			letter-spacing: 2px;
-		}
+		font-weight: 600;
+		visibility: hidden;
+		opacity: 0;
+		font-family: 'Noto Serif TC', serif;
+		position: absolute;
+		left: 45px;
+		top: 1px;
+		font-size: 20px;
+		letter-spacing: 2px;
+		color: white;
 	}
 	&:hover {
 		& > p {
-			transform: scale(1.1);
-			& > span {
-				visibility: visible;
-				left: 60px;
-				opacity: 1;
-				transition: opacity 0.6s 0.2s, left 0.6s 0.2s;
-			}
+			visibility: visible;
+			left: 60px;
+			opacity: 1;
+			transition: opacity 0.6s 0.2s, left 0.6s 0.2s;
+		}
+		& > svg {
+			filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.3));
+			transform: scale(1.1) rotate(180deg);
+			transition: transform 0.5s;
 		}
 	}
 `;
 
-//PART> React Component
+//SECTION> Callback Function
+const showInfoToggle = state => {
+	switch (state) {
+		case '琴房預約':
+			return commoditiesInfo.room.map((item, index) => (
+				<ItemTemplate
+					nameTc={item.nameTc}
+					nameEng={item.nameEng}
+					img={item.imgUrl}
+					key={index}
+				/>
+			));
+		case '餐點訂製':
+			return commoditiesInfo.food.map((item, index) => (
+				<ItemTemplate
+					nameTc={item.nameTc}
+					nameEng={item.nameEng}
+					img={item.imgUrl}
+					key={index}
+				/>
+			));
+		default:
+			return null;
+	}
+};
+
+//SECTION> React Component
+
 const ItemTemplate = ({ nameTc, nameEng, img }) => {
 	return (
 		<Item>
@@ -200,31 +222,28 @@ const ItemTemplate = ({ nameTc, nameEng, img }) => {
 	);
 };
 
-const CommoditiesGroup = props => {
+const CommoditiesGroup = ({ clickState, clickFn, arrowEl }) => {
+	const Arrow = styled(arrow)`
+		position: relative;
+		top: 0;
+		left: 0;
+		width: 40px;
+		height: 40px;
+		color: white;
+		transform: scale(1) rotate(0deg);
+		transition: transform 1s ${clickState.arrowDelay ? '1.5s' : ''};
+	`;
 	return (
 		<Container>
-			{/* //UNDONE> 依照 props 進來的參數決定是顯示哪種類的產品列表 */}
-			{0
-				? commoditiesInfo.room.map((item, index) => (
-						<ItemTemplate
-							nameTc={item.nameTc}
-							nameEng={item.nameEng}
-							img={item.imgUrl}
-							key={index}
-						/>
-				  ))
-				: commoditiesInfo.food.map((item, index) => (
-						<ItemTemplate
-							nameTc={item.nameTc}
-							nameEng={item.nameEng}
-							img={item.imgUrl}
-							key={index}
-						/>
-				  ))}
-			<BackButton>
-				<p>
-					←<span>回前頁</span>
-				</p>
+			{/* 依照點擊的按鈕決定是顯示哪種類的產品列表 */}
+			{showInfoToggle(clickState.target)}
+
+			<BackButton onClick={clickFn}>
+				<Arrow
+					comment="This icon comes from FONTAWESOME. https://fontawesome.com/"
+					ref={arrowEl}
+				/>
+				<p>回前頁</p>
 			</BackButton>
 		</Container>
 	);

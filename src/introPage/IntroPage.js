@@ -1,10 +1,11 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 // Component
 import MinNavigationBar from './shared/component/MinNavigationBar';
 import IntroSectionMain from './introSection/IntroSectionMain';
+import CommoditiesGroup from './shared/component/CommoditiesGroup';
 
-//PART> STATE
+//SECTION> STATE
 
 // 當前頁面
 let currentPage = 1;
@@ -12,7 +13,7 @@ let currentPage = 1;
 // 用於判斷 footer 區塊是順向或反向滑進，避免 observer 因為兩個判斷點重複觸發
 let footerIsIntersecting = 0;
 
-//PART> CSS COMPONENT
+//SECTION> CSS COMPONENT
 
 const Container = styled.div`
 	width: 100%;
@@ -24,15 +25,29 @@ const Section = styled.div(props => ({
 	background: props.bgc,
 }));
 
-//PART> REACT COMPONENT
+const SideNavBarContainer = styled.div`
+	position: fixed;
+	height: 100vh;
+	width: 0;
+	z-index: 100;
+	top: 0;
+	left: 100%;
+	opacity: 0;
+	transition: width 0.5s, opacity 0.5s, left 0.5s;
+	pointer-events: none;
+`;
+
+//SECTION> REACT COMPONENT
 
 const IntroPage = props => {
-	// Element Selector
+	//PART> Element Selector
 	const phononIndexSection = useRef(null),
 		phononIntro = useRef(null),
 		phononArtSection = useRef(null),
 		phononCoffeeSection = useRef(null),
-		footerSection = useRef(null);
+		footerSection = useRef(null),
+		sideNavBar = useRef(null),
+		backArrow = useRef(null);
 	const sectionNodeList = [
 		phononIndexSection,
 		phononIntro,
@@ -40,7 +55,7 @@ const IntroPage = props => {
 		phononCoffeeSection,
 	];
 
-	// 建立 Intersection Observer API 監聽
+	//PART> Intersection Observer API
 	//FIXME> useEffect 可能重複執行監聽，需求：在重新渲染時取消原有的 observer
 	useEffect(() => {
 		// 各 Section 通用的監聽
@@ -58,7 +73,14 @@ const IntroPage = props => {
 		footerObserver.observe(footerSection.current);
 	});
 
-	// FUNCTION
+	//PART> React State
+	const [sideNavBarState, setSideNavBarState] = useState({
+		target: null,
+		isOpen: false,
+		arrowDelay: false,
+	});
+
+	//PART> FUNCTION
 	const UpdateCurrentPage = entries => {
 		switch (entries[0].target) {
 			case phononIndexSection.current:
@@ -76,12 +98,16 @@ const IntroPage = props => {
 			case footerSection.current:
 				currentPage = 5;
 				break;
+			default:
+				return;
 		}
 
 		console.log('current page: ' + currentPage);
 	};
 
-	// CALLBACK FUNCTION
+	//PART> CALLBACK FUNCTION
+
+	// 畫面捲動自動定位功能
 	const scrollPage = entries => {
 		// 針對 footer 的判斷
 		if (
@@ -118,9 +144,67 @@ const IntroPage = props => {
 		}
 	};
 
+	// 側邊導覽列切換功能
+	const sideNavBarToggle = event => {
+		let target = null;
+		if (!sideNavBarState.isOpen) {
+			target = event.target.innerText;
+			// 鎖定畫面滾動
+			document.documentElement.style.overflowY = 'hidden';
+			setTimeout(() => (sideNavBar.current.style.left = 0), 200);
+			setTimeout(() => (sideNavBar.current.style.opacity = 1), 200);
+			setTimeout(() => (sideNavBar.current.style.width = '100%'), 200);
+			setTimeout(
+				() =>
+					(sideNavBar.current.style.transition =
+						'width 0.5s, opacity 0.4s, left 0.5s'),
+				200
+			);
+			// 避免版面滑動時卡頓，就位時再允許互動
+			setTimeout(
+				() => (sideNavBar.current.style.pointerEvents = 'auto'),
+				700
+			);
+			setSideNavBarState({
+				target,
+				isOpen: true,
+				arrowDelay: false,
+			});
+		}
+		if (sideNavBarState.isOpen) {
+			console.log(backArrow);
+			document.documentElement.style.overflowY = 'auto';
+			sideNavBar.current.style.pointerEvents = 'none';
+			// backArrow.current.style.color = 'black';
+			// backArrow.current.style.transform = 'scale(1.1) rotate(20deg)';
+			setTimeout(() => (sideNavBar.current.style.left = '100%'), 200);
+			setTimeout(() => (sideNavBar.current.style.opacity = '0'), 200);
+			setTimeout(() => (sideNavBar.current.style.width = '0'), 200);
+			setTimeout(
+				() =>
+					(sideNavBar.current.style.transition =
+						'width 0.5s, opacity 0.3s 0.2s, left 0.5s'),
+				200
+			);
+			setSideNavBarState(prevState => ({
+				target: prevState.target,
+				isOpen: false,
+				arrowDelay: true,
+			}));
+		}
+	};
+
+	//PART>
 	return (
 		<Container>
-			<MinNavigationBar target={phononIndexSection} />
+			<MinNavigationBar clickFn={sideNavBarToggle} />
+			<SideNavBarContainer ref={sideNavBar}>
+				<CommoditiesGroup
+					clickState={sideNavBarState}
+					clickFn={sideNavBarToggle}
+					arrowEl={backArrow}
+				/>
+			</SideNavBarContainer>
 			<Section height={'100vh'} bgc={'#F47C4F'} ref={phononIndexSection}>
 				<IntroSectionMain />
 			</Section>

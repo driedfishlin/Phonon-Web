@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 // SVG
 import { ReactComponent as PhononLogo } from './../../image/logo/phonon_art_logo.svg';
 
-// CSS COMPONENT
+//SECTION> CSS COMPONENT
 const Container = styled.div``;
 const Logo = styled(PhononLogo)`
 	width: 170px;
