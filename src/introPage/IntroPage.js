@@ -1,9 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 // Component
-import MinNavigationBar from './shared/component/MinNavigationBar';
+import MainNavigationBar from './component/navBar/MainNavigationBar';
 import IntroSectionMain from './introSection/IntroSectionMain';
-import CommoditiesGroup from './shared/component/CommoditiesGroup';
+import CommoditiesGroup from './CommoditiesGroup';
 
 //SECTION> STATE
 
@@ -197,7 +197,7 @@ const IntroPage = props => {
 	//PART>
 	return (
 		<Container>
-			<MinNavigationBar clickFn={sideNavBarToggle} />
+			<MainNavigationBar clickFn={sideNavBarToggle} />
 			<SideNavBarContainer ref={sideNavBar}>
 				<CommoditiesGroup
 					clickState={sideNavBarState}

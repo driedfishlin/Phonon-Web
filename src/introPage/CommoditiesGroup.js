@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { ReactComponent as arrow } from '../../../image/icon/arrow-circle-left-solid.svg';
+import { ReactComponent as arrow } from '../image/icon/arrow-circle-left-solid.svg';
 
 //SECTION> DATA Template
 // 商品分類表

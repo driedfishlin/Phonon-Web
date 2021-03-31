@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 // component
-import NavigationTextButton from './UIElement/NavigationTextButton';
+import NavigationTextButton from './NavigationTextButton';
 // SVG
 import { ReactComponent as phononLogo } from './../../../image/logo/phonon_art_logo_text_white.svg';
 
