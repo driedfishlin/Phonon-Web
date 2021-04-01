@@ -30,7 +30,7 @@ const IntroSectionMain = () => {
 		<Container>
 			<IntroSectionContent />
 			<Filter></Filter>
-			<ImgCarousel imgList={null} />
+			<ImgCarousel />
 			<ImgCarousel imgList={imgList} />
 		</Container>
 	);

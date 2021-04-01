@@ -7,6 +7,14 @@ import { css, keyframes } from '@emotion/css';
 import { introPageCarouselImg } from '../../../dataTemplate';
 const svgFilter = introPageCarouselImg.svgFilterBase64;
 
+//SECTION> CUSTOM DATA & STATE
+
+// [自訂] 圖片完全顯示的時間
+const durationOfAnimate = 4;
+// [自訂] 圖片切換的過度時長
+const intervalOfAnimation = 1;
+const totalAnimationTime = durationOfAnimate + intervalOfAnimation * 2;
+// 辨識是否首次渲染頁面
 let initLoading = true;
 
 //SECTION> CSS COMPONENT
@@ -23,6 +31,11 @@ const Box = styled.div`
 	top: 0;
 	right: 0;
 	overflow: hidden;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
 	${'' /* 輪播遮罩 */}
 	mask-repeat: no-repeat;
 	mask-position: 0 0px;
@@ -32,6 +45,12 @@ const Box = styled.div`
 	-webkit-mask-position: 0 0px;
 	-webkit-mask-size: 180%;
 	-webkit-mask-image: url(${svgFilter});
+`;
+
+const Img = styled.img`
+	min-width: 100%;
+	min-height: 100%;
+	opacity: 0;
 `;
 
 const ImgBackground = styled.div`
@@ -45,36 +64,12 @@ const ImgBackground = styled.div`
 	animation-name: carouselAnimation;
 `;
 
-//SECTION> ClassName
-
-// const fadeIn = css`
-// 	opacity: 1;
-
-// 	z-index: 10;
-// 	transform: translate(-50%, -50%) scale(1.1);
-// 	transition: transform 6s ease-out, opacity 2s;
-// `;
-
-// const fadeOut = css`
-// 	opacity: 0;
-
-// 	z-index: 5;
-// 	transform: translate(-50%, -50%) scale(1);
-// 	transition: transform 0s linear 2s, opacity 2s;
-// `;
-
-// 圖片完全顯示的時間
-const durationOfAnimate = 4;
-// 圖片切換的過度時長
-const intervalOfAnimation = 1;
-const totalAnimationTime = durationOfAnimate + intervalOfAnimation * 2;
-
 //SECTION> CSS > Animation Keyframes
 
 const carouselAnimation = keyframes`
     from{
 		opacity: 0;
-        transform: translate(-50%, -50%) scale(1.1);
+        transform:  scale(1.1);
     }
 	15%{
 		opacity: 1;
@@ -84,95 +79,88 @@ const carouselAnimation = keyframes`
 	}
     to{
 		opacity: 0;
-		transform: translate(-50%, -50%) scale(1);
+		transform:  scale(1);
 	}
 `;
-//TODO>
-const Img = styled.img`
-	position: absolute;
-	top: 50%;
-	left: 50%;
 
+//SECTION> ClassName
+
+const fadeIn = css`
 	animation-name: ${carouselAnimation};
 	animation-duration: ${totalAnimationTime}s;
 	animation-timing-function: linear;
-	animation-iteration-count: infinite;
+	animation-iteration-count: 1;
 	animation-play-state: pause;
-
-	opacity: 0;
-	transform: translate(-50%, -50%) scale(1.1);
 `;
-
-//TODO>
 
 //SECTION> React Component
 const ImgCarousel = ({ imgList }) => {
+	// 當前輪播中的圖片索引數字
 	const [carouselState, setCarouselState] = useState(0);
-
+	// 取得 <img> 元素的參考
 	const imgNodeList = useRef([]);
-
+	//PART>
 	useEffect(() => {
-		// const YY = () => {
-		// 	const C = document.querySelectorAll('.ggg');
-		// 	const CI = C[1].querySelectorAll('img');
-		// 	console.log(CI[0].style);
-		// 	// const arr = [
-		// 	// 	CI[0].style.animationPlayState,
-		// 	// 	CI[1].style.animationPlayState,
-		// 	// 	CI[2].style.animationPlayState,
-		// 	// 	CI[3].style.animationPlayState,
-		// 	// ];
-		// 	// console.table(arr);
-		// };
-		// setInterval(YY, durationOfAnimate * 1000);
-
 		initLoading = false;
+
 		if (imgList) {
-			// 監聽每張圖動畫結束一個週期即暫停
+			// 監聽每張圖片，當動畫結束時設定計時器以延後移除 class 的時間點
 			imgNodeList.current.forEach(item => {
 				item.addEventListener(
-					'animationiteration',
-					() => (item.style.animationPlayState = 'paused')
+					'animationend', // 每當動畫結束時觸發
+					() => {
+						item.classList.remove(fadeIn);
+						item.style.display = 'none';
+					}
 				);
 			});
 
+			// 以設定的動畫週期呼叫 setState 更新元件
 			setInterval(() => {
 				setCarouselState(prev =>
 					prev === imgList.length - 1 ? 0 : ++prev
 				);
 			}, durationOfAnimate * 1000);
 		}
-	}, []);
-
-	useEffect(() => {
-		// console.log('re render. STATE: ' + carouselState);
-	});
-
+	}, [imgList]);
+	//PART>
 	return (
-		//FIXME>
-		<Container className="ggg">
+		<Container>
 			{imgList ? (
 				imgList.map((item, index) => (
-					<Box key={index}>
-						{console.log(carouselState)}
+					<Box
+						key={index}
+						style={
+							carouselState === index
+								? {
+										zIndex: 10,
+								  }
+								: null
+						}
+					>
 						{carouselState === index ? (
-							<Img
+							<Img // 當前正顯示的輪播圖片
 								src={item}
 								ref={el => (imgNodeList.current[index] = el)}
+								className={fadeIn}
 								style={{
-									animationPlayState: 'running',
+									display: 'block',
 								}}
 							/>
 						) : (
-							<Img
+							<Img // 隱藏的圖片
 								src={item}
 								ref={el => (imgNodeList.current[index] = el)}
-								style={
+								className={
+									// 除了第一次載入不要加 class
 									initLoading
-										? {
-												animationPlayState: 'paused',
-												animationDelay: '100s',
-										  }
+										? null
+										: // 在切換當前輪播時繼續持有 fadeIn 的 class
+										// 以免切換圖片時畫面出現斷層
+										// 後續以計時器清掉
+										carouselState ===
+										  (index + 1 === 4 ? 0 : index + 1)
+										? fadeIn
 										: null
 								}
 							/>
@@ -180,6 +168,7 @@ const ImgCarousel = ({ imgList }) => {
 					</Box>
 				))
 			) : (
+				// 不在 props 傳入 imgList 時用於作為背景的遮罩
 				<Box>
 					<ImgBackground />
 				</Box>
