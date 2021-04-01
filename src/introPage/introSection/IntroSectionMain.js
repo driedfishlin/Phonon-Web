@@ -17,9 +17,9 @@ const Container = styled.div`
 const Filter = styled(FilterSVG)`
 	width: 1400px;
 	position: absolute;
-	top: 20px;
-	left: 500px;
-	transform: rotate(-13deg);
+	top: 75px;
+	left: 550px;
+	transform: rotate(-20deg);
 	& > path {
 		fill: rgba(225, 225, 225, 0.5);
 	}
@@ -29,8 +29,9 @@ const IntroSectionMain = () => {
 	return (
 		<Container>
 			<IntroSectionContent />
+			<Filter></Filter>
+			<ImgCarousel imgList={null} />
 			<ImgCarousel imgList={imgList} />
-			{/* <Filter></Filter> */}
 		</Container>
 	);
 };

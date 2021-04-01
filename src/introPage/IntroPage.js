@@ -29,6 +29,7 @@ const Container = styled.div`
 const Section = styled.div(props => ({
 	height: props.height,
 	background: props.bgc,
+	overflow: 'hidden',
 }));
 
 const SideNavBarContainer = styled.div`
