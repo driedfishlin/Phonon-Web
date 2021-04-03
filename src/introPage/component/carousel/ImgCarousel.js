@@ -22,9 +22,9 @@ const Container = styled.div`
 	width: 100%;
 	position: absolute;
 	top: 0;
+	left: 0;
 `;
 
-// overflow: hidden;
 const Box = styled.div`
 	width: 100vw;
 	height: 100vh;
@@ -58,21 +58,6 @@ const ImgBackground = styled.div`
 	width: 100%;
 	height: 100%;
 `;
-// position: absolute;
-// transform: translate(-50%, -50%);
-// top: 50%;
-// left: 50%;
-//
-// const ImgBackground = styled.div`
-// 	background: white;
-// 	position: absolute;
-// 	transform: translate(-50%, -50%);
-// 	top: 50%;
-// 	left: 50%;
-// 	width: 100%;
-// 	height: 100%;
-// `;
-// animation-name: carouselAnimation;
 
 //SECTION> CSS > Animation Keyframes
 
@@ -109,6 +94,42 @@ const ImgCarousel = ({ imgList, backgroundStyle }) => {
 	const [carouselState, setCarouselState] = useState(0);
 	// 取得 <img> 元素的參考
 	const imgNodeList = useRef([]);
+
+	//PART> CSS animation keyframes
+
+	const floatKeyframes = keyframes(
+		backgroundStyle
+			? `from{
+			transform: translateX(0) translateY(0) scale(${backgroundStyle.scale}) rotate(${backgroundStyle.rotate}deg);
+		}
+		12%{
+			transform: translateX(2px) translateY(-4px) scale(${backgroundStyle.scale}) rotate(${backgroundStyle.rotate}deg);
+		}
+		25%{
+			transform: translateX(4px) translateY(0) scale(${backgroundStyle.scale}) rotate(${backgroundStyle.rotate}deg);
+		}
+		37%{
+			transform: translateX(2px) translateY(4px) scale(${backgroundStyle.scale}) rotate(${backgroundStyle.rotate}deg);
+		}
+		50%{
+			transform: translateX(0) translateY(0) scale(${backgroundStyle.scale}) rotate(${backgroundStyle.rotate}deg);
+		}
+		62%{
+			transform: translateX(-2px) translateY(-4px) scale(${backgroundStyle.scale}) rotate(${backgroundStyle.rotate}deg);
+		}
+		75%{
+			transform: translateX(-4px) translateY(0) scale(${backgroundStyle.scale}) rotate(${backgroundStyle.rotate}deg);
+		}
+		87%{
+			transform: translateX(-2px) translateY(4px) scale(${backgroundStyle.scale}) rotate(${backgroundStyle.rotate}deg);
+		}
+		to{
+			transform: translate(0) translateY(0) scale(${backgroundStyle.scale}) rotate(${backgroundStyle.rotate}deg);
+		}
+		`
+			: null
+	);
+
 	//PART>
 	useEffect(() => {
 		initLoading = false;
@@ -135,19 +156,31 @@ const ImgCarousel = ({ imgList, backgroundStyle }) => {
 	}, [imgList]);
 	//PART>
 	// 未於 props 提供 imgList 時，回傳用於作為輪播圖片底圖的白色圖形
-	// 並可進一步設定其樣式改變其位置及透明度作為陪襯
+	// 並可進一步設定其樣式改變其位置及透明度作為陪襯（添加自訂樣式則會有飄移動畫）
 	if (!imgList)
 		return (
 			<Container>
 				<Box
 					style={
+						backgroundStyle
+							? // STYLE animation
+							  {
+									animationName: floatKeyframes,
+									animationDuration: '5s',
+									animationTimingFunction: 'linear',
+									animationIterationCount: 'infinite',
+							  }
+							: null
+					}
+					className={
 						// accept Number Type: scale, opacity, rotate.
-						backgroundStyle && {
+						backgroundStyle &&
+						css({
 							transform: `scale(${
 								backgroundStyle.scale || 1
 							}) rotate(${backgroundStyle.rotate || 0}deg)`,
 							opacity: backgroundStyle.opacity || 1,
-						}
+						})
 					}
 				>
 					<ImgBackground />

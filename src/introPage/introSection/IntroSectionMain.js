@@ -17,7 +17,6 @@ const Container = styled.div`
 const IntroSectionMain = () => {
 	return (
 		<Container>
-			<IntroSectionContent />
 			<ImgCarousel
 				backgroundStyle={{
 					scale: 1.05,
@@ -27,6 +26,7 @@ const IntroSectionMain = () => {
 			/>
 			<ImgCarousel />
 			<ImgCarousel imgList={imgList} />
+			<IntroSectionContent />
 		</Container>
 	);
 };
