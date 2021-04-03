@@ -1,4 +1,4 @@
-/* 作為圖片跑馬燈的可重用元件（包含動畫速度設定值），需傳入具圖片網址的陣列（imgList）使用。如果不傳入該陣列，預設將產出白色色塊（可作為背景） */
+/* 作為圖片跑馬燈的可重用元件（包含動畫速度設定值），需傳入具圖片網址的陣列（imgList）使用。如果不傳入該陣列，預設將產出白色色塊（可作為背景並自訂縮放樣式） */
 
 import React, { useState, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
@@ -24,13 +24,13 @@ const Container = styled.div`
 	top: 0;
 `;
 
+// overflow: hidden;
 const Box = styled.div`
-	width: 63vw;
+	width: 100vw;
 	height: 100vh;
 	position: absolute;
-	top: 0;
-	right: 0;
-	overflow: hidden;
+	top: 50px;
+	left: 40vw;
 
 	display: flex;
 	justify-content: center;
@@ -42,8 +42,8 @@ const Box = styled.div`
 	mask-size: 180%;
 	mask-image: url(${svgFilter});
 	-webkit-mask-repeat: no-repeat;
-	-webkit-mask-position: 0 0px;
-	-webkit-mask-size: 180%;
+	-webkit-mask-position: center;
+	-webkit-mask-size: 100%;
 	-webkit-mask-image: url(${svgFilter});
 `;
 
@@ -55,14 +55,24 @@ const Img = styled.img`
 
 const ImgBackground = styled.div`
 	background: white;
-	position: absolute;
-	transform: translate(-50%, -50%);
-	top: 50%;
-	left: 50%;
 	width: 100%;
 	height: 100%;
-	animation-name: carouselAnimation;
 `;
+// position: absolute;
+// transform: translate(-50%, -50%);
+// top: 50%;
+// left: 50%;
+//
+// const ImgBackground = styled.div`
+// 	background: white;
+// 	position: absolute;
+// 	transform: translate(-50%, -50%);
+// 	top: 50%;
+// 	left: 50%;
+// 	width: 100%;
+// 	height: 100%;
+// `;
+// animation-name: carouselAnimation;
 
 //SECTION> CSS > Animation Keyframes
 
@@ -94,7 +104,7 @@ const fadeIn = css`
 `;
 
 //SECTION> React Component
-const ImgCarousel = ({ imgList }) => {
+const ImgCarousel = ({ imgList, backgroundStyle }) => {
 	// 當前輪播中的圖片索引數字
 	const [carouselState, setCarouselState] = useState(0);
 	// 取得 <img> 元素的參考
@@ -124,55 +134,70 @@ const ImgCarousel = ({ imgList }) => {
 		}
 	}, [imgList]);
 	//PART>
-	return (
-		<Container>
-			{imgList ? (
-				imgList.map((item, index) => (
-					<Box
-						key={index}
-						style={
-							carouselState === index
-								? {
-										zIndex: 10,
-								  }
-								: null
+	// 未於 props 提供 imgList 時，回傳用於作為輪播圖片底圖的白色圖形
+	// 並可進一步設定其樣式改變其位置及透明度作為陪襯
+	if (!imgList)
+		return (
+			<Container>
+				<Box
+					style={
+						// accept Number Type: scale, opacity, rotate.
+						backgroundStyle && {
+							transform: `scale(${
+								backgroundStyle.scale || 1
+							}) rotate(${backgroundStyle.rotate || 0}deg)`,
+							opacity: backgroundStyle.opacity || 1,
 						}
-					>
-						{carouselState === index ? (
-							<Img // 當前正顯示的輪播圖片
-								src={item}
-								ref={el => (imgNodeList.current[index] = el)}
-								className={fadeIn}
-								style={{
-									display: 'block',
-								}}
-							/>
-						) : (
-							<Img // 隱藏的圖片
-								src={item}
-								ref={el => (imgNodeList.current[index] = el)}
-								className={
-									// 除了第一次載入不要加 class
-									initLoading
-										? null
-										: // 在切換當前輪播時繼續持有 fadeIn 的 class
-										// 以免切換圖片時畫面出現斷層
-										// 後續以計時器清掉
-										carouselState ===
-										  (index + 1 === 4 ? 0 : index + 1)
-										? fadeIn
-										: null
-								}
-							/>
-						)}
-					</Box>
-				))
-			) : (
-				// 不在 props 傳入 imgList 時用於作為背景的遮罩
-				<Box>
+					}
+				>
 					<ImgBackground />
 				</Box>
-			)}
+			</Container>
+		);
+
+	// 圖片輪播主體
+	return (
+		<Container>
+			{imgList.map((item, index) => (
+				<Box
+					key={index}
+					style={
+						carouselState === index
+							? {
+									zIndex: 10,
+							  }
+							: null
+					}
+				>
+					{carouselState === index ? (
+						<Img // 當前正顯示的輪播圖片
+							src={item}
+							ref={el => (imgNodeList.current[index] = el)}
+							className={fadeIn}
+							style={{
+								display: 'block',
+							}}
+						/>
+					) : (
+						<Img // 隱藏的圖片
+							src={item}
+							ref={el => (imgNodeList.current[index] = el)}
+							className={
+								// 除了第一次載入不要加 class
+								initLoading
+									? null
+									: // 在切換當前輪播時繼續持有 fadeIn 的 class
+									// 以免切換圖片時畫面出現斷層
+									// 後續以計時器清掉
+									carouselState ===
+									  (index + 1 === 4 ? 0 : index + 1)
+									? fadeIn
+									: null
+							}
+						/>
+					)}
+				</Box>
+			))}
 		</Container>
 	);
 };
