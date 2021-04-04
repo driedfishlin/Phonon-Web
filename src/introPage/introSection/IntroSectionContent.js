@@ -18,18 +18,18 @@ const floatAnimationDuration = 3;
 //SECTION> CSS ANIMATION KEYFRAMES
 const floatKeyframesX = keyframes`
 	from{
-		transform: translateX(0px);
+		transform: translateX(-5px);
 	}
 	to{
-		transform: translateX(10px);
+		transform: translateX(5px);
 	}
 	`;
 const floatKeyframesY = keyframes`
 	from{
-		transform: translateY(0);
+		transform: translateY(-5px);
 	}
 	to{
-		transform: translateY(10px);
+		transform: translateY(5px);
 	}
 	`;
 //SECTION> CSS COMPONENT
@@ -38,11 +38,12 @@ const Container = styled.div`
 	top: 20vh;
 	left: 15vw;
 	transition: transform 1.2s;
+	z-index: 15;
 `;
 const AnimationWrapX = styled.div`
 	position: relative;
 	animation: ${floatKeyframesX} ${floatAnimationDuration}s
-		${floatAnimationDuration / 2}s infinite ease-in-out alternate;
+		${-floatAnimationDuration / 2}s infinite ease-in-out alternate;
 `;
 const AnimationWrapY = styled.div`
 	position: relative;
