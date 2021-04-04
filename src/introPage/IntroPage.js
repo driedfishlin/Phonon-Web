@@ -20,12 +20,6 @@ const Container = styled.div`
 	overflow: hidden;
 `;
 
-// const SectionContainer = styled.div`
-// 	width: 1280px;
-// 	overflow: hidden;
-// 	margin: 0 auto;
-// `;
-
 const Section = styled.div(props => ({
 	height: props.height,
 	background: props.bgc,
@@ -108,7 +102,7 @@ const IntroPage = props => {
 			default:
 				return;
 		}
-
+		// 頁碼目前還未有用途
 		console.log('current page: ' + currentPage);
 	};
 
@@ -210,7 +204,6 @@ const IntroPage = props => {
 					arrowEl={backArrow}
 				/>
 			</SideNavBarContainer>
-			{/* <SectionContainer> */}
 			<Section height={'100vh'} bgc={'#F47C4F'} ref={phononIndexSection}>
 				<IntroSectionMain />
 			</Section>
@@ -227,7 +220,6 @@ const IntroPage = props => {
 				ref={phononCoffeeSection}
 			/>
 			<Section height={'200px'} bgc={'#3C4566'} ref={footerSection} />
-			{/* </SectionContainer> */}
 		</Container>
 	);
 };

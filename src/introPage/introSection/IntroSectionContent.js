@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import { keyframes } from '@emotion/css';
+import { css, keyframes } from '@emotion/css';
 
 // SVG
 import { ReactComponent as PhononLogo } from './../../image/logo/phonon_art_logo.svg';
@@ -32,6 +32,22 @@ const floatKeyframesY = keyframes`
 		transform: translateY(5px);
 	}
 	`;
+const textSlideKeyframes = keyframes`
+	from{
+		opacity: 0;
+		left: -100px;
+	}
+	70%{
+		left: 0px;
+		opacity: 1;
+
+	}
+	to{
+		left: 0px;
+		opacity: 1;
+
+	}
+`;
 //SECTION> CSS COMPONENT
 const Container = styled.div`
 	position: absolute;
@@ -81,7 +97,20 @@ const TextContent = styled.div`
 `;
 const H2 = styled.h2(props => ({
 	paddingLeft: props.paddingLeft,
+	position: 'relative',
+	left: '-100px',
+	opacity: 0,
 }));
+
+//SECTION> ClassName
+
+const slideText = css`
+	animation-name: ${textSlideKeyframes};
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-out;
+	animation-fill-mode: forwards;
+`;
 
 //SECTION> React Component
 const IntroSectionContent = () => {
@@ -135,10 +164,22 @@ const IntroSectionContent = () => {
 				<AnimationWrapY className={floatKeyframesY}>
 					<Logo />
 					<TextContent>
-						<H2 paddingLeft="20px">
+						<H2
+							paddingLeft="20px"
+							className={slideText}
+							style={{
+								animationDelay: '0.7s',
+							}}
+						>
 							<span>“</span> 以愛為出發點
 						</H2>
-						<H2 paddingLeft="80px">
+						<H2
+							paddingLeft="80px"
+							className={slideText}
+							style={{
+								animationDelay: '0.5s',
+							}}
+						>
 							用音樂藝術關懷人 <p>”</p>
 						</H2>
 					</TextContent>
