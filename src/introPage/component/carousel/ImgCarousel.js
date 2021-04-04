@@ -124,7 +124,7 @@ const ImgCarousel = ({ imgList, backgroundStyle }) => {
 			transform: translateX(-2px) translateY(4px) scale(${backgroundStyle.scale}) rotate(${backgroundStyle.rotate}deg);
 		}
 		to{
-			transform: translate(0) translateY(0) scale(${backgroundStyle.scale}) rotate(${backgroundStyle.rotate}deg);
+			transform: translateX(0) translateY(0) scale(${backgroundStyle.scale}) rotate(${backgroundStyle.rotate}deg);
 		}
 		`
 			: null
