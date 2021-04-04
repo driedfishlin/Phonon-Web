@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 // Component
 import IntroSectionContent from './IntroSectionContent';
 import ImgCarousel from '../component/carousel/ImgCarousel';
+import ScrollPromptText from '../component/shared/ScrollPromptText';
 // Data Template
 import { introPageCarouselImg } from '../../dataTemplate';
 const imgList = introPageCarouselImg.introSection;
@@ -27,6 +28,7 @@ const IntroSectionMain = () => {
 			<ImgCarousel />
 			<ImgCarousel imgList={imgList} />
 			<IntroSectionContent />
+			<ScrollPromptText />
 		</Container>
 	);
 };
