@@ -75,11 +75,13 @@ const ScrollPromptText = () => {
 			<Text>SCROLL</Text>
 			<ArrowContainer>
 				<Arrow
+					comment="This icon comes from FONTAWESOME. https://fontawesome.com/"
 					style={{
 						animation: `${arrowKeyframes} ${animationDuration}s infinite`,
 					}}
 				/>
 				<Arrow
+					comment="This icon comes from FONTAWESOME. https://fontawesome.com/"
 					style={{
 						animation: `${arrowKeyframes} ${animationDuration}s ${
 							-animationDuration / 2

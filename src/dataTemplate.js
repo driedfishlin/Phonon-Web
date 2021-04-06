@@ -7,11 +7,7 @@ import introCarouseImg_C from './image/_Temporary_pic/room/michael-oxendine-GHCV
 import introCarouseImg_D from './image/_Temporary_pic/room/roberto-nickson-rEJxpBskj3Q-unsplash.jpg';
 
 //SECTION> For MainNavigationBar
-export const navListItem = [
-	{ name: '關於聲子' },
-	{ name: '琴房預約' },
-	{ name: '餐點訂製' },
-];
+export const navListItem = [{ name: '琴房預約' }, { name: '餐點訂製' }];
 
 //SECTION> For CommoditiesGroup
 export const commoditiesInfo = {

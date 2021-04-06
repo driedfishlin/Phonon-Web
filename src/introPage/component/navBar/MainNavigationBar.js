@@ -30,7 +30,8 @@ const Container = styled.div`
 `;
 
 const Logo = styled(phononLogo)`
-	& path {
+	& path,
+	& polygon {
 		fill: white;
 	}
 	& g {
@@ -62,13 +63,12 @@ const MinNavigationBar = ({ clickFn }) => {
 				聲子藝棧
 				<Logo />
 			</h1>
-			<ul>
+			<ul style={{ marginRight: '90px' }}>
 				{navListItem.map((item, index) => (
 					<NavigationTextButton
 						text={item.name}
 						key={item.name}
-						// 給予後面兩顆按鈕 callback
-						clickFn={index ? clickFn : null}
+						clickFn={clickFn}
 					/>
 				))}
 			</ul>

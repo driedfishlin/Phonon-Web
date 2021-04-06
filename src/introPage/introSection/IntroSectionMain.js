@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import IntroSectionContent from './IntroSectionContent';
 import ImgCarousel from '../component/carousel/ImgCarousel';
 import ScrollPromptText from '../component/shared/ScrollPromptText';
+import pngFile from '../../image/background/ins.png';
 // Data Template
 import { introPageCarouselImg } from '../../dataTemplate';
 const imgList = introPageCarouselImg.introSection;
@@ -15,9 +16,23 @@ const Container = styled.div`
 	margin: 0 auto;
 `;
 
+const Background = styled.div`
+	width: 100%;
+	height: 100%;
+	& > img {
+		height: 120%;
+		opacity: 0.3;
+		position: relative;
+		top: -100px;
+	}
+`;
+
 const IntroSectionMain = () => {
 	return (
 		<Container>
+			<Background>
+				<img src={pngFile} alt="background" />
+			</Background>
 			<ImgCarousel
 				backgroundStyle={{
 					scale: 1.05,

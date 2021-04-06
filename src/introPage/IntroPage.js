@@ -80,19 +80,10 @@ const IntroPage = () => {
 			sectionObserver.observe(section.current)
 		);
 		// 針對 footer 的監聽處理（增加區塊底部的判斷點）
-		const footerObserver = new IntersectionObserver(
-			// (entries, ownObserver) => {
-			// 	scrollPage(entries, ownObserver, sectionObserver);
-			// 	// console.log(entries);
-			// 	// if (entries[0].isIntersecting) sectionObserver.disconnect();
-			// 	// if(!entries[0].isIntersecting)
-			// },
-			scrollPage,
-			{
-				rootMargin: '-5px',
-				threshold: [0, 0.95],
-			}
-		);
+		const footerObserver = new IntersectionObserver(scrollPage, {
+			rootMargin: '-5px',
+			threshold: [0, 0.95],
+		});
 		footerObserver.observe(footerSection.current);
 		return () => {
 			sectionObserver.disconnect();
@@ -151,13 +142,8 @@ const IntroPage = () => {
 				behavior: 'smooth',
 			});
 
-			// sectionNodeList.map(section =>
-			// 	otherObserver.observe(section.current)
-			// );
 			// 使瀏覽器捲軸滑動完畢再更改狀態
 			setTimeout(() => (footerIsIntersecting = 0), 300);
-			// currentPage = 4;
-			// setTimeout(() => setPageState(4), 800);
 			return;
 		}
 
@@ -172,15 +158,7 @@ const IntroPage = () => {
 			UpdateCurrentPage(entries);
 
 			// 對 footer 的例外處理（頁面往下滑入 footer）
-			if (
-				!footerIsIntersecting &&
-				entries[0].target === footerSection.current
-			) {
-				// if (entries[0].isIntersecting) {
-				// 	otherObserver.disconnect();
-				// 	ownObserver.disconnect();
-				// }
-
+			if (entries[0].target === footerSection.current) {
 				setTimeout(() => (footerIsIntersecting = 1), 300);
 			}
 		}
