@@ -4,14 +4,20 @@ import styled from '@emotion/styled';
 import MainNavigationBar from './component/navBar/MainNavigationBar';
 import IntroSectionMain from './introSection/IntroSectionMain';
 import CommoditiesGroup from './CommoditiesGroup';
+import PageMenu from './component/shared/PageMenu';
 
 //SECTION> STATE
 
 // 當前頁面
 let currentPage = 1;
-
 // 用於判斷 footer 區塊是順向或反向滑進，避免 observer 因為兩個判斷點重複觸發
 let footerIsIntersecting = 0;
+
+//SECTION> EVENT LISTENER
+window.addEventListener('beforeunload', event => {
+	event.preventDefault();
+	window.scrollTo({ top: 0 });
+});
 
 //SECTION> CSS COMPONENT
 
@@ -40,7 +46,14 @@ const SideNavBarContainer = styled.div`
 
 //SECTION> REACT COMPONENT
 //FIXME> 要檢查是否會有需要優化效能的部分
-const IntroPage = props => {
+const IntroPage = () => {
+	//PART> React State
+	const [sideNavBarState, setSideNavBarState] = useState({
+		target: null,
+		isOpen: false,
+		arrowDelay: false,
+	});
+	const [pageState, setPageState] = useState(currentPage);
 	//PART> Element Selector
 	const phononIndexSection = useRef(null),
 		phononIntro = useRef(null),
@@ -57,7 +70,7 @@ const IntroPage = props => {
 	];
 
 	//PART> Intersection Observer API
-	//FIXME> useEffect 可能重複執行監聽，需求：在重新渲染時取消原有的 observer
+	//FIXME> 第五頁沒辦法適用左側導覽
 	useEffect(() => {
 		// 各 Section 通用的監聽
 		const sectionObserver = new IntersectionObserver(scrollPage, {
@@ -67,18 +80,24 @@ const IntroPage = props => {
 			sectionObserver.observe(section.current)
 		);
 		// 針對 footer 的監聽處理（增加區塊底部的判斷點）
-		const footerObserver = new IntersectionObserver(scrollPage, {
-			rootMargin: '-5px',
-			threshold: [0, 0.95],
-		});
+		const footerObserver = new IntersectionObserver(
+			// (entries, ownObserver) => {
+			// 	scrollPage(entries, ownObserver, sectionObserver);
+			// 	// console.log(entries);
+			// 	// if (entries[0].isIntersecting) sectionObserver.disconnect();
+			// 	// if(!entries[0].isIntersecting)
+			// },
+			scrollPage,
+			{
+				rootMargin: '-5px',
+				threshold: [0, 0.95],
+			}
+		);
 		footerObserver.observe(footerSection.current);
-	});
-
-	//PART> React State
-	const [sideNavBarState, setSideNavBarState] = useState({
-		target: null,
-		isOpen: false,
-		arrowDelay: false,
+		return () => {
+			sectionObserver.disconnect();
+			footerObserver.disconnect();
+		};
 	});
 
 	//PART> FUNCTION
@@ -86,18 +105,26 @@ const IntroPage = props => {
 		switch (entries[0].target) {
 			case phononIndexSection.current:
 				currentPage = 1;
+				// 設定計時器，以避免滾動期間因為元件重新渲染
+				// 造成 intersectionObserver 被觸發阻斷滾動
+				setTimeout(() => setPageState(1), 800);
 				break;
 			case phononIntro.current:
 				currentPage = 2;
+				setTimeout(() => setPageState(2), 800);
 				break;
 			case phononArtSection.current:
 				currentPage = 3;
+				setTimeout(() => setPageState(3), 800);
 				break;
 			case phononCoffeeSection.current:
 				currentPage = 4;
+				setTimeout(() => setPageState(4), 800);
 				break;
 			case footerSection.current:
 				currentPage = 5;
+				// 因為不是滿版，因此延遲仍會觸發上一頁滑動
+				// setTimeout(() => setPageState(5), 800);
 				break;
 			default:
 				return;
@@ -106,11 +133,10 @@ const IntroPage = props => {
 		console.log('current page: ' + currentPage);
 	};
 
-	//PART> CALLBACK FUNCTION
-
-	// 畫面捲動自動定位功能
-	const scrollPage = entries => {
-		// 針對 footer 的判斷
+	// 畫面捲動自動定位功能（intersection observer's callback）
+	const scrollPage = (entries, ownObserver, otherObserver) => {
+		// console.log(entries[0]);
+		// 針對 footer 的判斷（頁面往上滑出 footer）
 		if (
 			footerIsIntersecting &&
 			entries[0].target === footerSection.current &&
@@ -124,8 +150,14 @@ const IntroPage = props => {
 					document.documentElement.clientHeight,
 				behavior: 'smooth',
 			});
+
+			// sectionNodeList.map(section =>
+			// 	otherObserver.observe(section.current)
+			// );
 			// 使瀏覽器捲軸滑動完畢再更改狀態
 			setTimeout(() => (footerIsIntersecting = 0), 300);
+			// currentPage = 4;
+			// setTimeout(() => setPageState(4), 800);
 			return;
 		}
 
@@ -139,13 +171,22 @@ const IntroPage = props => {
 			// 更新目前聚焦頁面頁碼
 			UpdateCurrentPage(entries);
 
-			// 對 footer 的例外處理
-			if (entries[0].target === footerSection.current)
+			// 對 footer 的例外處理（頁面往下滑入 footer）
+			if (
+				!footerIsIntersecting &&
+				entries[0].target === footerSection.current
+			) {
+				// if (entries[0].isIntersecting) {
+				// 	otherObserver.disconnect();
+				// 	ownObserver.disconnect();
+				// }
+
 				setTimeout(() => (footerIsIntersecting = 1), 300);
+			}
 		}
 	};
 
-	// 側邊導覽列切換功能
+	// 側邊導覽列（產品項目）切換功能
 	const sideNavBarToggle = event => {
 		let target = null;
 		if (!sideNavBarState.isOpen) {
@@ -196,6 +237,7 @@ const IntroPage = props => {
 	//PART>
 	return (
 		<Container>
+			<PageMenu page={pageState} changPage={setPageState} />
 			<MainNavigationBar clickFn={sideNavBarToggle} />
 			<SideNavBarContainer ref={sideNavBar}>
 				<CommoditiesGroup
