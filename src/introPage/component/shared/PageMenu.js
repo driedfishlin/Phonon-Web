@@ -106,8 +106,9 @@ const Logo = styled(LogoSVG)`
 	width: 200px;
 	opacity: 1;
 	& path,
-	& polygon {
+	polygon {
 		fill: white;
+		stroke: none;
 	}
 	animation-name: ${logoKeyframes};
 	animation-duration: ${animationDuration}s;

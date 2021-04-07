@@ -33,9 +33,7 @@ const Logo = styled(phononLogo)`
 	& path,
 	& polygon {
 		fill: white;
-	}
-	& g {
-		stroke: white;
+		stroke: none;
 	}
 	filter: none;
 	transition: filter 0.2s;

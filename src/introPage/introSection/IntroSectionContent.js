@@ -67,6 +67,14 @@ const AnimationWrapY = styled.div`
 		ease-in-out alternate;
 `;
 const Logo = styled(PhononLogo)`
+	& path {
+		fill: black;
+		stroke: none;
+	}
+	& polygon {
+		fill: black;
+		stroke: none;
+	}
 	width: 170px;
 	padding-left: 20px;
 	transform: skewX(-17deg) rotate(-17deg) scale(1, 1.3);

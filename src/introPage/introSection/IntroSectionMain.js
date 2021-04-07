@@ -21,7 +21,7 @@ const Background = styled.div`
 	height: 100%;
 	& > img {
 		height: 120%;
-		opacity: 0.3;
+		opacity: 0.2;
 		position: relative;
 		top: -100px;
 	}

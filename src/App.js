@@ -4,7 +4,11 @@
 import IntroPage from './introPage/IntroPage';
 
 function App() {
-	return <IntroPage />;
+	return (
+		// <div style={{ width: '100vw', overflow: 'hidden' }}>
+		<IntroPage />
+		// </div>
+	);
 }
 
 export default App;

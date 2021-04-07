@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 // Component
 import MainNavigationBar from './component/navBar/MainNavigationBar';
 import IntroSectionMain from './introSection/IntroSectionMain';
+import PhononSectionMain from './phononSection/PhononSectionMain';
 import CommoditiesGroup from './CommoditiesGroup';
 import PageMenu from './component/shared/PageMenu';
 
@@ -27,6 +28,7 @@ const Container = styled.div`
 `;
 
 const Section = styled.div(props => ({
+	position: 'relative',
 	height: props.height,
 	background: props.bgc,
 	overflow: 'hidden',
@@ -227,7 +229,9 @@ const IntroPage = () => {
 			<Section height={'100vh'} bgc={'#F47C4F'} ref={phononIndexSection}>
 				<IntroSectionMain />
 			</Section>
-			<Section height={'100vh'} bgc={'#DED2C7'} ref={phononIntro} />
+			<Section height={'100vh'} bgc={'#DED2C7'} ref={phononIntro}>
+				<PhononSectionMain />
+			</Section>
 			<Section
 				height={'100vh'}
 				bgc={'#6B7C7D'}
