@@ -4,6 +4,8 @@ import styled from '@emotion/styled';
 import RoomSectionContent from './RoomSectionContent';
 import ImgCarousel from '../component/carousel/ImgCarousel';
 
+import { ReactComponent as ImgSVG } from '../../image/background/player_01.svg';
+
 import { introPagePhononSectionCarouselImg } from '../../dataTemplate';
 const imgList = introPagePhononSectionCarouselImg.imgs;
 
@@ -11,6 +13,25 @@ const Container = styled.div`
 	width: 1280px;
 	height: 100%;
 	margin: 0 auto;
+`;
+
+const Background = styled.div`
+	height: 100vh;
+	width: 100vw;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0.2;
+	& > svg {
+		position: absolute;
+		top: 5%;
+		left: 0;
+		& path,
+		& line,
+		& polygon {
+			stroke: none;
+		}
+	}
 `;
 
 const carouselPosition = {
@@ -26,9 +47,12 @@ const filter = {
 	position: '10% 58%',
 };
 
-const RoomSectionMain = () => {
+const RoomSectionMain = ({ clickFn }) => {
 	return (
 		<Container>
+			<Background>
+				<ImgSVG />
+			</Background>
 			<ImgCarousel
 				filter={{ ...filter, position: '10% 58%' }}
 				backgroundStyle={{
@@ -44,7 +68,7 @@ const RoomSectionMain = () => {
 				imgList={imgList}
 				position={carouselPosition}
 			/>
-			<RoomSectionContent />
+			<RoomSectionContent clickFn={clickFn} />
 		</Container>
 	);
 };

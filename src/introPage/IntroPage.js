@@ -95,6 +95,7 @@ const IntroPage = () => {
 	});
 
 	//PART> FUNCTION
+	// 更新頁碼，並呼叫 setState
 	const UpdateCurrentPage = entries => {
 		switch (entries[0].target) {
 			case phononIndexSection.current:
@@ -235,11 +236,11 @@ const IntroPage = () => {
 			</Section>
 			<Section
 				height={'100vh'}
-				bgc={'#6B7C7D'}
+				bgc={'#3C4566'}
 				ref={phononArtSection}
 				id={'phononArtSection'}
 			>
-				<RoomSectionMain />
+				<RoomSectionMain clickFn={sideNavBarToggle} />
 			</Section>
 			<Section
 				height={'100vh'}

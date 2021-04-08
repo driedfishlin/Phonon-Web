@@ -4,24 +4,18 @@ import styled from '@emotion/styled';
 import { ReactComponent as LogoSVG } from '../../image/logo/phonon_art_logo.svg';
 
 const Container = styled.div`
-	// outline: 1px solid white;
-	// * {
-	// 	outline: 1px solid white;
-	// }
-
 	position: absolute;
 	right: 0;
-	bottom: 0;
+	bottom: 5%;
 	margin: 50px;
 	max-width: 38%;
 	display: flex;
-	// flex: 0 1 1;
 `;
 
 const TextBlock = styled.div`
 	width: 50%;
 	& > p {
-		margin-top: 10px;
+		margin-top: 15px;
 		padding: 0 10px 0 10px;
 		box-sizing: border-box;
 
@@ -57,9 +51,6 @@ const Logo = styled.div`
 `;
 
 const ButtonBlock = styled.div`
-	// position: absolute;
-	// bottom: 0;
-	// padding-bottom: 30px;
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -75,14 +66,18 @@ const ButtonBlock = styled.div`
 		border: 2px solid #fff;
 		border-radius: 12px;
 		transition: background 0.1s;
+		cursor: pointer;
 		&:hover {
 			background: #fff;
 			color: #6b7c7d;
 		}
+		&:focus {
+			outline: none;
+		}
 	}
 `;
 
-const RoomSectionContent = () => {
+const RoomSectionContent = ({ clickFn }) => {
 	return (
 		<Container>
 			<LogoBlock>
@@ -90,7 +85,7 @@ const RoomSectionContent = () => {
 					<LogoSVG />
 				</Logo>
 				<ButtonBlock>
-					<button>琴房預約</button>
+					<button onClick={clickFn}>琴房預約</button>
 				</ButtonBlock>
 			</LogoBlock>
 			<TextBlock>
