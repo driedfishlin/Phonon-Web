@@ -119,6 +119,7 @@ const Logo = styled(LogoSVG)`
 
 const activeStyle = {
 	backgroundColor: 'rgba(255, 255, 255, 0.6)',
+	cursor: 'default',
 };
 
 //SECTION> React Component
@@ -129,6 +130,7 @@ const PageMenu = ({ page, changPage }) => {
 			{console.log('render')}
 			<MaskContainer ref={maskRef}>
 				{(() => {
+					// 產生遮罩
 					const arr = [];
 					for (let i = 0; i < maskCount; i++) {
 						arr.push(
@@ -149,27 +151,35 @@ const PageMenu = ({ page, changPage }) => {
 			</MaskContainer>
 			<Container>
 				{(() => {
+					// 產生按鈕
 					const arr = [];
 					for (let i = 0; i < buttonCount; i++) {
 						arr.push(
 							<Button
 								key={i}
 								style={i === page - 1 ? activeStyle : null}
-								onClick={() => {
-									setTimeout(() => {
-										window.scrollTo({
-											top: i * window.innerHeight,
-										});
-										changPage(i + 1);
-									}, animationDuration * 500);
-									maskRef.current.style.display = 'block';
-									setTimeout(
-										() =>
-											(maskRef.current.style.display =
-												'none'),
-										animationDuration * 1000
-									);
-								}}
+								onClick={
+									i === page - 1
+										? null
+										: () => {
+												setTimeout(() => {
+													window.scrollTo({
+														top:
+															i *
+															window.innerHeight,
+													});
+													changPage(i + 1);
+												}, animationDuration * 500);
+												maskRef.current.style.display =
+													'block';
+												setTimeout(
+													() =>
+														(maskRef.current.style.display =
+															'none'),
+													animationDuration * 1000
+												);
+										  }
+								}
 							/>
 						);
 					}

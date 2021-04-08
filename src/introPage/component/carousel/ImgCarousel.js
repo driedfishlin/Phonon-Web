@@ -1,4 +1,15 @@
-/* 作為圖片跑馬燈的可重用元件（包含動畫速度設定值），需傳入具圖片網址的陣列（imgList）使用。如果不傳入該陣列，預設將產出白色色塊（可作為背景並自訂縮放樣式） */
+/*
+
+	作為圖片跑馬燈的可重用元件（包含動畫速度設定值），可傳入 position 物件設定參數。作為輪播使用，需傳入具圖片網址的陣列（imgList）使用。如果不傳入該陣列，預設將產出靜態的白色色塊。傳入 backgroundStyle 時該色塊將帶有動畫。
+
+	1. imgList 存在 => 使用該資料建立輪播
+	2. imgList 不存在，但存在 backgroundStyle => 建立陪襯用底圖動畫
+	3. imgList 與 backgroundStyle 都不存在 => 建立空白底圖
+
+	・ backgroundStyle 所接受的參數 { opacity, rotate, scale }
+	・ position 所接受的參數 { width, height, top, left }
+	
+*/
 
 import React, { useState, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
@@ -26,25 +37,13 @@ const Container = styled.div`
 `;
 
 const Box = styled.div`
-	width: 100vw;
-	height: 100vh;
 	position: absolute;
-	top: 50px;
-	left: 40vw;
+
+	${'' /* 尺寸、位置樣式寫在 render 處 */}
 
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
-	${'' /* 輪播遮罩 */}
-	mask-repeat: no-repeat;
-	mask-position: 0 0px;
-	mask-size: 180%;
-	mask-image: url(${svgFilter});
-	-webkit-mask-repeat: no-repeat;
-	-webkit-mask-position: center;
-	-webkit-mask-size: 100%;
-	-webkit-mask-image: url(${svgFilter});
 `;
 
 const Img = styled.img`
@@ -89,7 +88,13 @@ const fadeIn = css`
 `;
 
 //SECTION> React Component
-const ImgCarousel = ({ imgList, backgroundStyle }) => {
+const ImgCarousel = ({
+	imgList,
+	backgroundStyle,
+	filter,
+	filterSize,
+	position,
+}) => {
 	// 當前輪播中的圖片索引數字
 	const [carouselState, setCarouselState] = useState(0);
 	// 取得 <img> 元素的參考
@@ -130,6 +135,30 @@ const ImgCarousel = ({ imgList, backgroundStyle }) => {
 			: null
 	);
 
+	//PART> ClassName
+	const backgroundClass = css({
+		animationName: floatKeyframes,
+		animationDuration: '5s',
+		animationTimingFunction: 'linear',
+		animationIterationCount: 'infinite',
+		transform: `scale(${
+			backgroundStyle ? backgroundStyle.scale || 1 : 1
+		}) rotate(${backgroundStyle ? backgroundStyle.rotate || 0 : 0}deg)`,
+		opacity: backgroundStyle ? backgroundStyle.opacity || 1 : 1,
+	});
+
+	// 輪播遮罩
+	const filterClass = css`
+		mask-repeat: no-repeat;
+		mask-position: center;
+		mask-size: ${filterSize || '100%'};
+		mask-image: url(${filter || svgFilter});
+		-webkit-mask-repeat: no-repeat;
+		-webkit-mask-position: center;
+		-webkit-mask-size: ${filterSize || '100%'};
+		-webkit-mask-image: url(${filter || svgFilter});
+	`;
+
 	//PART>
 	useEffect(() => {
 		initLoading = false;
@@ -162,25 +191,20 @@ const ImgCarousel = ({ imgList, backgroundStyle }) => {
 			<Container>
 				<Box
 					style={
-						backgroundStyle
-							? // STYLE animation
-							  {
-									animationName: floatKeyframes,
-									animationDuration: '5s',
-									animationTimingFunction: 'linear',
-									animationIterationCount: 'infinite',
+						position
+							? {
+									top: position.top || 0,
+									left: position.left || 0,
+									width: position.width || '100vw',
+									height: position.height || '100vh',
 							  }
 							: null
 					}
 					className={
-						// accept Number Type: scale, opacity, rotate.
-						backgroundStyle &&
-						css({
-							transform: `scale(${
-								backgroundStyle.scale || 1
-							}) rotate(${backgroundStyle.rotate || 0}deg)`,
-							opacity: backgroundStyle.opacity || 1,
-						})
+						filterClass +
+						' ' +
+						// except scale, rotate, opacity
+						(backgroundStyle ? backgroundClass : '')
 					}
 				>
 					<ImgBackground />
@@ -194,6 +218,18 @@ const ImgCarousel = ({ imgList, backgroundStyle }) => {
 			{imgList.map((item, index) => (
 				<Box
 					key={index}
+					className={
+						filterClass +
+						' ' +
+						(position
+							? css({
+									top: position.top || 0,
+									left: position.left || 0,
+									width: position.width || '100vw',
+									height: position.height || '100vh',
+							  })
+							: '')
+					}
 					style={
 						carouselState === index
 							? {

@@ -27,6 +27,14 @@ const Background = styled.div`
 	}
 `;
 
+//SECTION>
+const carouselPosition = {
+	top: '50px',
+	left: '40vw',
+	weight: '100vw',
+	height: '100vh',
+};
+
 const IntroSectionMain = () => {
 	return (
 		<Container>
@@ -39,9 +47,10 @@ const IntroSectionMain = () => {
 					rotate: -8,
 					opacity: 0.5,
 				}}
+				position={carouselPosition}
 			/>
-			<ImgCarousel />
-			<ImgCarousel imgList={imgList} />
+			<ImgCarousel position={carouselPosition} />
+			<ImgCarousel imgList={imgList} position={carouselPosition} />
 			<IntroSectionContent />
 			<ScrollPromptText />
 		</Container>
