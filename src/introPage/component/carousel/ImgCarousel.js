@@ -1,6 +1,6 @@
 /*
 
-	作為圖片跑馬燈的可重用元件（包含動畫速度設定值），可傳入 position 物件設定參數。作為輪播使用，需傳入具圖片網址的陣列（imgList）使用。如果不傳入該陣列，預設將產出靜態的白色色塊。傳入 backgroundStyle 時該色塊將帶有動畫。
+	作為圖片跑馬燈的可重用元件，可傳入 position 物件設定位置及尺寸、 filter 物件控制形狀。作為輪播使用，需傳入具圖片網址的陣列（imgList）使用。如果不傳入該陣列，預設將產出靜態的白色色塊。傳入 backgroundStyle 時該色塊將帶有動畫。
 
 	1. imgList 存在 => 使用該資料建立輪播
 	2. imgList 不存在，但存在 backgroundStyle => 建立陪襯用底圖動畫
@@ -8,6 +8,7 @@
 
 	・ backgroundStyle 所接受的參數 { opacity, rotate, scale }
 	・ position 所接受的參數 { width, height, top, left }
+	・ filter 所接受的參數 { size, src, position }
 	
 */
 
@@ -88,13 +89,7 @@ const fadeIn = css`
 `;
 
 //SECTION> React Component
-const ImgCarousel = ({
-	imgList,
-	backgroundStyle,
-	filter,
-	filterSize,
-	position,
-}) => {
+const ImgCarousel = ({ imgList, backgroundStyle, filter, position }) => {
 	// 當前輪播中的圖片索引數字
 	const [carouselState, setCarouselState] = useState(0);
 	// 取得 <img> 元素的參考
@@ -147,16 +142,19 @@ const ImgCarousel = ({
 		opacity: backgroundStyle ? backgroundStyle.opacity || 1 : 1,
 	});
 
+	// 如果 filter 不存在即給予空物件，避免 filterClass 出錯
+	filter ? (() => {})() : (filter = {});
+
 	// 輪播遮罩
 	const filterClass = css`
 		mask-repeat: no-repeat;
-		mask-position: center;
-		mask-size: ${filterSize || '100%'};
-		mask-image: url(${filter || svgFilter});
+		mask-position: ${filter.position || 'center'};
+		mask-size: ${filter.size || '100%'};
+		mask-image: url(${filter.src || svgFilter});
 		-webkit-mask-repeat: no-repeat;
-		-webkit-mask-position: center;
-		-webkit-mask-size: ${filterSize || '100%'};
-		-webkit-mask-image: url(${filter || svgFilter});
+		-webkit-mask-position: ${filter.position || 'center'};
+		-webkit-mask-size: ${filter.size || '100%'};
+		-webkit-mask-image: url(${filter.src || svgFilter});
 	`;
 
 	//PART>

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+// import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/css';
 

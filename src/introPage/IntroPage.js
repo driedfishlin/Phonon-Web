@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import MainNavigationBar from './component/navBar/MainNavigationBar';
 import IntroSectionMain from './introSection/IntroSectionMain';
 import PhononSectionMain from './phononSection/PhononSectionMain';
+import RoomSectionMain from './roomSection/RoomSectionMain';
 import CommoditiesGroup from './CommoditiesGroup';
 import PageMenu from './component/shared/PageMenu';
 
@@ -237,7 +238,9 @@ const IntroPage = () => {
 				bgc={'#6B7C7D'}
 				ref={phononArtSection}
 				id={'phononArtSection'}
-			/>
+			>
+				<RoomSectionMain />
+			</Section>
 			<Section
 				height={'100vh'}
 				bgc={'#F8DC54'}

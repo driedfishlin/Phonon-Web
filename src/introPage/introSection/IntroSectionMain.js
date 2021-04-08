@@ -31,7 +31,7 @@ const Background = styled.div`
 const carouselPosition = {
 	top: '50px',
 	left: '40vw',
-	weight: '100vw',
+	width: '100vw',
 	height: '100vh',
 };
 

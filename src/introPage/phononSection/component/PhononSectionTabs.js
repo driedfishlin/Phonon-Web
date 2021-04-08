@@ -20,7 +20,7 @@ const Body = styled.div`
 		border-radius: 0 0 0 10px;
 		transform: translateY(7px) translateX(-0.5px) rotate(15deg);
 	}
-	& > a {
+	& > button {
 		z-index: 6;
 		font-size: 20px;
 		margin: auto;
@@ -32,6 +32,11 @@ const Body = styled.div`
 		top: 17px;
 		user-select: none;
 		cursor: pointer;
+		border: none;
+		background: transparent;
+		&:focus {
+			outline: none;
+		}
 	}
 `;
 
@@ -54,7 +59,7 @@ const PhononSectionTabs = ({ name, teamState, setFn, index }) => {
 				zIndex: teamState === name ? 11 : 10 - index,
 			}}
 		>
-			<a onClick={() => setFn(name)}>{name}</a>
+			<button onClick={() => setFn(name)}>{name}</button>
 		</Body>
 	);
 };
