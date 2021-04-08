@@ -48,7 +48,7 @@ const logoKeyframes = keyframes`
 const Container = styled.div`
 	position: fixed;
 	left: 0px;
-	bottom: 7%;
+	bottom: 25%;
 	padding: 30px;
 	padding-left: 40px;
 	z-index: 50;
@@ -118,7 +118,7 @@ const Logo = styled(LogoSVG)`
 //SECTION> CSS Style
 
 const activeStyle = {
-	backgroundColor: 'rgba(255, 255, 255, 0.6)',
+	backgroundColor: 'rgba(255, 255, 255, 0.8)',
 	cursor: 'default',
 };
 

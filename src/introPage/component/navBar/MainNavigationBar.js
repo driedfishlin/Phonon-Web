@@ -15,6 +15,7 @@ const Container = styled.div`
 	padding-bottom: 20px;
 	background: transparent;
 	z-index: 50;
+	transition: background 1s 0.5s;
 	& > ul {
 		float: right;
 		margin: 0 30px;
@@ -22,6 +23,10 @@ const Container = styled.div`
 	& > ul > li > a {
 		opacity: 0.3;
 		transition: opacity 1s 0.5s;
+	}
+	&:hover {
+		background: rgba(4, 4, 4, 0.1);
+		transition: background 0.4s;
 	}
 	&:hover > ul > li > a {
 		opacity: 1;

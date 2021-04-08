@@ -15,8 +15,10 @@ const Container = styled.div`
 	max-width: 1280px;
 	margin: 0 auto;
 	height: 100%;
+	padding-bottom: 30px;
 	letter-spacing: 1px;
-	overflow: hidden;
+	display: flex;
+	align-items: center;
 `;
 
 const Background = styled.div`
@@ -37,11 +39,7 @@ const Background = styled.div`
 
 const BoardArea = styled.div`
 	width: 90%;
-	height: 75%;
 	margin: 0 auto;
-	// position: relative;
-	// top: 130px;
-	padding-top: 130px;
 	border-radius: 30px;
 	display: flex;
 	justify-content: flex-end;

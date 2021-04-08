@@ -7,13 +7,14 @@ import PhononSectionMain from './phononSection/PhononSectionMain';
 import RoomSectionMain from './roomSection/RoomSectionMain';
 import CommoditiesGroup from './CommoditiesGroup';
 import PageMenu from './component/shared/PageMenu';
+import Footer from './footerSection/Footer';
 
 //SECTION> STATE
 
 // 當前頁面
 let currentPage = 1;
 // 用於判斷 footer 區塊是順向或反向滑進，避免 observer 因為兩個判斷點重複觸發
-let footerIsIntersecting = 0;
+// let footerIsIntersecting = 0;
 
 //SECTION> EVENT LISTENER
 window.addEventListener('beforeunload', event => {
@@ -62,7 +63,7 @@ const IntroPage = () => {
 		phononIntro = useRef(null),
 		phononArtSection = useRef(null),
 		phononCoffeeSection = useRef(null),
-		footerSection = useRef(null),
+		// footerSection = useRef(null),
 		sideNavBar = useRef(null),
 		backArrow = useRef(null);
 	const sectionNodeList = [
@@ -82,16 +83,16 @@ const IntroPage = () => {
 		sectionNodeList.map(section =>
 			sectionObserver.observe(section.current)
 		);
-		// 針對 footer 的監聽處理（增加區塊底部的判斷點）
-		const footerObserver = new IntersectionObserver(scrollPage, {
-			rootMargin: '-5px',
-			threshold: [0, 0.95],
-		});
-		footerObserver.observe(footerSection.current);
-		return () => {
-			sectionObserver.disconnect();
-			footerObserver.disconnect();
-		};
+		// // 針對 footer 的監聽處理（增加區塊底部的判斷點）
+		// const footerObserver = new IntersectionObserver(scrollPage, {
+		// 	rootMargin: '-5px',
+		// 	threshold: [0, 0.95],
+		// });
+		// footerObserver.observe(footerSection.current);
+		// return () => {
+		// 	sectionObserver.disconnect();
+		// 	footerObserver.disconnect();
+		// };
 	});
 
 	//PART> FUNCTION
@@ -116,11 +117,11 @@ const IntroPage = () => {
 				currentPage = 4;
 				setTimeout(() => setPageState(4), 800);
 				break;
-			case footerSection.current:
-				currentPage = 5;
-				// 因為不是滿版，因此延遲仍會觸發上一頁滑動
-				// setTimeout(() => setPageState(5), 800);
-				break;
+			// case footerSection.current:
+			// 	currentPage = 5;
+			// 	// 因為不是滿版，因此延遲仍會觸發上一頁滑動
+			// 	// setTimeout(() => setPageState(5), 800);
+			// 	break;
 			default:
 				return;
 		}
@@ -129,27 +130,26 @@ const IntroPage = () => {
 	};
 
 	// 畫面捲動自動定位功能（intersection observer's callback）
-	const scrollPage = (entries, ownObserver, otherObserver) => {
-		// console.log(entries[0]);
-		// 針對 footer 的判斷（頁面往上滑出 footer）
-		if (
-			footerIsIntersecting &&
-			entries[0].target === footerSection.current &&
-			// 用於判斷是兩個斷點之一所觸發
-			entries[0].boundingClientRect.y + 20 <
-				document.documentElement.clientHeight
-		) {
-			window.scrollTo({
-				top:
-					entries[0].target.offsetTop -
-					document.documentElement.clientHeight,
-				behavior: 'smooth',
-			});
+	const scrollPage = entries => {
+		// // 針對 footer 的判斷（頁面往上滑出 footer）
+		// if (
+		// 	footerIsIntersecting &&
+		// 	entries[0].target === footerSection.current &&
+		// 	// 用於判斷是兩個斷點之一所觸發
+		// 	entries[0].boundingClientRect.y + 20 <
+		// 		document.documentElement.clientHeight
+		// ) {
+		// 	window.scrollTo({
+		// 		top:
+		// 			entries[0].target.offsetTop -
+		// 			document.documentElement.clientHeight,
+		// 		behavior: 'smooth',
+		// 	});
 
-			// 使瀏覽器捲軸滑動完畢再更改狀態
-			setTimeout(() => (footerIsIntersecting = 0), 300);
-			return;
-		}
+		// 	// 使瀏覽器捲軸滑動完畢再更改狀態
+		// 	setTimeout(() => (footerIsIntersecting = 0), 300);
+		// 	return;
+		// }
 
 		// 各 Section 通用的滑動功能
 		if (entries[0].isIntersecting === true) {
@@ -161,10 +161,10 @@ const IntroPage = () => {
 			// 更新目前聚焦頁面頁碼
 			UpdateCurrentPage(entries);
 
-			// 對 footer 的例外處理（頁面往下滑入 footer）
-			if (entries[0].target === footerSection.current) {
-				setTimeout(() => (footerIsIntersecting = 1), 300);
-			}
+			// // 對 footer 的例外處理（頁面往下滑入 footer）
+			// if (entries[0].target === footerSection.current) {
+			// 	setTimeout(() => (footerIsIntersecting = 1), 300);
+			// }
 		}
 	};
 
@@ -175,6 +175,7 @@ const IntroPage = () => {
 			target = event.target.innerText;
 			// 鎖定畫面滾動
 			document.documentElement.style.overflowY = 'hidden';
+			// 設定頁面延遲彈出
 			setTimeout(() => (sideNavBar.current.style.left = 0), 200);
 			setTimeout(() => (sideNavBar.current.style.opacity = 1), 200);
 			setTimeout(() => (sideNavBar.current.style.width = '100%'), 200);
@@ -196,7 +197,7 @@ const IntroPage = () => {
 			});
 		}
 		if (sideNavBarState.isOpen) {
-			console.log(backArrow);
+			// 解除頁面滾動鎖定
 			document.documentElement.style.overflowY = 'auto';
 			sideNavBar.current.style.pointerEvents = 'none';
 			setTimeout(() => (sideNavBar.current.style.left = '100%'), 200);
@@ -243,11 +244,12 @@ const IntroPage = () => {
 				<RoomSectionMain clickFn={sideNavBarToggle} />
 			</Section>
 			<Section
-				height={'100vh'}
+				height={'80vh'}
 				bgc={'#F8DC54'}
 				ref={phononCoffeeSection}
 			/>
-			<Section height={'200px'} bgc={'#3C4566'} ref={footerSection} />
+			{/* <Section height={'200px'} bgc={'#3C4566'} ref={footerSection} /> */}
+			<Footer bgc={'#4C2556'} height={'20vh'} />
 		</Container>
 	);
 };

@@ -10,7 +10,7 @@ import { phononTeams, phononTeamInfoCardColor } from '../../../dataTemplate.js';
 //SECTION> CSS COMPONENT
 const ImgContainer = styled.div`
 	width: 180px;
-	height: 380px;
+	height: 300px;
 	position: relative;
 	right: 60px;
 	top: -10px;
@@ -34,7 +34,6 @@ const ImgBlock = styled.div`
 		z-index: 5;
 		width: 100%;
 		height: 100%;
-		// background-color: rgba(0, 0, 0, 1);
 		border-radius: 10px;
 		overflow: hidden;
 		display: flex;
