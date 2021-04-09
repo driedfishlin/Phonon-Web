@@ -16,8 +16,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/css';
 
-import { introPageCarouselImg } from '../../../dataTemplate';
-const svgFilter = introPageCarouselImg.svgFilterBase64;
+import { introPageIntroSectionCarouselImg } from '../../../dataTemplate';
+const svgFilter = introPageIntroSectionCarouselImg.svgFilterBase64;
 
 //SECTION> CUSTOM DATA & STATE
 

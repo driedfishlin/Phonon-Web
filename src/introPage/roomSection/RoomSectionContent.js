@@ -56,6 +56,7 @@ const ButtonBlock = styled.div`
 	justify-content: center;
 	align-items: center;
 	& > button {
+		user-select: none;
 		font-size: 20px;
 		font-weight: 600;
 		letter-spacing: 2px;

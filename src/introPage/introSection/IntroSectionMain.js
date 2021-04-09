@@ -6,8 +6,8 @@ import ImgCarousel from '../component/carousel/ImgCarousel';
 import ScrollPromptText from '../component/shared/ScrollPromptText';
 import pngFile from '../../image/background/ins.png';
 // Data Template
-import { introPageCarouselImg } from '../../dataTemplate';
-const imgList = introPageCarouselImg.introSection;
+import { introPageIntroSectionCarouselImg } from '../../dataTemplate';
+const imgList = introPageIntroSectionCarouselImg.introSection;
 
 //SECTION> CSS COMPONENT
 const Container = styled.div`
