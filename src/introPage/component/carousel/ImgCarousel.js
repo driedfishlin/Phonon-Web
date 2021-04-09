@@ -31,10 +31,10 @@ let initLoading = true;
 
 //SECTION> CSS COMPONENT
 const Container = styled.div`
-	width: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
+	width: 100vw;
+	// position: absolute;
+	// top: 0;
+	// left: 0;
 `;
 
 const Box = styled.div`
@@ -191,8 +191,10 @@ const ImgCarousel = ({ imgList, backgroundStyle, filter, position }) => {
 					style={
 						position
 							? {
-									top: position.top || 0,
-									left: position.left || 0,
+									top: position.top || null,
+									right: position.right || null,
+									left: position.left || null,
+									bottom: position.bottom || null,
 									width: position.width || '100vw',
 									height: position.height || '100vh',
 							  }
@@ -221,8 +223,10 @@ const ImgCarousel = ({ imgList, backgroundStyle, filter, position }) => {
 						' ' +
 						(position
 							? css({
-									top: position.top || 0,
-									left: position.left || 0,
+									top: position.top || null,
+									right: position.right || null,
+									left: position.left || null,
+									bottom: position.bottom || null,
 									width: position.width || '100vw',
 									height: position.height || '100vh',
 							  })

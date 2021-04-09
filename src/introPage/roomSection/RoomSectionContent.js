@@ -4,11 +4,11 @@ import styled from '@emotion/styled';
 import { ReactComponent as LogoSVG } from '../../image/logo/phonon_art_logo.svg';
 
 const Container = styled.div`
-	position: absolute;
-	right: 0;
-	bottom: 5%;
+	position: relative;
+	// right: 0;
+	// bottom: 5%;
 	margin: 50px;
-	max-width: 38%;
+	max-width: 600px;
 	display: flex;
 `;
 
@@ -16,7 +16,7 @@ const TextBlock = styled.div`
 	width: 50%;
 	& > p {
 		margin-top: 15px;
-		padding: 0 10px 0 10px;
+		padding: 0 0px 0 20px;
 		box-sizing: border-box;
 
 		font-size: 17px;

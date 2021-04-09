@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 
 import RoomSectionContent from './RoomSectionContent';
 import ImgCarousel from '../component/carousel/ImgCarousel';
+import ScrollPromptText from '../component/shared/ScrollPromptText';
 
 import { ReactComponent as ImgSVG } from '../../image/background/player_01.svg';
 
@@ -13,6 +14,8 @@ const Container = styled.div`
 	width: 1280px;
 	height: 100%;
 	margin: 0 auto;
+	display: flex;
+	align-items: flex-end;
 `;
 
 const Background = styled.div`
@@ -69,6 +72,7 @@ const RoomSectionMain = ({ clickFn }) => {
 				position={carouselPosition}
 			/>
 			<RoomSectionContent clickFn={clickFn} />
+			<ScrollPromptText color={'white'} />
 		</Container>
 	);
 };

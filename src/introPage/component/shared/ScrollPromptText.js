@@ -4,11 +4,10 @@ import { keyframes } from '@emotion/css';
 import { ReactComponent as ArrowDown } from '../../../image/icon/chevron-down-solid.svg';
 
 const animationDuration = 4;
-const color = 'black';
 
 //SECTION>
 const Container = styled.div`
-	width: 200px;
+	cursor: pointer;
     position: absolute;
     left: 50%;
     bottom: 1%;
@@ -17,13 +16,13 @@ const Container = styled.div`
 	flex-direction: column;
 	align-items: center;
     justify-content flex-end;
+	z-index: 50;
 `;
+
 const Text = styled.p`
 	text-align: center;
 	font-size: 13px;
 	font-weight: bold;
-	color: ${color};
-	z-index: 50;
 	font-family: -apple-system, '微軟正黑體', BlinkMacSystemFont, 'Segoe UI',
 		'Roboto', 'Oxygen';
 `;
@@ -33,16 +32,6 @@ const ArrowContainer = styled.div`
 	flex-direction: column;
 	width: 20px;
 	height: 50px;
-`;
-
-const Arrow = styled(ArrowDown)`
-	position: absolute;
-	top: 12px;
-	z-index: 50;
-	width: 20px;
-	& > path {
-		fill: ${color};
-	}
 `;
 
 //SECTION>
@@ -69,10 +58,30 @@ const arrowKeyframes = keyframes`
     }
 `;
 
-const ScrollPromptText = () => {
+//SECTION> Function
+
+const scrollToNextPage = () => {
+	window.scrollTo({
+		top: window.pageYOffset + 10,
+		behavior: 'smooth',
+	});
+};
+
+//SECTION> React Component
+
+const ScrollPromptText = ({ color }) => {
+	const Arrow = styled(ArrowDown)`
+		position: absolute;
+		top: 12px;
+		z-index: 50;
+		width: 20px;
+		& > path {
+			fill: ${color};
+		}
+	`;
 	return (
-		<Container>
-			<Text>SCROLL</Text>
+		<Container onClick={scrollToNextPage}>
+			<Text style={{ color: color }}>SCROLL</Text>
 			<ArrowContainer>
 				<Arrow
 					comment="This icon comes from FONTAWESOME. https://fontawesome.com/"

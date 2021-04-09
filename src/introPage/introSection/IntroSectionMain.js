@@ -52,7 +52,7 @@ const IntroSectionMain = () => {
 			<ImgCarousel position={carouselPosition} />
 			<ImgCarousel imgList={imgList} position={carouselPosition} />
 			<IntroSectionContent />
-			<ScrollPromptText />
+			<ScrollPromptText color={'black'} />
 		</Container>
 	);
 };

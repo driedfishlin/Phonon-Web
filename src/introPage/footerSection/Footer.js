@@ -11,9 +11,8 @@ const Container = styled.div`
 	overflow: hidden;
 	box-sizing: border-box;
 	padding: 35px;
-	// * {
-	// 	outline: 1px solid #fff;
-	// }
+	display: flex;
+	align-items: center;
 `;
 
 const ContentArea = styled.div`
@@ -21,7 +20,6 @@ const ContentArea = styled.div`
 	margin: 0 auto;
 	display: flex;
 	justify-content: space-between;
-	// align-items: center;
 `;
 
 const TextContent = styled.div`
@@ -80,6 +78,7 @@ const Footer = ({ bgc, height }) => {
 						href={data.facebook}
 						title="前往 Facebook"
 						target="_blank"
+						rel="noreferrer noopener"
 					>
 						<FbSvg />
 					</a>
@@ -87,6 +86,7 @@ const Footer = ({ bgc, height }) => {
 						href={data.instagram}
 						title="前往 Instagram"
 						target="_blank"
+						rel="noreferrer noopener"
 					>
 						<InsSvg />
 					</a>

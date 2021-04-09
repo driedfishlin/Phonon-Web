@@ -5,6 +5,7 @@ import MainNavigationBar from './component/navBar/MainNavigationBar';
 import IntroSectionMain from './introSection/IntroSectionMain';
 import PhononSectionMain from './phononSection/PhononSectionMain';
 import RoomSectionMain from './roomSection/RoomSectionMain';
+import CoffeeSectionMain from './coffeeSection/CoffeeSectionMain';
 import CommoditiesGroup from './CommoditiesGroup';
 import PageMenu from './component/shared/PageMenu';
 import Footer from './footerSection/Footer';
@@ -243,11 +244,9 @@ const IntroPage = () => {
 			>
 				<RoomSectionMain clickFn={sideNavBarToggle} />
 			</Section>
-			<Section
-				height={'80vh'}
-				bgc={'#F8DC54'}
-				ref={phononCoffeeSection}
-			/>
+			<Section height={'80vh'} bgc={'#F8DC54'} ref={phononCoffeeSection}>
+				<CoffeeSectionMain clickFn={sideNavBarToggle} />
+			</Section>
 			{/* <Section height={'200px'} bgc={'#3C4566'} ref={footerSection} /> */}
 			<Footer bgc={'#4C2556'} height={'20vh'} />
 		</Container>
