@@ -64,7 +64,11 @@ const MinNavigationBar = ({ clickFn }) => {
 		<Container>
 			<h1 style={h1Style}>
 				聲子藝棧
-				<Logo />
+				<Logo
+					onClick={() => {
+						window.location.reload();
+					}}
+				/>
 			</h1>
 			<ul style={{ marginRight: '90px' }}>
 				{navListItem.map(item => (

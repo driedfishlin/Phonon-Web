@@ -172,6 +172,7 @@ const PageMenu = ({ page, changPage }) => {
 												}, animationDuration * 500);
 												maskRef.current.style.display =
 													'block';
+												// 設定延遲
 												setTimeout(
 													() =>
 														(maskRef.current.style.display =

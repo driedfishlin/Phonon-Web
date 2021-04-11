@@ -1,13 +1,21 @@
-// import './App.css';
+import React, { useState, Fragment } from 'react';
+
 //SECTION> React Component
 
 import IntroPage from './introPage/IntroPage';
+import BusinessPage from './businessPage/BusinessPage';
 
 function App() {
+	const [pageState, setPageState] = useState('businessPage');
 	return (
-		// <div style={{ width: '100vw', overflow: 'hidden' }}>
-		<IntroPage />
-		// </div>
+		<Fragment>
+			{pageState === 'introPage' && (
+				<IntroPage changePage={setPageState} />
+			)}
+			{pageState === 'businessPage' && (
+				<BusinessPage changePage={setPageState} />
+			)}
+		</Fragment>
 	);
 }
 

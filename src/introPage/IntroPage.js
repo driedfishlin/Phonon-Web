@@ -51,7 +51,7 @@ const SideNavBarContainer = styled.div`
 
 //SECTION> REACT COMPONENT
 //FIXME> 要檢查是否會有需要優化效能的部分
-const IntroPage = () => {
+const IntroPage = ({ changePage }) => {
 	//PART> React State
 	const [sideNavBarState, setSideNavBarState] = useState({
 		target: null,

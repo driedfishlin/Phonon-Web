@@ -18,6 +18,8 @@ const Container = styled.div`
 const ContentArea = styled.div`
 	width: 1280px;
 	margin: 0 auto;
+	padding: 0 30px;
+	box-sizing: border-box;
 	display: flex;
 	justify-content: space-between;
 `;
@@ -80,7 +82,7 @@ const Footer = ({ bgc, height }) => {
 						target="_blank"
 						rel="noreferrer noopener"
 					>
-						<FbSvg />
+						<FbSvg comment="This icon comes from FONTAWESOME. https://fontawesome.com/" />
 					</a>
 					<a
 						href={data.instagram}
@@ -88,7 +90,7 @@ const Footer = ({ bgc, height }) => {
 						target="_blank"
 						rel="noreferrer noopener"
 					>
-						<InsSvg />
+						<InsSvg comment="This icon comes from FONTAWESOME. https://fontawesome.com/" />
 					</a>
 				</ExternalLink>
 			</ContentArea>
