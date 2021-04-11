@@ -189,9 +189,10 @@ export const commoditiesList = {
 	room: [
 		{
 			name: 101,
-			kind: ['personal', 'chamber'],
+			kind: ['獨立練習室', '室內樂練習室'],
 			numOfUser: 2,
 			price: '50',
+			equipment: '直立鋼琴',
 			description: '附有直立式鋼琴的獨立練習室，可容納 1-3 人。',
 			pic: './img/_Temporary_pic/room/kara-eads-L7EwHkq1B2s-unsplash.jpg',
 		},

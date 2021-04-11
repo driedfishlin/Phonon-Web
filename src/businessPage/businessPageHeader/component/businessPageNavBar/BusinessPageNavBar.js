@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 
 const Container = styled.div`
 	height: 60px;
-	// width: ;
 	position: relative;
 	border-top: 1px solid #999;
 	border-bottom: 3px solid #000;
@@ -36,7 +35,7 @@ const UnOrderedLists = styled.ul`
 			left: 50%;
 			bottom: -3px;
             transform: translateX(-50%);
-			background-color: #66aaff;
+			background-color: #ac25a6;
             transition: width 0.3s, opacity 0s 0.3s;
             opacity: 0;
 		}

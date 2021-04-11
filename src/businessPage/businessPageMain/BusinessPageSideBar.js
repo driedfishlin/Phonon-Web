@@ -3,8 +3,8 @@ import styled from '@emotion/styled';
 const Container = styled.div`
 	padding: 30px;
 	width: 260px;
+	min-width: 260px;
 	box-sizing: border-box;
-	display: inline-block;
 `;
 
 const CommoditiesKind = styled.p`
@@ -32,10 +32,28 @@ const UnOrderLists = styled.ul`
 `;
 
 const ListItem = ({ text }) => {
+	const Li = styled.li`
+		position: relative;
+		& > a {
+			&::before {
+				position: absolute;
+				top: 0;
+				left: -20px;
+				content: '〉';
+				display: none;
+				font-size: 17px;
+			}
+			&:hover {
+				&::before {
+					display: block;
+				}
+			}
+		}
+	`;
 	return (
-		<li>
+		<Li>
 			<a>{text}</a>
-		</li>
+		</Li>
 	);
 };
 
@@ -44,6 +62,7 @@ const BusinessPageSideBar = () => {
 		<Container>
 			<CommoditiesKind>琴房預約</CommoditiesKind>
 			<UnOrderLists>
+				<ListItem text="所有場地" />
 				<ListItem text="獨立練習室" />
 				<ListItem text="室內樂練習室" />
 				<ListItem text="團體練習室" />

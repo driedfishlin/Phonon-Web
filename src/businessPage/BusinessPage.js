@@ -6,14 +6,14 @@ import Footer from '../introPage/footerSection/Footer';
 
 const Container = styled.div`
 	* {
-		outline: 1px solid #555;
+		// outline: 1px solid #555;
 	}
 `;
 
-const BusinessPage = () => {
+const BusinessPage = ({ changePage }) => {
 	return (
 		<Container>
-			<BusinessPageHeader />
+			<BusinessPageHeader changePage={changePage} />
 			<BusinessPageMain />
 			<Footer bgc={'#4C2556'} height={'200px'} />
 		</Container>

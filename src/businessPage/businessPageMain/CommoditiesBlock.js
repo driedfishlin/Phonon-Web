@@ -3,14 +3,17 @@ import styled from '@emotion/styled';
 import Card from './component/Card';
 
 const Container = styled.div`
-	// max-width: 100px;
-	display: inline-block;
-	vertical-align: top;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
 `;
 
 const CommoditiesBlock = () => {
 	return (
 		<Container>
+			<Card />
+			<Card />
+			<Card />
 			<Card />
 		</Container>
 	);

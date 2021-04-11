@@ -104,13 +104,13 @@ const ExternalLink = styled.div`
 	}
 `;
 
-const BusinessPageHeader = () => {
+const BusinessPageHeader = ({ changePage }) => {
 	return (
 		<Container>
 			<Main>
 				<LogoArea>
 					<h1>聲子藝棧 × 聲子咖啡</h1>
-					<button>
+					<button onClick={() => changePage('introPage')}>
 						<ArtLogo />
 						<p>×</p>
 						<CoffeeLogo />
