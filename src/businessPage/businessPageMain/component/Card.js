@@ -1,16 +1,19 @@
 import styled from '@emotion/styled';
 // import { css } from '@emotion/css';
 
+// import { useContext } from 'react';
+// import { pageStateContext } from '../../../App';
+
 import { ReactComponent as OnePerson } from '../../../image/icon/user-solid.svg';
 import { ReactComponent as TwoPerson } from '../../../image/icon/user-friends-solid.svg';
 import { ReactComponent as ThreePerson } from '../../../image/icon/users-solid.svg';
 
-import { commoditiesList } from '../../../dataTemplate';
+//SECTION>
 
 const Container = styled.div`
 	position: relative;
 	width: 450px;
-	height: 280px;
+	height: 320px;
 	border-radius: 20px;
 	overflow: hidden;
 	margin: 30px 0 30px 30px;
@@ -22,13 +25,14 @@ const Container = styled.div`
 			width: 60%;
 			& > .card_text_title_block {
 				& > h3 {
-					width: 60px;
 					font-size: 40px;
 					text-align: left;
 					padding: 0 20px;
-					display: inline-block;
+					display: inline;
 				}
 				& > p {
+					position: relative;
+					top: -2px;
 					font-size: 15px;
 					opacity: 1;
 					transition: opacity 0.3s 0.3s;
@@ -47,6 +51,7 @@ const Container = styled.div`
 					padding: 0 15px;
 					transition: opacity 0.3s 0.3s;
 					& p {
+						text-align: justify;
 						font-size: 15px;
 					}
 				}
@@ -80,10 +85,6 @@ const TextBlock = styled.div`
 	right: 0;
 	height: 100%;
 	background: #fff;
-	// display: flex;
-	// flex-direction: column;
-	// align-items: center;
-	// justify-content: space-between;
 	box-sizing: border-box;
 	padding: 40px 0;
 	transition: width 0.3s;
@@ -159,8 +160,9 @@ const ReservationButton = styled.button`
 	padding: 7px 15px;
 	padding-left: 19px;
 	user-select: none;
-	position: relative;
-	top: 4px;
+	position: absolute;
+	bottom: 30px;
+	right: 35px;
 	cursor: pointer;
 	border: 2px solid #000;
 	font-weight: 600;
@@ -174,32 +176,39 @@ const ReservationButton = styled.button`
 	}
 `;
 
-const Card = () => {
+//SECTION>
+
+const Card = ({ title, subTitle, price, img, text, equipment, icon }) => {
+	// const context = useContext(pageStateContext);
 	return (
 		<Container>
 			<TextBlock className="card_text_block">
 				<TitleBlock className="card_text_title_block">
-					<h3>101</h3>
-					<p>NT 50 / hour</p>
+					<h3>{title}</h3>
+					<p>NT {price} / hour</p>
 				</TitleBlock>
 				<ContentBlock className="card_text_content_block">
 					<ContentKindBlock className="card_text_content_kind_block">
-						<h4>獨立練習室</h4>
+						<h4>{subTitle}</h4>
 						<PersonIcon>
-							<TwoPerson />
+							{(() => {
+								if (icon === 1) return <OnePerson />;
+								if (icon === 2) return <TwoPerson />;
+								if (icon === 3) return <ThreePerson />;
+							})()}
 						</PersonIcon>
 					</ContentKindBlock>
 					<ContentDetailBlock className="card_text_content_detail_block">
 						<div>
-							<p>設備：直立鋼琴</p>
-							<p>附有直立式鋼琴的獨立練習室，可容納 1-3 人。</p>
+							<p>設備：{equipment.join('、')}</p>
+							<p>{text}</p>
 						</div>
 						<ReservationButton>預約</ReservationButton>
 					</ContentDetailBlock>
 				</ContentBlock>
 			</TextBlock>
 			<ImgBlock className="card_img_block">
-				<img src={commoditiesList.room[0].pic} />
+				<img src={img} alt="照片" />
 			</ImgBlock>
 		</Container>
 	);

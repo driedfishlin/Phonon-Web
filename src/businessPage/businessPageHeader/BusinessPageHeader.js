@@ -1,4 +1,7 @@
 import styled from '@emotion/styled';
+import { useContext } from 'react';
+
+import { pageStateContext } from '../../App';
 
 import DateText from './component/dateText/DateText';
 import BusinessPageNavBar from './component/businessPageNavBar/BusinessPageNavBar';
@@ -17,8 +20,6 @@ const Container = styled.div`
 	margin-top: 20px;
 	padding: 30px;
 	box-sizing: border-box;
-	// display: flex;
-	// justify-content: space-between;
 `;
 
 const Main = styled.div`
@@ -62,18 +63,6 @@ const LogoArea = styled.div`
 	}
 `;
 
-// const Title = styled.h2`
-// 	font-size: 25px;
-// 	line-height: 25px;
-// 	font-weight: 600;
-// 	flex: auto;
-// 	height: 25px;
-// 	margin-left: 20px;
-// 	align-self: flex-end;
-// 	text-align: center;
-// 	letter-spacing: 2px;
-// `;
-
 const OtherContent = styled.div`
 	display: flex;
 	flex: initial;
@@ -104,19 +93,19 @@ const ExternalLink = styled.div`
 	}
 `;
 
-const BusinessPageHeader = ({ changePage }) => {
+const BusinessPageHeader = () => {
+	const context = useContext(pageStateContext);
 	return (
 		<Container>
 			<Main>
 				<LogoArea>
 					<h1>聲子藝棧 × 聲子咖啡</h1>
-					<button onClick={() => changePage('introPage')}>
+					<button onClick={context.switchToIntroPage}>
 						<ArtLogo />
 						<p>×</p>
 						<CoffeeLogo />
 					</button>
 				</LogoArea>
-				{/* <Title>線上預約系統</Title> */}
 				<OtherContent>
 					<ExternalLink>
 						<a

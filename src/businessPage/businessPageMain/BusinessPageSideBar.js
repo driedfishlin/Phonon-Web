@@ -1,4 +1,8 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/css';
+import { useContext } from 'react';
+
+import { pageStateContext } from '../../App';
 
 const Container = styled.div`
 	padding: 30px;
@@ -20,27 +24,36 @@ const CommoditiesKind = styled.p`
 const UnOrderLists = styled.ul`
 	& > li {
 		height: 45px;
-		& > a {
+		& > button {
+			width: 100%;
+			height: 45px;
+			text-align: left;
 			letter-spacing: 1px;
 			font-size: 18px;
 			line-height: 45px;
 			display: block;
-			text-decoration: none;
+			background: transparent;
+			border: none;
 			color: black;
+			&:focus {
+				outline: none;
+			}
 		}
 	}
 `;
 
-const ListItem = ({ text }) => {
+const ListItem = ({ children, clickFn }) => {
+	const context = useContext(pageStateContext);
+
 	const Li = styled.li`
 		position: relative;
-		& > a {
+		& > button {
+			cursor: pointer;
 			&::before {
 				position: absolute;
 				top: 0;
 				left: -20px;
 				content: '〉';
-				display: none;
 				font-size: 17px;
 			}
 			&:hover {
@@ -50,23 +63,88 @@ const ListItem = ({ text }) => {
 			}
 		}
 	`;
+	const generalClass = css`
+		&::before {
+			display: none;
+		}
+	`;
+	const activeClass = css`
+		font-weight: 600;
+			display: block;
+		}
+	`;
 	return (
 		<Li>
-			<a>{text}</a>
+			<button
+				onClick={clickFn}
+				className={
+					context.commoditiesState.filter === children
+						? activeClass
+						: generalClass
+				}
+			>
+				{children}
+			</button>
 		</Li>
 	);
 };
 
 const BusinessPageSideBar = () => {
+	const context = useContext(pageStateContext);
 	return (
 		<Container>
 			<CommoditiesKind>琴房預約</CommoditiesKind>
 			<UnOrderLists>
-				<ListItem text="所有場地" />
-				<ListItem text="獨立練習室" />
-				<ListItem text="室內樂練習室" />
-				<ListItem text="團體練習室" />
-				<ListItem text="演奏廳" />
+				<ListItem
+					clickFn={() =>
+						context.setCommoditiesState({
+							type: 'room',
+							filter: 'all',
+						})
+					}
+				>
+					所有場地
+				</ListItem>
+				<ListItem
+					clickFn={() =>
+						context.setCommoditiesState({
+							type: 'room',
+							filter: '獨立練習室',
+						})
+					}
+				>
+					獨立練習室
+				</ListItem>
+				<ListItem
+					clickFn={() =>
+						context.setCommoditiesState({
+							type: 'room',
+							filter: '室內樂練習室',
+						})
+					}
+				>
+					室內樂練習室
+				</ListItem>
+				<ListItem
+					clickFn={() =>
+						context.setCommoditiesState({
+							type: 'room',
+							filter: '團體練習室',
+						})
+					}
+				>
+					團體練習室
+				</ListItem>
+				<ListItem
+					clickFn={() =>
+						context.setCommoditiesState({
+							type: 'room',
+							filter: '演奏廳',
+						})
+					}
+				>
+					演奏廳
+				</ListItem>
 			</UnOrderLists>
 		</Container>
 	);

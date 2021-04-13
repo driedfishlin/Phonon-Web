@@ -127,7 +127,6 @@ const PageMenu = ({ page, changPage }) => {
 	const maskRef = useRef(null);
 	return (
 		<Fragment>
-			{console.log('render')}
 			<MaskContainer ref={maskRef}>
 				{(() => {
 					// 產生遮罩

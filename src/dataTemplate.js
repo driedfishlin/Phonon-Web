@@ -188,12 +188,42 @@ export const phononInformation = {
 export const commoditiesList = {
 	room: [
 		{
-			name: 101,
+			name: '101',
 			kind: ['獨立練習室', '室內樂練習室'],
 			numOfUser: 2,
 			price: '50',
-			equipment: '直立鋼琴',
+			equipment: ['直立鋼琴'],
 			description: '附有直立式鋼琴的獨立練習室，可容納 1-3 人。',
+			pic: './img/_Temporary_pic/room/kara-eads-L7EwHkq1B2s-unsplash.jpg',
+		},
+		{
+			name: 'B01',
+			kind: ['室內樂練習室'],
+			numOfUser: 3,
+			price: '80',
+			equipment: ['平台鋼琴', '馬林巴木琴'],
+			description: '附有平台式鋼琴的中型練習室，可容納約 15 人。',
+			pic:
+				'./img/_Temporary_pic/room/michael-oxendine-GHCVUtBECuY-unsplash.jpg',
+		},
+		{
+			name: 'B03',
+			kind: ['團體練習室', '室內樂練習室'],
+			numOfUser: 3,
+			price: '150',
+			equipment: ['各式打擊樂器'],
+			description: '供樂團排練使用的大型練習室，可容納約 50 人。',
+			pic:
+				'./img/_Temporary_pic/room/roberto-nickson-rEJxpBskj3Q-unsplash.jpg',
+		},
+		{
+			name: '505',
+			kind: ['演奏廳', '團體練習室', '室內樂練習室'],
+			numOfUser: 3,
+			price: '150',
+			equipment: ['平台鋼琴'],
+			description:
+				'可容納約 50 名觀眾，適合小型的室內樂演出。演奏廳亦可作為樂團排練空間使用，可容納約 40 人。',
 			pic: './img/_Temporary_pic/room/kara-eads-L7EwHkq1B2s-unsplash.jpg',
 		},
 	],

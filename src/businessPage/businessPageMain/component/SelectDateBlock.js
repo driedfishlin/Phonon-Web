@@ -21,6 +21,7 @@ const Container = styled.form`
 		padding: 5px 13px;
 		border: 2px solid #000;
 		box-sizing: content-box;
+		text-align: center;
 		&:focus {
 			outline: none;
 		}

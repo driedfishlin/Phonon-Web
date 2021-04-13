@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import BusinessPageHeader from './businessPageHeader/BusinessPageHeader';
 import BusinessPageMain from './businessPageMain/BusinessPageMain';
@@ -10,10 +9,10 @@ const Container = styled.div`
 	}
 `;
 
-const BusinessPage = ({ changePage }) => {
+const BusinessPage = () => {
 	return (
 		<Container>
-			<BusinessPageHeader changePage={changePage} />
+			<BusinessPageHeader />
 			<BusinessPageMain />
 			<Footer bgc={'#4C2556'} height={'200px'} />
 		</Container>

@@ -1,6 +1,7 @@
+import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 
-// const listHeight = '60px';
+import { pageStateContext } from '../../../../App';
 
 const Container = styled.div`
 	height: 60px;
@@ -19,10 +20,11 @@ const Anchor = styled.a`
 	padding: 0 20px;
 	letter-spacing: 3px;
 	font-weight: 600;
+	user-select: none;
+	cursor: pointer;
 `;
 
 const UnOrderedLists = styled.ul`
-	// position: absolute;
 	top: 0;
 	left: 0;
 	display: flex;
@@ -48,22 +50,43 @@ const UnOrderedLists = styled.ul`
 	}
 `;
 
-const List = ({ text }) => {
+const List = ({ children, clickFn }) => {
 	return (
 		<li>
-			<Anchor href={'#'}>{text}</Anchor>
+			<Anchor href={null} onClick={clickFn}>
+				{children}
+			</Anchor>
 			<div />
 		</li>
 	);
 };
 
 const BusinessPageNavBar = () => {
+	const context = useContext(pageStateContext);
 	return (
 		<Container>
 			<UnOrderedLists>
-				<List text={'首頁'} onClick={null}></List>
-				<List text={'琴房預約'} onClick={null}></List>
-				<List text={'餐點訂製'} onClick={null}></List>
+				<List clickFn={context.switchToIntroPage}>首頁</List>
+				<List
+					clickFn={() =>
+						context.setCommoditiesState({
+							type: 'room',
+							filter: 'all',
+						})
+					}
+				>
+					琴房預約
+				</List>
+				<List
+					clickFn={() =>
+						context.setCommoditiesState({
+							type: 'food',
+							filter: 'all',
+						})
+					}
+				>
+					餐點訂製
+				</List>
 			</UnOrderedLists>
 		</Container>
 	);
