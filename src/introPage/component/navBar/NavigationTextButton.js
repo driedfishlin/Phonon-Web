@@ -36,10 +36,10 @@ const Anchor = styled.a`
 	}
 `;
 
-const NavigationTextButton = ({ text, clickFn }) => {
+const NavigationTextButton = ({ children, clickFn }) => {
 	return (
 		<Button>
-			<Anchor onClick={clickFn ? clickFn : null}>{text}</Anchor>
+			<Anchor onClick={clickFn ? clickFn : null}>{children}</Anchor>
 		</Button>
 	);
 };

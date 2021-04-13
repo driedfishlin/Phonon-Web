@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from '@emotion/styled';
+import { pageStateContext } from './../App';
 import { ReactComponent as arrow } from '../image/icon/arrow-circle-left-solid.svg';
 // Data Template
 import { commoditiesInfo } from '../dataTemplate';
@@ -137,6 +138,7 @@ const showInfoToggle = state => {
 					nameEng={item.nameEng}
 					img={item.imgUrl}
 					key={index}
+					type={'room'}
 				/>
 			));
 		case '餐點訂製':
@@ -146,6 +148,7 @@ const showInfoToggle = state => {
 					nameEng={item.nameEng}
 					img={item.imgUrl}
 					key={index}
+					type={'food'}
 				/>
 			));
 		default:
@@ -155,9 +158,18 @@ const showInfoToggle = state => {
 
 //SECTION> React Component
 
-const ItemTemplate = ({ nameTc, nameEng, img }) => {
+const ItemTemplate = ({ nameTc, nameEng, img, type }) => {
+	const context = useContext(pageStateContext);
 	return (
-		<Item>
+		<Item
+			onClick={() => {
+				context.switchToBusinessPage();
+				context.setCommoditiesState({
+					type: type,
+					filter: nameTc,
+				});
+			}}
+		>
 			<CommodityImg src={img} />
 			<CommodityName>
 				<CommodityNameTc>{nameTc}</CommodityNameTc>
@@ -179,11 +191,12 @@ const CommoditiesGroup = ({ clickState, clickFn, arrowEl }) => {
 		transition: transform 1s ${clickState.arrowDelay ? '1.5s' : ''};
 	`;
 	return (
-		<Container>
+		// 藉由冒泡將事件綁定在父層
+		<Container onClick={clickFn}>
 			{/* 依照點擊的按鈕決定是顯示哪種類的產品列表 */}
 			{showInfoToggle(clickState.target)}
 
-			<BackButton onClick={clickFn}>
+			<BackButton>
 				<Arrow
 					comment="This icon comes from FONTAWESOME. https://fontawesome.com/"
 					ref={arrowEl}

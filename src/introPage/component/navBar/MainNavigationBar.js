@@ -72,11 +72,9 @@ const MinNavigationBar = ({ clickFn }) => {
 			</h1>
 			<ul style={{ marginRight: '90px' }}>
 				{navListItem.map(item => (
-					<NavigationTextButton
-						text={item.name}
-						key={item.name}
-						clickFn={clickFn}
-					/>
+					<NavigationTextButton key={item.name} clickFn={clickFn}>
+						{item.name}
+					</NavigationTextButton>
 				))}
 			</ul>
 		</Container>

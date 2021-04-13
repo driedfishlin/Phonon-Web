@@ -25,24 +25,43 @@ const CommoditiesBlock = () => {
 					return item.kind.includes(context.commoditiesState.filter);
 			  });
 	// console.log(filteredList);
-	// if room => return
-	return (
-		<Container>
-			{filteredList.map(item => (
-				<Card
-					key={item.name}
-					title={item.name}
-					subTitle={item.kind[0]}
-					price={item.price}
-					img={item.pic}
-					text={item.description}
-					equipment={item.equipment}
-					icon={item.numOfUser}
-				/>
-			))}
-		</Container>
-	);
-	// if food => return
+
+	// 針對預約練習室頁面回傳畫面
+	if (context.commoditiesState.type === 'room') {
+		return (
+			<Container>
+				{filteredList.map(item => (
+					<Card
+						key={item.name}
+						title={item.name}
+						subTitle={item.kind[0]}
+						price={item.price}
+						img={item.pic}
+						text={item.description}
+						equipment={item.equipment}
+						icon={item.numOfUser}
+					/>
+				))}
+			</Container>
+		);
+	}
+
+	// 針對預約餐點頁面回傳畫面
+	if (context.commoditiesState.type === 'food')
+		return (
+			<Container>
+				{filteredList.map(item => (
+					<Card
+						key={item.name}
+						subTitle={item.name}
+						price={item.price}
+						img={item.pic}
+						text={item.description}
+						icon={item.kind}
+					/>
+				))}
+			</Container>
+		);
 };
 
 export default CommoditiesBlock;

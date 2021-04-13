@@ -10,12 +10,9 @@ import { ReactComponent as phononArtLogo } from './image/logo/phonon_art_logo.sv
 import { ReactComponent as phononCoffeeLogo } from './image/logo/phonon_cafe_logo.svg';
 import { ReactComponent as phononMusicLogo } from './image/logo/phonon_music_logo.svg';
 
-//SECTION> FOR INTRO SECTION
+//SECTION> Shared Data
 
-//PART> For MainNavigationBar
-export const navListItem = [{ name: '琴房預約' }, { name: '餐點訂製' }];
-
-//PART> For CommoditiesGroup
+//PART> For CommoditiesGroup, BusinessPageSideBar
 export const commoditiesInfo = {
 	food: [
 		//UNDONE> 圖片網址為暫時的假圖
@@ -38,26 +35,26 @@ export const commoditiesInfo = {
 				'./img/_Temporary_pic/food/priyanka-singh-sZCcZFQ9Hrc-unsplash.jpg',
 		},
 		{
-			nameTc: '餅乾',
-			nameEng: 'Cookies',
+			nameTc: '麵包',
+			nameEng: 'Bread',
 			imgUrl: './img/_Temporary_pic/food/mae-mu-ppOPjqAJ3Mw-unsplash.jpg',
 		},
 	],
 	room: [
 		{
-			nameTc: '個人琴房',
+			nameTc: '獨立練習室',
 			nameEng: 'Personal Practice Room',
 			imgUrl:
 				'./img/_Temporary_pic/room/kara-eads-L7EwHkq1B2s-unsplash.jpg',
 		},
 		{
-			nameTc: '室內樂琴房',
+			nameTc: '室內樂練習室',
 			nameEng: 'Chamber Music Practice Room',
 			imgUrl:
 				'./img/_Temporary_pic/room/kari-shea-tOVmshavtoo-unsplash.jpg',
 		},
 		{
-			nameTc: '團練室',
+			nameTc: '團體練習室',
 			nameEng: 'Group Practice Room',
 			imgUrl:
 				'./img/_Temporary_pic/room/michael-oxendine-GHCVUtBECuY-unsplash.jpg',
@@ -70,6 +67,11 @@ export const commoditiesInfo = {
 		},
 	],
 };
+
+//SECTION> FOR INTRO SECTION
+
+//PART> For MainNavigationBar
+export const navListItem = [{ name: '琴房預約' }, { name: '餐點訂製' }];
 
 //PART> For IntroSectionMain
 export const introPageIntroSectionCarouselImg = {
@@ -227,5 +229,42 @@ export const commoditiesList = {
 			pic: './img/_Temporary_pic/room/kara-eads-L7EwHkq1B2s-unsplash.jpg',
 		},
 	],
-	food: [],
+	food: [
+		{
+			name: '蜂蜜蛋糕',
+			kind: '糕點',
+			price: '50',
+			description:
+				'很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。',
+			pic:
+				'./img/_Temporary_pic/room/michael-oxendine-GHCVUtBECuY-unsplash.jpg',
+		},
+		{
+			name: '焦糖布丁',
+			kind: '布丁',
+			price: '50',
+			description:
+				'很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。',
+			pic:
+				'./img/_Temporary_pic/room/michael-oxendine-GHCVUtBECuY-unsplash.jpg',
+		},
+		{
+			name: '麵包',
+			kind: '麵包',
+			price: '50',
+			description:
+				'很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。',
+			pic:
+				'./img/_Temporary_pic/room/michael-oxendine-GHCVUtBECuY-unsplash.jpg',
+		},
+		{
+			name: '美式咖啡',
+			kind: '飲品',
+			price: '50',
+			description:
+				'很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。',
+			pic:
+				'./img/_Temporary_pic/room/michael-oxendine-GHCVUtBECuY-unsplash.jpg',
+		},
+	],
 };

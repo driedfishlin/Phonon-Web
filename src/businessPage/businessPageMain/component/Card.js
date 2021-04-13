@@ -1,12 +1,15 @@
 import styled from '@emotion/styled';
-// import { css } from '@emotion/css';
 
-// import { useContext } from 'react';
-// import { pageStateContext } from '../../../App';
-
+// SVG file for ROOM CARD
 import { ReactComponent as OnePerson } from '../../../image/icon/user-solid.svg';
 import { ReactComponent as TwoPerson } from '../../../image/icon/user-friends-solid.svg';
 import { ReactComponent as ThreePerson } from '../../../image/icon/users-solid.svg';
+
+// SVG file for FOOD CARD
+import { ReactComponent as DrinkSVG } from '../../../image/icon/coffee-solid.svg';
+import { ReactComponent as BreadSVG } from '../../../image/icon/bread-slice-solid.svg';
+import { ReactComponent as PuddingSVG } from '../../../image/icon/pudding.svg';
+import { ReactComponent as CakeSVG } from '../../../image/icon/cheese-solid.svg';
 
 //SECTION>
 
@@ -25,17 +28,20 @@ const Container = styled.div`
 			width: 60%;
 			& > .card_text_title_block {
 				& > h3 {
+					position: relative;
 					font-size: 40px;
 					text-align: left;
 					padding: 0 20px;
-					display: inline;
-				}
-				& > p {
-					position: relative;
-					top: -2px;
-					font-size: 15px;
-					opacity: 1;
-					transition: opacity 0.3s 0.3s;
+					display: block;
+					box-sizing: border-box;
+					& > span {
+						position: absolute;
+						bottom: 8px;
+						right: 35px;
+						font-size: 15px;
+						opacity: 1;
+						transition: opacity 0.3s 0.3s;
+					}
 				}
 			}
 			& > .card_text_content_block {
@@ -50,6 +56,10 @@ const Container = styled.div`
 					box-sizing: border-box;
 					padding: 0 15px;
 					transition: opacity 0.3s 0.3s;
+					& > div {
+						position: relative;
+						top: -3px;
+					}
 					& p {
 						text-align: justify;
 						font-size: 15px;
@@ -100,11 +110,11 @@ const TitleBlock = styled.div`
 		font-family: BlinkMacSystemFont, '微軟正黑體';
 		transition: font-size 0.3s;
 		height: 50px;
-	}
-	& > p {
-		opacity: 0;
-		font-size: 0px;
-		display: inline-block;
+		& > span {
+			opacity: 0;
+			font-size: 0px;
+			display: inline-block;
+		}
 	}
 `;
 const ContentBlock = styled.div`
@@ -179,28 +189,39 @@ const ReservationButton = styled.button`
 //SECTION>
 
 const Card = ({ title, subTitle, price, img, text, equipment, icon }) => {
-	// const context = useContext(pageStateContext);
 	return (
 		<Container>
 			<TextBlock className="card_text_block">
 				<TitleBlock className="card_text_title_block">
-					<h3>{title}</h3>
-					<p>NT {price} / hour</p>
+					<h3>
+						{title}
+						<span>NT {price} / hour</span>
+					</h3>
 				</TitleBlock>
 				<ContentBlock className="card_text_content_block">
 					<ContentKindBlock className="card_text_content_kind_block">
 						<h4>{subTitle}</h4>
 						<PersonIcon>
 							{(() => {
+								// for ROOM
 								if (icon === 1) return <OnePerson />;
 								if (icon === 2) return <TwoPerson />;
 								if (icon === 3) return <ThreePerson />;
+								// for FOOD
+								if (icon === '糕點') return <CakeSVG />;
+								if (icon === '布丁') return <PuddingSVG />;
+								if (icon === '麵包') return <BreadSVG />;
+								if (icon === '飲品') return <DrinkSVG />;
 							})()}
 						</PersonIcon>
 					</ContentKindBlock>
 					<ContentDetailBlock className="card_text_content_detail_block">
 						<div>
-							<p>設備：{equipment.join('、')}</p>
+							{equipment ? (
+								<p>設備：{equipment.join('、')}</p>
+							) : (
+								''
+							)}
 							<p>{text}</p>
 						</div>
 						<ReservationButton>預約</ReservationButton>
