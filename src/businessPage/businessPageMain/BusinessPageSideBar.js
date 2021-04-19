@@ -75,7 +75,7 @@ const ListItem = ({ children, clickFn }) => {
 	`;
 	return (
 		<Li>
-			{console.log(children)}
+			{/* {console.log(children)} */}
 			<button
 				onClick={clickFn}
 				className={
@@ -97,7 +97,7 @@ const ListItem = ({ children, clickFn }) => {
 const BusinessPageSideBar = () => {
 	const context = useContext(pageStateContext);
 	const list = commoditiesInfo[context.commoditiesState.type];
-	console.log(list);
+	// console.log(list);
 	return (
 		<Container>
 			<CommoditiesKind>

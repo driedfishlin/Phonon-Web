@@ -1,3 +1,4 @@
+import React, { createContext, useState } from 'react';
 import styled from '@emotion/styled';
 
 import CommoditiesBlock from './CommoditiesBlock';
@@ -17,14 +18,24 @@ const ContentContainer = styled.div`
 	box-sizing: border-box;
 `;
 
+export const shoppingCartContext = createContext(null);
+
 const BusinessPageMain = () => {
+	const [shoppingCartState, setShoppingCartState] = useState({
+		room: [],
+		food: [],
+	});
+	const contextValue = { shoppingCartState, setShoppingCartState };
+	// console.log(shoppingCartState);
 	return (
 		<Container>
-			<SelectDateBlock />
-			<ContentContainer>
-				<BusinessPageSideBar></BusinessPageSideBar>
-				<CommoditiesBlock></CommoditiesBlock>
-			</ContentContainer>
+			<shoppingCartContext.Provider value={contextValue}>
+				<SelectDateBlock />
+				<ContentContainer>
+					<BusinessPageSideBar></BusinessPageSideBar>
+					<CommoditiesBlock></CommoditiesBlock>
+				</ContentContainer>
+			</shoppingCartContext.Provider>
 		</Container>
 	);
 };

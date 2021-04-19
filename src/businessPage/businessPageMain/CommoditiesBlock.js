@@ -40,6 +40,7 @@ const CommoditiesBlock = () => {
 						text={item.description}
 						equipment={item.equipment}
 						icon={item.numOfUser}
+						type={'room'}
 					/>
 				))}
 			</Container>
@@ -58,6 +59,7 @@ const CommoditiesBlock = () => {
 						img={item.pic}
 						text={item.description}
 						icon={item.kind}
+						type={'food'}
 					/>
 				))}
 			</Container>

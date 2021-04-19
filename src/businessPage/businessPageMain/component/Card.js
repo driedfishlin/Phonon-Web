@@ -1,4 +1,7 @@
+import React, { useContext } from 'react';
 import styled from '@emotion/styled';
+
+import { shoppingCartContext } from '../BusinessPageMain';
 
 // SVG file for ROOM CARD
 import { ReactComponent as OnePerson } from '../../../image/icon/user-solid.svg';
@@ -188,7 +191,36 @@ const ReservationButton = styled.button`
 
 //SECTION>
 
-const Card = ({ title, subTitle, price, img, text, equipment, icon }) => {
+const Card = ({ title, subTitle, price, img, text, equipment, icon, type }) => {
+	const context = useContext(shoppingCartContext);
+	const setState = context.setShoppingCartState;
+
+	// add / remove 商品至 state
+	const onButtonClick = () => {
+		const name = title || subTitle;
+		setState(prev => {
+			const newState = {
+				...prev,
+			};
+			// 如果該商品已存在，從清單中剔除
+			const newList = prev[type].filter(item => {
+				if (item.name === name) return false;
+				return true;
+			});
+			// 剔除商品
+			if (prev[type].length > newList.length) {
+				newState[type] = newList;
+				return newState;
+			}
+			// 增加商品
+			if (prev[type].length === newList.length) {
+				newState[type] = [...newList, { name, price }];
+				return newState;
+			}
+			return prev;
+		});
+	};
+
 	return (
 		<Container>
 			<TextBlock className="card_text_block">
@@ -224,7 +256,13 @@ const Card = ({ title, subTitle, price, img, text, equipment, icon }) => {
 							)}
 							<p>{text}</p>
 						</div>
-						<ReservationButton>預約</ReservationButton>
+						<ReservationButton onClick={onButtonClick}>
+							{(() => {
+								if (type === 'room') return '預約';
+								if (type === 'food') return '訂製';
+								return;
+							})()}
+						</ReservationButton>
 					</ContentDetailBlock>
 				</ContentBlock>
 			</TextBlock>

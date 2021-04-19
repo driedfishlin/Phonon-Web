@@ -68,7 +68,7 @@ export const commoditiesInfo = {
 	],
 };
 
-//SECTION> FOR INTRO SECTION
+//SECTION> ONLY FOR INTRO SECTION
 
 //PART> For MainNavigationBar
 export const navListItem = [{ name: '琴房預約' }, { name: '餐點訂製' }];
@@ -183,7 +183,7 @@ export const phononInformation = {
 	],
 };
 
-//SECTION> FOR BUSINESS PAGE
+//SECTION> ONLY FOR BUSINESS PAGE
 
 //PART>
 
