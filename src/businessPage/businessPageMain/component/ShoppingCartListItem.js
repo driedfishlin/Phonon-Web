@@ -87,6 +87,7 @@ const DeleteButton = styled.div`
 `;
 
 const ShoppingCartListItem = ({ name, price, type, setFn, count }) => {
+	//PART>
 	const increaseOrDecreaseQuantity = action => {
 		setFn(prev => {
 			// 用深拷貝避免修改到 prev 造成計算不精準
@@ -104,7 +105,15 @@ const ShoppingCartListItem = ({ name, price, type, setFn, count }) => {
 			return newState;
 		});
 	};
-
+	const deleteCommodity = () => {
+		setFn(prev => {
+			const newState = { ...prev };
+			const newList = prev[type].filter(item => item.name !== name);
+			newState[type] = newList;
+			return newState;
+		});
+	};
+	//PART>
 	return (
 		<Container>
 			<Name>
@@ -131,7 +140,7 @@ const ShoppingCartListItem = ({ name, price, type, setFn, count }) => {
 				<p>{count * price}</p>
 			</Sum>
 			<DeleteButton>
-				<button>刪除</button>
+				<button onClick={deleteCommodity}>刪除</button>
 			</DeleteButton>
 		</Container>
 	);

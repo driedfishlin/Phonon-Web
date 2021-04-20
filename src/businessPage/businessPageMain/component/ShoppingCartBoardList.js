@@ -22,7 +22,7 @@ const CommoditiesType = ({ type }) => {
 		return (
 			<div className={CommoditiesTypeStyle}>
 				<p>練習室房號</p>
-				<p>單價/半小時</p>
+				<p>單價/小時</p>
 				<p>時數/小時</p>
 				<p>小計</p>
 				<p></p>
@@ -61,7 +61,7 @@ const ShoppingCartBoardList = ({ items, setItems }) => {
 		}
 	}
 
-	return <>{list}</>;
+	return <>{list.length === 0 ? <p>您未選取任何項目</p> : list}</>;
 };
 
 export default ShoppingCartBoardList;

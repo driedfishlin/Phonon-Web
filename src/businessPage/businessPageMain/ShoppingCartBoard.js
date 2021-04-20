@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import styled from '@emotion/styled';
 
-import { shoppingCartContext } from '../businessPageMain/BusinessPageMain';
 import ShoppingCartBoardList from './component/ShoppingCartBoardList';
 
-//SECTION>
+import { pageStateContext } from '../../App';
+import { shoppingCartContext } from '../businessPageMain/BusinessPageMain';
+
+//SECTION> CSS Component
 
 const Background = styled.div`
 	position: fixed;
@@ -19,6 +21,7 @@ const Background = styled.div`
 	align-items: center;
 `;
 const Container = styled.div`
+	position: relative;
 	background: #fff;
 	overflow: hidden;
 	border-radius: 20px;
@@ -28,6 +31,7 @@ const Container = styled.div`
 `;
 const HeaderBlock = styled.div`
 	padding: 40px;
+	margin-top: 10px;
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
@@ -48,6 +52,12 @@ const ListBlock = styled.div`
 	margin: 0 40px 0 40px;
 	overflow-y: scroll;
 	max-height: 300px;
+	> p {
+		font-size: 18px;
+		text-align: center;
+		padding: 50px 0;
+		letter-spacing: 1px;
+	}
 `;
 
 const PriceBlock = styled.div`
@@ -86,6 +96,7 @@ const CommitBlock = styled.div`
 			padding: 5px 20px;
 			height: 35px;
 			border-radius: 20px;
+			border: none;
 			margin: 0 20px 0 10px;
 			&:focus {
 				outline: none;
@@ -113,22 +124,69 @@ const CommitBlock = styled.div`
 	}
 `;
 
-//SECTION>
+const CloseButton = styled.div`
+	position: absolute;
+	top: 0px;
+	right: 3px;
+	padding: 10px;
+	> button {
+		color: #888;
+		cursor: pointer;
+		font-size: 20px;
+		background: transparent;
+		border: none;
+		user-select: none;
+		:focus {
+			outline: none;
+		}
+	}
+`;
+
+//SECTION> Function
 
 const stopPropagation = event => event.stopPropagation();
 
+//SECTION> React Component
+
 const ShoppingCartBoard = ({ togglePageFn }) => {
+	//PART>
+	const formRef = useRef(null);
+
+	//PART> 取得並統計商品資訊
 	const context = useContext(shoppingCartContext);
 	const state = context.shoppingCartState;
 	const setState = context.setShoppingCartState;
-	console.log(state);
+	let totalNum = 0;
+	let totalAmount = 0;
+	for (const type in state) {
+		totalNum += state[type].length;
+		for (const item of state[type]) {
+			totalAmount += +item.price * item.count;
+		}
+	}
+	//PART> 控制提交表單訊息文字
+	const subContext = useContext(pageStateContext);
+	const setMessage = subContext.message.setState;
+	const submitAndSetMessage = event => {
+		event.preventDefault();
+		console.log(formRef);
+		formRef.current.reset();
+		setMessage({ show: true, text: '預約成功' });
+		setTimeout(() => setMessage({ show: false, text: '預約成功' }), 3000);
+		togglePageFn(event);
+		setState({
+			room: [],
+			food: [],
+		});
+	};
+	//PART>
 	return (
 		<Background onClick={togglePageFn}>
 			<Container onClick={stopPropagation}>
 				<HeaderBlock>
 					<h2>線上預約</h2>
 					<p>
-						共 <span> 12 </span> 個項目
+						共 <span> {totalNum} </span> 個項目
 					</p>
 				</HeaderBlock>
 				<ListBlock>
@@ -136,7 +194,7 @@ const ShoppingCartBoard = ({ togglePageFn }) => {
 				</ListBlock>
 				<PriceBlock>
 					<h5>
-						總計 <span> 1200 </span> 元
+						總計 <span> {totalAmount} </span> 元
 					</h5>
 					<p>
 						・五人以上團體用餐，請直接來電詢問訂位
@@ -150,7 +208,7 @@ const ShoppingCartBoard = ({ togglePageFn }) => {
 					</p>
 				</PriceBlock>
 				<CommitBlock>
-					<form>
+					<form ref={formRef}>
 						<label htmlFor="memberId">會員編號</label>
 						<input type="text" id="memberId" name="memberId" />
 						<label htmlFor="memberPassword">密碼</label>
@@ -159,9 +217,14 @@ const ShoppingCartBoard = ({ togglePageFn }) => {
 							id="memberPassword"
 							name="memberPassword"
 						/>
-						<button>預約</button>
+						<button type="submit" onClick={submitAndSetMessage}>
+							預約
+						</button>
 					</form>
 				</CommitBlock>
+				<CloseButton>
+					<button onClick={togglePageFn}>×</button>
+				</CloseButton>
 			</Container>
 		</Background>
 	);
