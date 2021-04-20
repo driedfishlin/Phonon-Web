@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/css';
 
 import { shoppingCartContext } from '../BusinessPageMain';
 
@@ -189,15 +190,75 @@ const ReservationButton = styled.button`
 	}
 `;
 
+const activeCardClass = css`
+	& > .card_text_block {
+		width: 60%;
+		& > .card_text_title_block {
+			& > h3 {
+				position: relative;
+				font-size: 40px;
+				text-align: left;
+				padding: 0 20px;
+				display: block;
+				box-sizing: border-box;
+				& > span {
+					position: absolute;
+					bottom: 8px;
+					right: 35px;
+					font-size: 15px;
+					opacity: 1;
+					transition: opacity 0.3s 0.3s;
+				}
+			}
+		}
+		& > .card_text_content_block {
+			padding: 0 20px;
+			justify-content: flex-start;
+			& > .card_text_content_kind_block {
+				width: 30px;
+			}
+			& > .card_text_content_detail_block {
+				width: auto;
+				opacity: 1;
+				box-sizing: border-box;
+				padding: 0 15px;
+				transition: opacity 0.3s 0.3s;
+				& > div {
+					position: relative;
+					top: -3px;
+				}
+				& p {
+					text-align: justify;
+					font-size: 15px;
+				}
+				& button {
+					border: 2px solid #ac25a6;
+					background-color: #ac25a6;
+					color: white;
+				}
+			}
+		}
+	}
+	& > .card_img_block {
+		width: 40%;
+	}
+`;
+
 //SECTION>
 
 const Card = ({ title, subTitle, price, img, text, equipment, icon, type }) => {
 	const context = useContext(shoppingCartContext);
+	const state = context.shoppingCartState;
 	const setState = context.setShoppingCartState;
+
+	console.log(state);
+
+	const name = title || subTitle;
+	const isCartActive = state[type].some(item => item.name === name);
 
 	// add / remove 商品至 state
 	const onButtonClick = () => {
-		const name = title || subTitle;
+		// const name = title || subTitle;
 		setState(prev => {
 			const newState = {
 				...prev,
@@ -222,7 +283,7 @@ const Card = ({ title, subTitle, price, img, text, equipment, icon, type }) => {
 	};
 
 	return (
-		<Container>
+		<Container className={isCartActive && activeCardClass}>
 			<TextBlock className="card_text_block">
 				<TitleBlock className="card_text_title_block">
 					<h3>

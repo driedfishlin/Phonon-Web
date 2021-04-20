@@ -1,4 +1,8 @@
+import React, { useContext } from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/css';
+
+import { shoppingCartContext } from '../BusinessPageMain';
 
 import { ReactComponent as ClipBroad } from '../../../image/icon/clipboard-regular.svg';
 
@@ -30,6 +34,7 @@ const Container = styled.form`
 
 const ClipBroadContainer = styled.div`
 	flex: auto;
+	position: relative;
 	& > div {
 		float: right;
 		cursor: pointer;
@@ -40,6 +45,30 @@ const ClipBroadContainer = styled.div`
 `;
 
 const SelectDateBlock = () => {
+	const context = useContext(shoppingCartContext);
+	// 購物車圖示上，顯示當前被選取的商品數量
+	const commoditiesCount =
+		context.shoppingCartState.room.length +
+		context.shoppingCartState.food.length;
+	const showCommoditiesCount = css`
+		&::after {
+			font-family: -apple-system, BlinkMacSystemFont, '微軟正黑體';
+			content: '${commoditiesCount}';
+			font-size: 10px;
+			font-weight: 600;
+			text-align: center;
+			line-height: 15px;
+			color: #fff;
+			display: block;
+			position: absolute;
+			background-color: #f30;
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			top: 0;
+			right: -6px;
+		}
+	`;
 	return (
 		<Container>
 			<label htmlFor="reservation_date">預約日期</label>
@@ -57,7 +86,7 @@ const SelectDateBlock = () => {
 				<option value={'else'}>其他</option>
 			</select>
 			<ClipBroadContainer>
-				<div>
+				<div className={commoditiesCount ? showCommoditiesCount : null}>
 					<ClipBroad />
 				</div>
 			</ClipBroadContainer>
