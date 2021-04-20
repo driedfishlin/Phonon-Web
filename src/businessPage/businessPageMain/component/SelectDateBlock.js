@@ -35,16 +35,21 @@ const Container = styled.form`
 const ClipBroadContainer = styled.div`
 	flex: auto;
 	position: relative;
-	& > div {
+	& > button {
 		float: right;
 		cursor: pointer;
+		border: none;
+		background: transparent;
+		:focus {
+			outline: none;
+		}
 	}
 	& svg {
 		width: 27px;
 	}
 `;
 
-const SelectDateBlock = () => {
+const SelectDateBlock = ({ togglePageFn }) => {
 	const context = useContext(shoppingCartContext);
 	// 購物車圖示上，顯示當前被選取的商品數量
 	const commoditiesCount =
@@ -86,9 +91,12 @@ const SelectDateBlock = () => {
 				<option value={'else'}>其他</option>
 			</select>
 			<ClipBroadContainer>
-				<div className={commoditiesCount ? showCommoditiesCount : null}>
+				<button
+					onClick={togglePageFn}
+					className={commoditiesCount ? showCommoditiesCount : null}
+				>
 					<ClipBroad />
-				</div>
+				</button>
 			</ClipBroadContainer>
 		</Container>
 	);

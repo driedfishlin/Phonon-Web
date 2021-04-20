@@ -5,6 +5,7 @@ import React, { useState, Fragment, createContext } from 'react';
 import IntroPage from './introPage/IntroPage';
 import BusinessPage from './businessPage/BusinessPage';
 
+// 掌管主、商品頁的切換狀態，以及商品頁面的商品種類顯示
 export const pageStateContext = createContext(null);
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
 		type: 'room',
 		filter: 'all',
 	});
-	console.log(pageState, commoditiesState);
+	// console.log(pageState, commoditiesState);
 	const contextValue = {
 		commoditiesState: commoditiesState,
 		setCommoditiesState: setCommoditiesState,

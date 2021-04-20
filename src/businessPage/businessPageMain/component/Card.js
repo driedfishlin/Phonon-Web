@@ -163,6 +163,7 @@ const PersonIcon = styled.div`
 `;
 
 const ReservationButton = styled.button`
+	width: 120px;
 	font-size: 18px;
 	text-align: center;
 	letter-spacing: 4px;
@@ -251,8 +252,7 @@ const Card = ({ title, subTitle, price, img, text, equipment, icon, type }) => {
 	const state = context.shoppingCartState;
 	const setState = context.setShoppingCartState;
 
-	console.log(state);
-
+	// 用於辨識該商品是否在購物車中，需改變樣式
 	const name = title || subTitle;
 	const isCartActive = state[type].some(item => item.name === name);
 
@@ -275,7 +275,7 @@ const Card = ({ title, subTitle, price, img, text, equipment, icon, type }) => {
 			}
 			// 增加商品
 			if (prev[type].length === newList.length) {
-				newState[type] = [...newList, { name, price }];
+				newState[type] = [...newList, { name, price, count: 1 }];
 				return newState;
 			}
 			return prev;
@@ -318,11 +318,13 @@ const Card = ({ title, subTitle, price, img, text, equipment, icon, type }) => {
 							<p>{text}</p>
 						</div>
 						<ReservationButton onClick={onButtonClick}>
-							{(() => {
-								if (type === 'room') return '預約';
-								if (type === 'food') return '訂製';
-								return;
-							})()}
+							{isCartActive
+								? '已選取'
+								: (() => {
+										if (type === 'room') return '預約';
+										if (type === 'food') return '訂製';
+										return;
+								  })()}
 						</ReservationButton>
 					</ContentDetailBlock>
 				</ContentBlock>
