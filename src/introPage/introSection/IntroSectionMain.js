@@ -41,16 +41,16 @@ const IntroSectionMain = () => {
 			<Background>
 				<img src={pngFile} alt="background" />
 			</Background>
-			<ImgCarousel
+			{/* <ImgCarousel
 				backgroundStyle={{
 					scale: 1.05,
 					rotate: -8,
 					opacity: 0.5,
 				}}
 				position={carouselPosition}
-			/>
+			/> */}
 			<ImgCarousel position={carouselPosition} />
-			<ImgCarousel imgList={imgList} position={carouselPosition} />
+			{/* <ImgCarousel imgList={imgList} position={carouselPosition} /> */}
 			<IntroSectionContent />
 			<ScrollPromptText color={'black'} />
 		</Container>

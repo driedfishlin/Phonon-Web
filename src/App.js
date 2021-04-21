@@ -11,8 +11,8 @@ export const pageStateContext = createContext(null);
 
 function App() {
 	//PART>
-	// 用於切換主、次頁面
-	const [pageState, setPageState] = useState('businessPage');
+	// 用於切換主、次頁面 (introPage, businessPage)
+	const [pageState, setPageState] = useState('introPage');
 	// 用於存裝商品狀態
 	const [commoditiesState, setCommoditiesState] = useState({
 		type: 'room',

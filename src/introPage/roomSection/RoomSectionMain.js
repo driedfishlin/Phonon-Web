@@ -56,7 +56,7 @@ const RoomSectionMain = ({ clickFn }) => {
 			<Background>
 				<ImgSVG />
 			</Background>
-			<ImgCarousel
+			{/* <ImgCarousel
 				filter={{ ...filter, position: '10% 58%' }}
 				backgroundStyle={{
 					scale: 1.08,
@@ -64,15 +64,15 @@ const RoomSectionMain = ({ clickFn }) => {
 					opacity: 0.3,
 				}}
 				position={carouselPosition}
-			/>
+			/> */}
 			<ImgCarousel filter={filter} position={carouselPosition} />
-			<ImgCarousel
+			{/* <ImgCarousel
 				filter={filter}
 				imgList={imgList}
 				position={carouselPosition}
-			/>
+			/> */}
 			<RoomSectionContent clickFn={clickFn} />
-			<ScrollPromptText color={'white'} />
+			{/* <ScrollPromptText color={'white'} /> */}
 		</Container>
 	);
 };

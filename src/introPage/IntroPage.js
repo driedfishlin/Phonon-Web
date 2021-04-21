@@ -10,13 +10,6 @@ import CommoditiesGroup from './CommoditiesGroup';
 import PageMenu from './component/shared/PageMenu';
 import Footer from './footerSection/Footer';
 
-//SECTION> STATE
-
-// 當前頁面
-let currentPage = 1;
-// 用於判斷 footer 區塊是順向或反向滑進，避免 observer 因為兩個判斷點重複觸發
-// let footerIsIntersecting = 0;
-
 //SECTION> EVENT LISTENER
 window.addEventListener('beforeunload', event => {
 	event.preventDefault();
@@ -50,21 +43,20 @@ const SideNavBarContainer = styled.div`
 `;
 
 //SECTION> REACT COMPONENT
-//FIXME> 要檢查是否會有需要優化效能的部分
-const IntroPage = ({ changePage }) => {
+const IntroPage = () => {
+	console.log('re-render');
 	//PART> React State
 	const [sideNavBarState, setSideNavBarState] = useState({
 		target: null,
 		isOpen: false,
 		arrowDelay: false,
 	});
-	const [pageState, setPageState] = useState(currentPage);
+	const [pageState, setPageState] = useState(1);
 	//PART> Element Selector
 	const phononIndexSection = useRef(null),
 		phononIntro = useRef(null),
 		phononArtSection = useRef(null),
 		phononCoffeeSection = useRef(null),
-		// footerSection = useRef(null),
 		sideNavBar = useRef(null),
 		backArrow = useRef(null);
 	const sectionNodeList = [
@@ -75,97 +67,44 @@ const IntroPage = ({ changePage }) => {
 	];
 
 	//PART> Intersection Observer API
-	//FIXME> 第五頁沒辦法適用左側導覽
 	useEffect(() => {
-		// 各 Section 通用的監聽
 		const sectionObserver = new IntersectionObserver(scrollPage, {
 			rootMargin: '-5px',
 		});
 		sectionNodeList.map(section =>
 			sectionObserver.observe(section.current)
 		);
-		// // 針對 footer 的監聽處理（增加區塊底部的判斷點）
-		// const footerObserver = new IntersectionObserver(scrollPage, {
-		// 	rootMargin: '-5px',
-		// 	threshold: [0, 0.95],
-		// });
-		// footerObserver.observe(footerSection.current);
-		// return () => {
-		// 	sectionObserver.disconnect();
-		// 	footerObserver.disconnect();
-		// };
-	});
+	}, []);
 
 	//PART> FUNCTION
-	// 更新頁碼，並呼叫 setState
+	// 呼叫 setState 以更新左側 UI
 	const UpdateCurrentPage = entries => {
 		switch (entries[0].target) {
+			// 設定計時器延遲左側導覽列更新
+			// 1. 增進動畫配合度上的視覺銜接
+			// 2. 將動畫與捲動分開執行減少 drop frame
 			case phononIndexSection.current:
-				currentPage = 1;
-				// 設定計時器，以避免滾動期間因為元件重新渲染
-				// 造成 intersectionObserver 被觸發阻斷滾動
-				setTimeout(() => setPageState(1), 800);
-				break;
+				return setTimeout(() => setPageState(1), 300);
 			case phononIntro.current:
-				currentPage = 2;
-				setTimeout(() => setPageState(2), 800);
-				break;
+				return setTimeout(() => setPageState(2), 300);
 			case phononArtSection.current:
-				currentPage = 3;
-				setTimeout(() => setPageState(3), 800);
-				break;
+				return setTimeout(() => setPageState(3), 300);
 			case phononCoffeeSection.current:
-				currentPage = 4;
-				setTimeout(() => setPageState(4), 800);
-				break;
-			// case footerSection.current:
-			// 	currentPage = 5;
-			// 	// 因為不是滿版，因此延遲仍會觸發上一頁滑動
-			// 	// setTimeout(() => setPageState(5), 800);
-			// 	break;
+				return setTimeout(() => setPageState(4), 300);
 			default:
 				return;
 		}
-		// 頁碼目前還未有用途
-		console.log('current page: ' + currentPage);
 	};
 
 	// 畫面捲動自動定位功能（intersection observer's callback）
 	const scrollPage = entries => {
-		// // 針對 footer 的判斷（頁面往上滑出 footer）
-		// if (
-		// 	footerIsIntersecting &&
-		// 	entries[0].target === footerSection.current &&
-		// 	// 用於判斷是兩個斷點之一所觸發
-		// 	entries[0].boundingClientRect.y + 20 <
-		// 		document.documentElement.clientHeight
-		// ) {
-		// 	window.scrollTo({
-		// 		top:
-		// 			entries[0].target.offsetTop -
-		// 			document.documentElement.clientHeight,
-		// 		behavior: 'smooth',
-		// 	});
-
-		// 	// 使瀏覽器捲軸滑動完畢再更改狀態
-		// 	setTimeout(() => (footerIsIntersecting = 0), 300);
-		// 	return;
-		// }
-
-		// 各 Section 通用的滑動功能
 		if (entries[0].isIntersecting === true) {
 			window.scrollTo({
 				top: window.pageYOffset + entries[0].boundingClientRect.y,
 				behavior: 'smooth',
 			});
-
 			// 更新目前聚焦頁面頁碼
 			UpdateCurrentPage(entries);
-
-			// // 對 footer 的例外處理（頁面往下滑入 footer）
-			// if (entries[0].target === footerSection.current) {
-			// 	setTimeout(() => (footerIsIntersecting = 1), 300);
-			// }
 		}
 	};
 
@@ -247,7 +186,6 @@ const IntroPage = ({ changePage }) => {
 			<Section height={'80vh'} bgc={'#F8DC54'} ref={phononCoffeeSection}>
 				<CoffeeSectionMain clickFn={sideNavBarToggle} />
 			</Section>
-			{/* <Section height={'200px'} bgc={'#3C4566'} ref={footerSection} /> */}
 			<Footer bgc={'#4C2556'} height={'20vh'} />
 		</Container>
 	);

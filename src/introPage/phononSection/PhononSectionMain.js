@@ -115,7 +115,7 @@ const PhononSectionMain = () => {
 					</ContentArea>
 				</Board>
 			</BoardArea>
-			<ScrollPromptText color={'black'} />
+			{/* <ScrollPromptText color={'black'} /> */}
 		</Container>
 	);
 };

@@ -10,7 +10,9 @@ import { pageStateContext } from '../App';
 const Container = styled.div`
 	position: fixed;
 	right: 60px;
-	bottom: -100px;
+	bottom: 0;
+	transform: translateY(100%);
+	// bottom: -100px;
 	opacity: 0;
 	background: linear-gradient(45deg, #ff6b0c, #f1b51f);
 	min-width: 100px;
@@ -21,7 +23,8 @@ const Container = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-	transition: opacity 0.4s, bottom 1s;
+	// transition: opacity 0.4s, bottom 1s;
+	transition: opacity 0.4s, transform 1s;
 	> p {
 		text-align: center;
 		font-size: 20px;
@@ -66,9 +69,11 @@ const MessageComponent = () => {
 			color = 'linear-gradient(45deg, #ff6b0c, #f1b51f)';
 	}
 	const showStyle = {
-		bottom: '30px',
+		// bottom: '30px',
+		transform: 'translateY(-50%)',
 		opacity: 1,
-		transition: 'opacity 0.5s 0.2s, bottom 0.7s',
+		// transition: 'opacity 0.5s 0.2s, bottom 0.7s',
+		transition: 'opacity 0.5s 0.2s, transform 0.7s',
 		background: color,
 	};
 	//
