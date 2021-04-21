@@ -65,6 +65,7 @@ const CoffeeSectionMain = ({ clickFn }) => {
 					filter={filter}
 					imgList={data.imgs}
 					position={carouselPosition}
+					pagePosition={4}
 				/> */}
 			</CarouselContainer>
 			<CoffeeSectionContent clickFn={clickFn} />

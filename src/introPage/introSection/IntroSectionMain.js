@@ -49,8 +49,18 @@ const IntroSectionMain = ({ pageState }) => {
 				}}
 				position={carouselPosition}
 			/> */}
-			<ImgCarousel position={carouselPosition} />
-			{/* <ImgCarousel imgList={imgList} position={carouselPosition} /> */}
+			<ImgCarousel
+				position={carouselPosition}
+				backgroundStyle={{
+					opacity: 0.8,
+				}}
+			/>
+			<ImgCarousel
+				imgList={imgList}
+				position={carouselPosition}
+				pagePosition={1}
+				pageState={pageState}
+			/>
 			<IntroSectionContent pageState={pageState} />
 			<ScrollPromptText color={'black'} pageState={pageState} />
 		</Container>

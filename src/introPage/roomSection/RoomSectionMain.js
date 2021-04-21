@@ -70,6 +70,7 @@ const RoomSectionMain = ({ clickFn }) => {
 				filter={filter}
 				imgList={imgList}
 				position={carouselPosition}
+				pagePosition={3}
 			/> */}
 			<RoomSectionContent clickFn={clickFn} />
 			{/* <ScrollPromptText color={'white'} /> */}

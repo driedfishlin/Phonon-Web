@@ -1,6 +1,8 @@
 /*
 
-	作為圖片跑馬燈的可重用元件，可傳入 position 物件設定位置及尺寸、 filter 物件控制形狀。作為輪播使用，需傳入具圖片網址的陣列（imgList）使用。如果不傳入該陣列，預設將產出靜態的白色色塊。傳入 backgroundStyle 時該色塊將帶有動畫。
+	作為圖片跑馬燈的可重用元件，可傳入 position 物件設定位置及尺寸、 filter 物件控制形狀。
+	作為輪播使用，需傳入具圖片網址的陣列（imgList）使用。
+	如果不傳入該陣列，預設將產出靜態的白色色塊。傳入 backgroundStyle 時該色塊將帶有動畫。
 
 	1. imgList 存在 => 使用該資料建立輪播
 	2. imgList 不存在，但存在 backgroundStyle => 建立陪襯用底圖動畫
@@ -12,6 +14,9 @@
 	
 */
 
+// !!! 寫死了指定４張照片
+// 首頁用輪播，其他用靜態照片
+
 import React, { useState, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/css';
@@ -21,20 +26,12 @@ const svgFilter = introPageIntroSectionCarouselImg.svgFilterBase64;
 
 //SECTION> CUSTOM DATA & STATE
 
-// [自訂] 圖片完全顯示的時間
-const durationOfAnimate = 4;
-// [自訂] 圖片切換的過度時長
-const intervalOfAnimation = 1;
-const totalAnimationTime = durationOfAnimate + intervalOfAnimation * 2;
-// 辨識是否首次渲染頁面
-let initLoading = true;
+// [自訂] 一張圖片動畫的週期
+const totalAnimationTime = 8;
 
 //SECTION> CSS COMPONENT
 const Container = styled.div`
 	width: 100vw;
-	// position: absolute;
-	// top: 0;
-	// left: 0;
 `;
 
 const Box = styled.div`
@@ -48,33 +45,30 @@ const Box = styled.div`
 `;
 
 const Img = styled.img`
+	will-change: opacity;
 	min-width: 100%;
 	min-height: 100%;
-	opacity: 0;
+	opacity: 1;
 `;
 
 const ImgBackground = styled.div`
-	background: white;
+	background: black;
 	width: 100%;
 	height: 100%;
 `;
 
 //SECTION> CSS > Animation Keyframes
 
+// 圖片輪播動畫
 const carouselAnimation = keyframes`
     from{
 		opacity: 0;
-        transform:  scale(1.1);
     }
 	15%{
 		opacity: 1;
 	}
-	85%{
-		opacity: 1;
-	}
     to{
-		opacity: 0;
-		transform:  scale(1);
+		opacity: 1;
 	}
 `;
 
@@ -88,8 +82,19 @@ const fadeIn = css`
 	animation-play-state: pause;
 `;
 
+// Style
+// 用於離開當前頁面時停止動畫以節省運算效能
+const pauseAnimationStyle = { animationPlayState: 'paused' };
+
 //SECTION> React Component
-const ImgCarousel = ({ imgList, backgroundStyle, filter, position }) => {
+const ImgCarousel = ({
+	imgList,
+	backgroundStyle,
+	filter,
+	position,
+	pageState,
+	pagePosition,
+}) => {
 	// 當前輪播中的圖片索引數字
 	const [carouselState, setCarouselState] = useState(0);
 	// 取得 <img> 元素的參考
@@ -97,6 +102,7 @@ const ImgCarousel = ({ imgList, backgroundStyle, filter, position }) => {
 
 	//PART> CSS animation keyframes
 
+	// 懸浮的動畫，套用在背景
 	const floatKeyframes = keyframes(
 		backgroundStyle
 			? `from{
@@ -143,7 +149,7 @@ const ImgCarousel = ({ imgList, backgroundStyle, filter, position }) => {
 	});
 
 	// 如果 filter 不存在即給予空物件，避免 filterClass 出錯
-	filter ? (() => {})() : (filter = {});
+	filter = filter ? filter : {};
 
 	// 輪播遮罩
 	const filterClass = css`
@@ -156,29 +162,21 @@ const ImgCarousel = ({ imgList, backgroundStyle, filter, position }) => {
 		-webkit-mask-size: ${filter.size || '100%'};
 		-webkit-mask-image: url(${filter.src || svgFilter});
 	`;
-
 	//PART>
 	useEffect(() => {
-		initLoading = false;
-
+		console.log('effect run');
 		if (imgList) {
-			// 監聽每張圖片，當動畫結束時設定計時器以延後移除 class 的時間點
 			imgNodeList.current.forEach(item => {
 				item.addEventListener(
-					'animationend', // 每當動畫結束時觸發
+					'animationend', // 每當動畫結束時觸發，呼叫下一張圖片
 					() => {
+						setCarouselState(prev =>
+							prev === imgList.length - 1 ? 0 : ++prev
+						);
 						item.classList.remove(fadeIn);
-						item.style.display = 'none';
 					}
 				);
 			});
-
-			// 以設定的動畫週期呼叫 setState 更新元件
-			setInterval(() => {
-				setCarouselState(prev =>
-					prev === imgList.length - 1 ? 0 : ++prev
-				);
-			}, durationOfAnimate * 1000);
 		}
 	}, [imgList]);
 	//PART>
@@ -197,6 +195,7 @@ const ImgCarousel = ({ imgList, backgroundStyle, filter, position }) => {
 									bottom: position.bottom || null,
 									width: position.width || '100vw',
 									height: position.height || '100vh',
+									zIndex: 4,
 							  }
 							: null
 					}
@@ -214,6 +213,13 @@ const ImgCarousel = ({ imgList, backgroundStyle, filter, position }) => {
 
 	// 圖片輪播主體
 	return (
+		/* 結構：
+		<Container>
+			loop => <Box>
+				<img/>
+			</Box>
+		</Container>
+		*/
 		<Container>
 			{imgList.map((item, index) => (
 				<Box
@@ -237,6 +243,9 @@ const ImgCarousel = ({ imgList, backgroundStyle, filter, position }) => {
 							? {
 									zIndex: 10,
 							  }
+							: carouselState ===
+							  (index + 1 === 4 ? 0 : index + 1)
+							? { zIndex: 5 }
 							: null
 					}
 				>
@@ -245,25 +254,20 @@ const ImgCarousel = ({ imgList, backgroundStyle, filter, position }) => {
 							src={item}
 							ref={el => (imgNodeList.current[index] = el)}
 							className={fadeIn}
-							style={{
-								display: 'block',
-							}}
+							style={
+								pagePosition === pageState
+									? null
+									: pauseAnimationStyle
+							}
 						/>
 					) : (
 						<Img // 隱藏的圖片
 							src={item}
 							ref={el => (imgNodeList.current[index] = el)}
-							className={
-								// 除了第一次載入不要加 class
-								initLoading
+							style={
+								pagePosition === pageState
 									? null
-									: // 在切換當前輪播時繼續持有 fadeIn 的 class
-									// 以免切換圖片時畫面出現斷層
-									// 後續以計時器清掉
-									carouselState ===
-									  (index + 1 === 4 ? 0 : index + 1)
-									? fadeIn
-									: null
+									: pauseAnimationStyle
 							}
 						/>
 					)}
