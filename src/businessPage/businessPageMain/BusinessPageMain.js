@@ -1,5 +1,7 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useContext } from 'react';
 import styled from '@emotion/styled';
+
+import { pageStateContext } from '../../App';
 
 import CommoditiesBlock from './CommoditiesBlock';
 import BusinessPageSideBar from './BusinessPageSideBar';
@@ -20,6 +22,7 @@ const ContentContainer = styled.div`
 `;
 
 export const shoppingCartContext = createContext(null);
+
 const BusinessPageMain = () => {
 	//PART>
 	// 購物車頁面顯示狀態
@@ -31,10 +34,12 @@ const BusinessPageMain = () => {
 	});
 	//PART>
 	const contextValue = { shoppingCartState, setShoppingCartState };
-	// console.log(shoppingCartState);
+	const context = useContext(pageStateContext);
 	//PART>
 	const toggleShoppingCartPage = event => {
 		event.preventDefault();
+		if (shoppingCartPageState === false)
+			context.message.setState(prev => ({ ...prev, show: false }));
 		setShoppingCartPageState(prev => !prev);
 	};
 	//PART>

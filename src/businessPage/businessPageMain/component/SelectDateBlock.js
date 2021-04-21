@@ -81,8 +81,8 @@ const SelectDateBlock = ({ togglePageFn }) => {
 			<label htmlFor="reservation_time">時間</label>
 			<input type="time" id="reservation_time" />
 			<label htmlFor="numOfUsers">人數</label>
-			<select>
-				<option value={null}>請選擇人數</option>
+			<select style={{ textAlign: 'center', textAlignLast: 'center' }}>
+				{/* <option value={null}>請選擇人數</option> */}
 				<option value={1}>1</option>
 				<option value={2}>2</option>
 				<option value={3}>3</option>

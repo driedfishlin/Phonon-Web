@@ -1,5 +1,6 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/css';
 
 import ShoppingCartBoardList from './component/ShoppingCartBoardList';
 
@@ -113,6 +114,7 @@ const CommitBlock = styled.div`
 			padding: 5px 10px 5px 13px;
 			font-weight: 600;
 			cursor: pointer;
+			user-select: none;
 			&:focus {
 				outline: none;
 			}
@@ -142,6 +144,17 @@ const CloseButton = styled.div`
 	}
 `;
 
+// class
+const disableClass = css`
+	background: rgba(255, 255, 255, 0.5) !important;
+	color: #4c2556 !important;
+	cursor: not-allowed !important;
+	pointer-events: none;
+	&:hover {
+		background: rgba(255, 255, 255, 0.5) !important;
+	}
+`;
+
 //SECTION> Function
 
 const stopPropagation = event => event.stopPropagation();
@@ -151,6 +164,37 @@ const stopPropagation = event => event.stopPropagation();
 const ShoppingCartBoard = ({ togglePageFn }) => {
 	//PART>
 	const formRef = useRef(null);
+	const [formState, setFormState] = useState({ id: '', password: '' });
+	//PART>
+	const onFormChange = event => {
+		if (event.target.id === 'memberId')
+			setFormState(prev => ({ ...prev, id: event.target.value }));
+		if (event.target.id === 'memberPassword')
+			setFormState(prev => ({ ...prev, password: event.target.value }));
+		if (event.target.value.length >= 6)
+			setMessage(prev => ({ ...prev, show: false }));
+	};
+	// 不符合長度限制時跳出訊息
+	const formValidation = event => {
+		if (event.target.id === 'memberId' && event.target.value.length < 6)
+			return setMessage(prev => ({
+				...prev,
+				show: true,
+				text: '會員編號須大於 6 個字元',
+				color: 'red',
+			}));
+		if (
+			event.target.id === 'memberPassword' &&
+			event.target.value.length < 6
+		)
+			return setMessage(prev => ({
+				...prev,
+				show: true,
+				text: '密碼須大於 6 個字元',
+				color: 'red',
+			}));
+		return setMessage(prev => ({ ...prev, show: false }));
+	};
 
 	//PART> 取得並統計商品資訊
 	const context = useContext(shoppingCartContext);
@@ -169,10 +213,9 @@ const ShoppingCartBoard = ({ togglePageFn }) => {
 	const setMessage = subContext.message.setState;
 	const submitAndSetMessage = event => {
 		event.preventDefault();
-		console.log(formRef);
 		formRef.current.reset();
-		setMessage({ show: true, text: '預約成功' });
-		setTimeout(() => setMessage({ show: false, text: '預約成功' }), 3000);
+		setMessage({ show: true, text: '預約成功', color: 'green' });
+		setTimeout(() => setMessage(prev => ({ ...prev, show: false })), 3000);
 		togglePageFn(event);
 		setState({
 			room: [],
@@ -210,14 +253,35 @@ const ShoppingCartBoard = ({ togglePageFn }) => {
 				<CommitBlock>
 					<form ref={formRef}>
 						<label htmlFor="memberId">會員編號</label>
-						<input type="text" id="memberId" name="memberId" />
+						<input
+							type="text"
+							id="memberId"
+							name="memberId"
+							onChange={onFormChange}
+							value={formState.id}
+							onBlur={formValidation}
+							required
+						/>
 						<label htmlFor="memberPassword">密碼</label>
 						<input
 							type="password"
 							id="memberPassword"
 							name="memberPassword"
+							onChange={onFormChange}
+							value={formState.password}
+							onBlur={formValidation}
+							required
 						/>
-						<button type="submit" onClick={submitAndSetMessage}>
+						<button
+							type="submit"
+							onClick={submitAndSetMessage}
+							className={
+								formState.id.length < 6 ||
+								formState.password.length < 6
+									? disableClass
+									: null
+							}
+						>
 							預約
 						</button>
 					</form>

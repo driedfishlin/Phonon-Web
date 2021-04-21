@@ -129,7 +129,6 @@ const ShoppingCartListItem = ({ name, price, type, setFn, count }) => {
 				<input type="text" readOnly value={count} />
 				<button
 					onClick={() => {
-						console.log('+');
 						increaseOrDecreaseQuantity('plus');
 					}}
 				>

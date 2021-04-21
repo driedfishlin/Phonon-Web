@@ -18,10 +18,11 @@ function App() {
 		type: 'room',
 		filter: 'all',
 	});
-	// 用於控制訊息文字
+	// 用於控制訊息元件 MessageComponent
 	const [messageState, setMessageState] = useState({
 		show: false,
 		text: '',
+		color: '',
 	});
 	const contextValue = {
 		commoditiesState: commoditiesState,
@@ -37,6 +38,7 @@ function App() {
 			setMessageState({
 				show: true,
 				text: '本網站僅用於作品展示，並無提供實際線上服務',
+				color: 'yellow',
 			});
 		}, 500);
 	}, []);

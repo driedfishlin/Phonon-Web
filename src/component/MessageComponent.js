@@ -1,3 +1,7 @@
+/* 作為頁面右下角浮動的訊息視窗元件，
+搭配存於 App.js 的 messageState 狀態使用，
+可指定顏色、訊息文字、控制是否顯示 */
+
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 
@@ -41,22 +45,38 @@ const Container = styled.div`
 	}
 `;
 
-const showStyle = {
-	bottom: '30px',
-	opacity: 1,
-	transition: 'opacity 0.5s 0.2s, bottom 0.7s',
-};
-
 const MessageComponent = () => {
 	const context = useContext(pageStateContext);
 	const text = context.message.state.text;
 	const show = context.message.state.show;
 	const setState = context.message.setState;
+	//
+	let color = context.message.state.color;
+	switch (color) {
+		case 'red':
+			color = 'linear-gradient(45deg, #E31D09, #E99707)';
+			break;
+		case 'green':
+			color = 'linear-gradient(45deg, #53D237, #2BD39E)';
+			break;
+		case 'yellow':
+			color = 'linear-gradient(45deg, #ff6b0c, #f1b51f)';
+			break;
+		default:
+			color = 'linear-gradient(45deg, #ff6b0c, #f1b51f)';
+	}
+	const showStyle = {
+		bottom: '30px',
+		opacity: 1,
+		transition: 'opacity 0.5s 0.2s, bottom 0.7s',
+		background: color,
+	};
+	//
 	const closeMessage = () => {
 		setState(prev => ({ ...prev, show: false }));
 	};
 	return (
-		<Container style={show ? showStyle : null}>
+		<Container style={show ? showStyle : { background: color }}>
 			<p>{text}</p>
 			<button onClick={closeMessage}>×</button>
 		</Container>
