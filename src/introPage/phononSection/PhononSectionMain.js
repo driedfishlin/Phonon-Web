@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import PhononSectionTeamInfo from './PhononSectionTeamInfo';
 import PhononSectionTabs from './component/PhononSectionTabs';
 import PhononSectionTeamCard from './component/PhononSectionTeamCard';
-import ScrollPromptText from '../component/shared/ScrollPromptText';
+// import ScrollPromptText from '../component/shared/ScrollPromptText';
 
 import backgroundPNG from '../../image/background/ins.png';
 

@@ -35,7 +35,7 @@ const carouselPosition = {
 	height: '100vh',
 };
 
-const IntroSectionMain = () => {
+const IntroSectionMain = ({ pageState }) => {
 	return (
 		<Container>
 			<Background>
@@ -51,8 +51,8 @@ const IntroSectionMain = () => {
 			/> */}
 			<ImgCarousel position={carouselPosition} />
 			{/* <ImgCarousel imgList={imgList} position={carouselPosition} /> */}
-			<IntroSectionContent />
-			<ScrollPromptText color={'black'} />
+			<IntroSectionContent pageState={pageState} />
+			<ScrollPromptText color={'black'} pageState={pageState} />
 		</Container>
 	);
 };

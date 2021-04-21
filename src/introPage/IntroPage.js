@@ -170,7 +170,7 @@ const IntroPage = () => {
 				/>
 			</SideNavBarContainer>
 			<Section height={'100vh'} bgc={'#F47C4F'} ref={phononIndexSection}>
-				<IntroSectionMain />
+				<IntroSectionMain pageState={pageState} />
 			</Section>
 			<Section height={'100vh'} bgc={'#DED2C7'} ref={phononIntro}>
 				<PhononSectionMain />

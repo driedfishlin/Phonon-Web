@@ -69,7 +69,7 @@ const scrollToNextPage = () => {
 
 //SECTION> React Component
 
-const ScrollPromptText = ({ color }) => {
+const ScrollPromptText = ({ color, pageState }) => {
 	const Arrow = styled(ArrowDown)`
 		position: absolute;
 		top: 12px;
@@ -85,17 +85,26 @@ const ScrollPromptText = ({ color }) => {
 			<ArrowContainer>
 				<Arrow
 					comment="This icon comes from FONTAWESOME. https://fontawesome.com/"
-					style={{
-						animation: `${arrowKeyframes} ${animationDuration}s infinite`,
-					}}
+					style={
+						// 這裡把動畫的暫停條件寫死了，限定於 IntroPage 才套用動畫
+						pageState === 1
+							? {
+									animation: `${arrowKeyframes} ${animationDuration}s infinite`,
+							  }
+							: null
+					}
 				/>
 				<Arrow
 					comment="This icon comes from FONTAWESOME. https://fontawesome.com/"
-					style={{
-						animation: `${arrowKeyframes} ${animationDuration}s ${
-							-animationDuration / 2
-						}s infinite`,
-					}}
+					style={
+						pageState === 1
+							? {
+									animation: `${arrowKeyframes} ${animationDuration}s ${
+										-animationDuration / 2
+									}s infinite`,
+							  }
+							: null
+					}
 				/>
 			</ArrowContainer>
 		</Container>

@@ -1,5 +1,3 @@
-import React from 'react';
-// import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/css';
 
@@ -8,11 +6,6 @@ import { ReactComponent as PhononLogo } from './../../image/logo/phonon_art_logo
 
 //SECTION> STATE & Custom data
 
-// 用於紀錄滑鼠觸發上一次事件的座標
-// let mouseLastMovePosition = {
-// 	x: 0,
-// 	y: 0,
-// };
 // 自訂 Logo 自身飄移速度
 const floatAnimationDuration = 3;
 
@@ -111,7 +104,7 @@ const H2 = styled.h2(props => ({
 	opacity: 0,
 }));
 
-//SECTION> ClassName
+//SECTION> ClassName & Style
 
 const slideText = css`
 	animation-name: ${textSlideKeyframes};
@@ -121,56 +114,23 @@ const slideText = css`
 	animation-fill-mode: forwards;
 `;
 
+// 用於離開當前頁面時停止動畫以節省運算效能
+const pauseAnimationStyle = { animationPlayState: 'paused' };
+
 //SECTION> React Component
-const IntroSectionContent = () => {
-	// const [logoPositionState, setLogoPositionState] = useState({
-	// 	x: 0,
-	// 	y: 0,
-	// });
-	// //PART> /* logo 依據滑鼠移動方向做出位移回饋 */
-	// useEffect(() => {
-	// 	// 用於限制 logo 偏移值
-	// 	let limitX = 0;
-	// 	let limitY = 0;
-	// 	const limitNum = 50;
-	// 	// 操作偏移值並即時更新 Logo 與滑鼠當前的位置資料
-	// 	const updateMousePosition = event => {
-	// 		// 滑鼠往右走
-	// 		if (event.offsetX > mouseLastMovePosition.x && limitX < limitNum) {
-	// 			limitX += 1;
-	// 			setLogoPositionState(prev => ({ x: -limitX, y: prev.y }));
-	// 		}
-	// 		// 滑鼠往左走
-	// 		if (event.offsetX < mouseLastMovePosition.x && limitX > -limitNum) {
-	// 			limitX -= 1;
-	// 			setLogoPositionState(prev => ({ x: -limitX, y: prev.y }));
-	// 		}
-	// 		// 滑鼠往上走
-	// 		if (event.offsetY < mouseLastMovePosition.y && limitY > -limitNum) {
-	// 			limitY -= 1;
-	// 			setLogoPositionState(prev => ({ x: prev, y: -limitY }));
-	// 		}
-	// 		// 滑鼠往下走
-	// 		if (event.offsetY > mouseLastMovePosition.y && limitY < limitNum) {
-	// 			limitY += 1;
-	// 			setLogoPositionState(prev => ({ x: prev, y: -limitY }));
-	// 		}
-	// 		// 紀錄此次事件的滑鼠座標，用於下一次事件觸發時做為比較參考
-	// 		mouseLastMovePosition.x = event.offsetX;
-	// 		mouseLastMovePosition.y = event.offsetY;
-	// 	};
-	// 	const body = document.querySelector('body');
-	// 	body.addEventListener('mousemove', updateMousePosition);
-	// }, []);
+const IntroSectionContent = ({ pageState }) => {
+	console.log(pageState);
 	//PART>
 	return (
-		<Container
-		// style={{
-		// 	transform: `translateX(${logoPositionState.x}px) translateY(${logoPositionState.y}px)`,
-		// }}
-		>
-			<AnimationWrapX className={floatKeyframesX}>
-				<AnimationWrapY className={floatKeyframesY}>
+		<Container>
+			<AnimationWrapX
+				className={floatKeyframesX}
+				style={pageState !== 1 ? pauseAnimationStyle : null}
+			>
+				<AnimationWrapY
+					className={floatKeyframesY}
+					style={pageState !== 1 ? pauseAnimationStyle : null}
+				>
 					<Logo />
 					<TextContent>
 						<H2
