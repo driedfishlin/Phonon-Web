@@ -19,25 +19,22 @@ export const commoditiesInfo = {
 		{
 			nameTc: '飲品',
 			nameEng: 'Drink',
-			imgUrl:
-				'./img/_Temporary_pic/food/maddi-bazzocco-5o4WVPa0qGQ-unsplash.jpg',
+			imgUrl: './img/commodities/large/coffee.jpg',
 		},
 		{
 			nameTc: '糕點',
 			nameEng: 'Cake',
-			imgUrl:
-				'./img/_Temporary_pic/food/corleto-peanut-butter-g0NcZr1eYbI-unsplash.jpg',
+			imgUrl: './img/commodities/large/cake.jpg',
 		},
 		{
 			nameTc: '布丁',
 			nameEng: 'Pudding',
-			imgUrl:
-				'./img/_Temporary_pic/food/priyanka-singh-sZCcZFQ9Hrc-unsplash.jpg',
+			imgUrl: './img/commodities/large/pudding.jpg',
 		},
 		{
 			nameTc: '麵包',
 			nameEng: 'Bread',
-			imgUrl: './img/_Temporary_pic/food/mae-mu-ppOPjqAJ3Mw-unsplash.jpg',
+			imgUrl: './img/commodities/large/bread.jpg',
 		},
 	],
 	room: [
@@ -183,40 +180,74 @@ export const commoditiesList = {
 			name: '101',
 			kind: ['獨立練習室'],
 			numOfUser: 2,
-			price: '50',
+			price: '100',
 			equipment: ['直立鋼琴'],
 			description: '附有直立式鋼琴的獨立練習室，可容納 1-3 人。',
-			pic: './img/_Temporary_pic/room/kara-eads-L7EwHkq1B2s-unsplash.jpg',
+			pic: './img/commodities/small/room/101.jpg',
+		},
+		{
+			name: '212',
+			kind: ['室內樂練習室'],
+			numOfUser: 3,
+			price: '200',
+			equipment: ['馬林巴木琴', '打擊樂器'],
+			description: '中型大小的練習室，可容納約 10 人。',
+			pic: './img/commodities/small/room/212.jpg',
 		},
 		{
 			name: 'B01',
 			kind: ['室內樂練習室'],
 			numOfUser: 3,
-			price: '80',
+			price: '200',
 			equipment: ['平台鋼琴', '馬林巴木琴'],
 			description: '附有平台式鋼琴的中型練習室，可容納約 15 人。',
-			pic:
-				'./img/_Temporary_pic/room/michael-oxendine-GHCVUtBECuY-unsplash.jpg',
+			pic: './img/commodities/small/room/b01.jpg',
+		},
+		{
+			name: 'B04',
+			kind: ['獨立練習室'],
+			numOfUser: 2,
+			price: '100',
+			equipment: ['直立鋼琴'],
+			description: '個人練習室，附有直立鋼琴。',
+			pic: './img/commodities/small/room/b04.jpg',
+		},
+		{
+			name: 'B02',
+			kind: ['室內樂練習室'],
+			numOfUser: 2,
+			price: '75',
+			equipment: ['各式打擊樂器'],
+			description: '提供給打擊演奏者專用的練習室，擁有各式打擊樂器。',
+			pic: './img/commodities/small/room/b02.jpg',
 		},
 		{
 			name: 'B03',
 			kind: ['團體練習室'],
 			numOfUser: 3,
-			price: '150',
+			price: '600',
 			equipment: ['各式打擊樂器'],
 			description: '供樂團排練使用的大型練習室，可容納約 50 人。',
-			pic:
-				'./img/_Temporary_pic/room/roberto-nickson-rEJxpBskj3Q-unsplash.jpg',
+			pic: './img/commodities/small/room/b03.jpg',
 		},
 		{
-			name: '505',
+			name: '506',
+			kind: ['室內樂琴房'],
+			numOfUser: 2,
+			price: '200',
+			equipment: ['平台鋼琴'],
+			description: '擁有兩台平台鋼琴的中型練習室。',
+			pic: './img/commodities/small/room/506.jpg',
+		},
+		{
+			name: '504',
 			kind: ['演奏廳'],
 			numOfUser: 3,
-			price: '150',
+			price: '1400',
 			equipment: ['平台鋼琴'],
 			description:
 				'可容納約 50 名觀眾，適合小型的室內樂演出。演奏廳亦可作為樂團排練空間使用，可容納約 40 人。',
-			pic: './img/_Temporary_pic/room/kara-eads-L7EwHkq1B2s-unsplash.jpg',
+			pic: './img/commodities/small/room/504.jpg',
 		},
 	],
 	food: [
@@ -224,37 +255,93 @@ export const commoditiesList = {
 			name: '蜂蜜蛋糕',
 			kind: '糕點',
 			price: '50',
-			description:
-				'很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。',
-			pic:
-				'./img/_Temporary_pic/room/michael-oxendine-GHCVUtBECuY-unsplash.jpg',
+			description: '口感濕潤綿密又富有彈性、漫溢淡雅的蜂蜜香氣。',
+			pic: './img/commodities/small/food/cake_3.jpg',
 		},
 		{
-			name: '焦糖布丁',
+			name: '脆皮葡式蛋塔',
+			kind: '糕點',
+			price: '50',
+			description:
+				'表面的焦糖搭配濃郁的布蕾，用鮮奶油與酥皮造就外酥內嫩的口感。',
+			pic: './img/commodities/small/food/cake_1.jpg',
+		},
+		{
+			name: '咖啡戚風蛋糕',
+			kind: '糕點',
+			price: '50',
+			description: '外表輕柔蓬鬆，口感鬆軟溼潤，散發出的蛋與咖啡的香氣。',
+			pic: './img/commodities/small/food/cake_4.jpg',
+		},
+		{
+			name: '乳酪蛋糕',
+			kind: '糕點',
+			price: '50',
+			description:
+				'黃金比例的乳酪配方搭配繁複的工法，造就金黃色外表下蘊藏著深不可測的濃郁風味。',
+			pic: './img/commodities/small/food/cake_2.jpg',
+		},
+		{
+			name: '焦糖烤布蕾',
 			kind: '布丁',
 			price: '50',
 			description:
-				'很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。',
-			pic:
-				'./img/_Temporary_pic/room/michael-oxendine-GHCVUtBECuY-unsplash.jpg',
+				'使用特選雞蛋與頂級鮮奶油，經過繁瑣工序的嚴格把關，成就濃而不膩入口即化的細緻口感。',
+			pic: './img/commodities/small/food/pudding_1.jpg',
 		},
 		{
-			name: '麵包',
+			name: '鮮奶布丁',
+			kind: '布丁',
+			price: '50',
+			description: '濃厚的奶香特製，作為午後點心的最好選擇。',
+			pic: './img/commodities/small/food/pudding_2.jpg',
+		},
+		{
+			name: '檸香乳酪麵包',
 			kind: '麵包',
 			price: '50',
 			description:
-				'很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。',
-			pic:
-				'./img/_Temporary_pic/room/michael-oxendine-GHCVUtBECuY-unsplash.jpg',
+				'嚴選香軟鮮奶麵糰，與頂級乳酪與檸檬絲的結合，帶給你回味無窮的清塽口感。',
+			pic: './img/commodities/small/food/bread_1.jpg',
+		},
+		{
+			name: '特製小可頌',
+			kind: '麵包',
+			price: '50',
+			description:
+				'採用頂級奶油、在法國麵粉與老麵之間取得完美的黃金比例。',
+			pic: './img/commodities/small/food/bread_2.jpg',
 		},
 		{
 			name: '美式咖啡',
 			kind: '飲品',
-			price: '50',
+			price: '80',
 			description:
-				'很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。很好吃，不用囉唆。',
-			pic:
-				'./img/_Temporary_pic/room/michael-oxendine-GHCVUtBECuY-unsplash.jpg',
+				'以歐洲方式調製，結合經典濃縮咖啡及熱水，帶來濃郁豐富的咖啡滋味。',
+			pic: './img/commodities/small/food/coffee_1.jpg',
+		},
+		{
+			name: '手沖精品咖啡',
+			kind: '飲品',
+			price: '150',
+			description: '明亮、清爽的口感，同時展現出細膩的風味層次。',
+			pic: './img/commodities/small/food/coffee_2.jpg',
+		},
+		{
+			name: '每日精選手沖',
+			kind: '飲品',
+			price: '100',
+			description:
+				'精心為您挑選來自不同產區的每日精選咖啡，帶給您多元的咖啡風味。',
+			pic: './img/commodities/small/food/coffee_3.jpg',
+		},
+		{
+			name: '莊園級拿鐵',
+			kind: '飲品',
+			price: '100',
+			description:
+				'濃郁醇厚的濃縮咖啡，搭配新鮮蒸煮的優質鮮奶，覆上綿密細緻的奶泡。',
+			pic: './img/commodities/small/food/coffee_5.jpg',
 		},
 	],
 };
