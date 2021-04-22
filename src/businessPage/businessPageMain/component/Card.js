@@ -86,8 +86,6 @@ const ImgBlock = styled.div`
 	transition: width 0.3s;
 	& > img {
 		object-fit: cover;
-		width: 100%;
-		height: 100%;
 	}
 `;
 

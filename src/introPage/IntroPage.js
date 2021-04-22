@@ -44,7 +44,6 @@ const SideNavBarContainer = styled.div`
 
 //SECTION> REACT COMPONENT
 const IntroPage = () => {
-	console.log('re-render');
 	//PART> React State
 	const [sideNavBarState, setSideNavBarState] = useState({
 		target: null,

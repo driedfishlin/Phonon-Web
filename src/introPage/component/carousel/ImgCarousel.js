@@ -164,7 +164,6 @@ const ImgCarousel = ({
 	`;
 	//PART>
 	useEffect(() => {
-		console.log('effect run');
 		if (imgList) {
 			imgNodeList.current.forEach(item => {
 				item.addEventListener(

@@ -76,8 +76,6 @@ const ScrollPromptText = ({ color, pageState }) => {
 
 	useEffect(() => {
 		const observe = new IntersectionObserver(entries => {
-			console.log('trigger');
-			console.log(entries);
 			setArrowState(entries[0].isIntersecting);
 		});
 		observe.observe(arrowRef.current);

@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 import styled from '@emotion/styled';
 
 import { pageStateContext } from '../../App';
@@ -23,15 +23,33 @@ const ContentContainer = styled.div`
 
 export const shoppingCartContext = createContext(null);
 
+const oldData = JSON.parse(localStorage.getItem('phononWebShoppingCartList'));
+
 const BusinessPageMain = () => {
 	//PART>
 	// 購物車頁面顯示狀態
 	const [shoppingCartPageState, setShoppingCartPageState] = useState(false);
 	// 購物車清單內容
-	const [shoppingCartState, setShoppingCartState] = useState({
-		room: [],
-		food: [],
-	});
+	const [shoppingCartState, setShoppingCartState] = useState(
+		oldData || {
+			room: [],
+			food: [],
+		}
+	);
+
+	//PART> // 設定 localStorage 機制，儲存購物車清單
+	useEffect(() => {
+		const onWindowUnload = event => {
+			event.preventDefault();
+			localStorage.setItem(
+				'phononWebShoppingCartList',
+				JSON.stringify(shoppingCartState)
+			);
+		};
+		window.addEventListener('unload', onWindowUnload);
+		return () => window.removeEventListener('unload', onWindowUnload);
+	}, [shoppingCartState]);
+
 	//PART>
 	const contextValue = { shoppingCartState, setShoppingCartState };
 	const context = useContext(pageStateContext);
