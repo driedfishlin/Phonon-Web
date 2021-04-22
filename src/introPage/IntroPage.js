@@ -50,6 +50,7 @@ const IntroPage = () => {
 		target: null,
 		isOpen: false,
 		arrowDelay: false,
+		prevPage: null,
 	});
 	const [pageState, setPageState] = useState(1);
 	//PART> Element Selector
@@ -134,7 +135,9 @@ const IntroPage = () => {
 				target,
 				isOpen: true,
 				arrowDelay: false,
+				prevPage: pageState,
 			});
+			setPageState('sideBar');
 		}
 		if (sideNavBarState.isOpen) {
 			// 解除頁面滾動鎖定
@@ -149,11 +152,16 @@ const IntroPage = () => {
 						'width 0.5s, opacity 0.3s 0.2s, left 0.5s'),
 				200
 			);
-			setSideNavBarState(prevState => ({
-				target: prevState.target,
-				isOpen: false,
-				arrowDelay: true,
-			}));
+			setSideNavBarState(prev => {
+				setPageState(prev.prevPage);
+				window.scrollTo({ top: 0 });
+				return {
+					target: prev.target,
+					isOpen: false,
+					arrowDelay: true,
+					prevPage: null,
+				};
+			});
 		}
 	};
 

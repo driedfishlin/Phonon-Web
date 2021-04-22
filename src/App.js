@@ -62,7 +62,7 @@ function App() {
 				>
 					<BusinessPage />
 				</div>
-				{/* <MessageComponent /> */}
+				<MessageComponent />
 			</pageStateContext.Provider>
 		</Fragment>
 	);
