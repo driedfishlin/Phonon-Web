@@ -2,20 +2,17 @@
 
 	作為圖片跑馬燈的可重用元件，可傳入 position 物件設定位置及尺寸、 filter 物件控制形狀。
 	作為輪播使用，需傳入具圖片網址的陣列（imgList）使用。
-	如果不傳入該陣列，預設將產出靜態的白色色塊。傳入 backgroundStyle 時該色塊將帶有動畫。
+	如果不傳入該陣列，預設將產出靜態的黑色色塊。傳入 backgroundStyle 時該色塊將帶有動畫。
 
-	1. imgList 存在 => 使用該資料建立輪播
-	2. imgList 不存在，但存在 backgroundStyle => 建立陪襯用底圖動畫
-	3. imgList 與 backgroundStyle 都不存在 => 建立空白底圖
+	1. imgList 存在 => imgList 僅有一張圖片 ? 建立靜態圖片 : 使用該資料建立輪播
+	2. imgList 不存在 => 預設在原地建立底圖，可自訂 backgroundStyle 樣式、
+		color 指定顏色、或帶 animation 屬性套用動畫
 
 	・ backgroundStyle 所接受的參數 { opacity, rotate, scale }
 	・ position 所接受的參數 { width, height, top, left }
 	・ filter 所接受的參數 { size, src, position }
 	
 */
-
-// !!! 寫死了指定４張照片
-// 首頁用輪播，其他用靜態照片
 
 import React, { useState, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
@@ -26,8 +23,8 @@ const svgFilter = introPageIntroSectionCarouselImg.svgFilterBase64;
 
 //SECTION> CUSTOM DATA & STATE
 
-// [自訂] 一張圖片動畫的週期
-const totalAnimationTime = 8;
+// [自訂] 一張圖片動畫的週期（秒）
+const totalAnimationTime = 5;
 
 //SECTION> CSS COMPONENT
 const Container = styled.div`
@@ -82,8 +79,7 @@ const fadeIn = css`
 	animation-play-state: pause;
 `;
 
-// Style
-// 用於離開當前頁面時停止動畫以節省運算效能
+// Style => 用於離開當前頁面時停止動畫以節省運算效能
 const pauseAnimationStyle = { animationPlayState: 'paused' };
 
 //SECTION> React Component
@@ -94,17 +90,21 @@ const ImgCarousel = ({
 	position,
 	pageState,
 	pagePosition,
+	float,
+	color,
 }) => {
 	// 當前輪播中的圖片索引數字
 	const [carouselState, setCarouselState] = useState(0);
 	// 取得 <img> 元素的參考
 	const imgNodeList = useRef([]);
+	// 圖片數量
+	const imgCount = imgList?.length;
 
 	//PART> CSS animation keyframes
 
 	// 懸浮的動畫，套用在背景
 	const floatKeyframes = keyframes(
-		backgroundStyle
+		backgroundStyle && float
 			? `from{
 			transform: translateX(0) translateY(0) scale(${backgroundStyle.scale}) rotate(${backgroundStyle.rotate}deg);
 		}
@@ -206,12 +206,36 @@ const ImgCarousel = ({
 						(backgroundStyle ? backgroundClass : '')
 					}
 				>
-					<ImgBackground />
+					<ImgBackground style={{ background: color }} />
 				</Box>
 			</Container>
 		);
-
-	// 圖片輪播主體
+	// 單張的無動畫靜態圖片
+	if (imgCount === 1)
+		return (
+			<Container>
+				<Box
+					className={
+						filterClass +
+						' ' +
+						(position
+							? css({
+									top: position.top || null,
+									right: position.right || null,
+									left: position.left || null,
+									bottom: position.bottom || null,
+									width: position.width || '100vw',
+									height: position.height || '100vh',
+									zIndex: 5,
+							  })
+							: '')
+					}
+				>
+					<Img src={imgList[0]} />
+				</Box>
+			</Container>
+		);
+	// 圖片輪播模組
 	return (
 		/* 結構：
 		<Container>
@@ -244,7 +268,7 @@ const ImgCarousel = ({
 									zIndex: 10,
 							  }
 							: carouselState ===
-							  (index + 1 === 4 ? 0 : index + 1)
+							  (index + 1 === imgCount ? 0 : index + 1) //用於判斷是否為當前輪播圖片的上一張照片
 							? { zIndex: 5 }
 							: null
 					}
@@ -255,6 +279,7 @@ const ImgCarousel = ({
 							ref={el => (imgNodeList.current[index] = el)}
 							className={fadeIn}
 							style={
+								// 離開當前頁面時暫停動畫
 								pagePosition === pageState
 									? null
 									: pauseAnimationStyle

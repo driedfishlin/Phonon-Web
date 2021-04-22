@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/css';
 import { ReactComponent as ArrowDown } from '../../../image/icon/chevron-down-solid.svg';
 
+// [Custom]
 const animationDuration = 4;
 
 //SECTION>
@@ -70,6 +71,18 @@ const scrollToNextPage = () => {
 //SECTION> React Component
 
 const ScrollPromptText = ({ color, pageState }) => {
+	const [arrowState, setArrowState] = useState(true);
+	const arrowRef = useRef(null);
+
+	useEffect(() => {
+		const observe = new IntersectionObserver(entries => {
+			console.log('trigger');
+			console.log(entries);
+			setArrowState(entries[0].isIntersecting);
+		});
+		observe.observe(arrowRef.current);
+	}, []);
+
 	const Arrow = styled(ArrowDown)`
 		position: absolute;
 		top: 12px;
@@ -80,14 +93,14 @@ const ScrollPromptText = ({ color, pageState }) => {
 		}
 	`;
 	return (
-		<Container onClick={scrollToNextPage}>
+		<Container onClick={scrollToNextPage} ref={arrowRef}>
 			<Text style={{ color: color }}>SCROLL</Text>
 			<ArrowContainer>
 				<Arrow
 					comment="This icon comes from FONTAWESOME. https://fontawesome.com/"
 					style={
 						// 這裡把動畫的暫停條件寫死了，限定於 IntroPage 才套用動畫
-						pageState === 1
+						arrowState
 							? {
 									animation: `${arrowKeyframes} ${animationDuration}s infinite`,
 							  }
@@ -97,7 +110,7 @@ const ScrollPromptText = ({ color, pageState }) => {
 				<Arrow
 					comment="This icon comes from FONTAWESOME. https://fontawesome.com/"
 					style={
-						pageState === 1
+						arrowState
 							? {
 									animation: `${arrowKeyframes} ${animationDuration}s ${
 										-animationDuration / 2

@@ -51,22 +51,23 @@ const CoffeeSectionMain = ({ clickFn }) => {
 		<Container>
 			<Background />
 			<CarouselContainer>
-				{/* <ImgCarousel
+				<ImgCarousel
 					filter={{ ...filter, position: '10% 58%' }}
 					backgroundStyle={{
 						scale: 1.08,
 						rotate: -3,
-						opacity: 0.3,
+						opacity: 0.5,
 					}}
 					position={carouselPosition}
-				/> */}
-				<ImgCarousel filter={filter} position={carouselPosition} />
-				{/* <ImgCarousel
+					color={'white'}
+				/>
+				{/* <ImgCarousel filter={filter} position={carouselPosition} /> */}
+				<ImgCarousel
 					filter={filter}
 					imgList={data.imgs}
 					position={carouselPosition}
 					pagePosition={4}
-				/> */}
+				/>
 			</CarouselContainer>
 			<CoffeeSectionContent clickFn={clickFn} />
 		</Container>

@@ -7,8 +7,8 @@ import ScrollPromptText from '../component/shared/ScrollPromptText';
 
 import { ReactComponent as ImgSVG } from '../../image/background/player_01.svg';
 
-import { introPagePhononSectionCarouselImg } from '../../dataTemplate';
-const imgList = introPagePhononSectionCarouselImg.imgs;
+import { introPageRoomSectionCarouselImg } from '../../dataTemplate';
+const imgList = introPageRoomSectionCarouselImg.imgs;
 
 const Container = styled.div`
 	width: 1280px;
@@ -45,7 +45,7 @@ const carouselPosition = {
 };
 
 const filter = {
-	src: introPagePhononSectionCarouselImg.svgFilterBase64,
+	src: introPageRoomSectionCarouselImg.svgFilterBase64,
 	size: '100%',
 	position: '10% 58%',
 };
@@ -56,7 +56,7 @@ const RoomSectionMain = ({ clickFn }) => {
 			<Background>
 				<ImgSVG />
 			</Background>
-			{/* <ImgCarousel
+			<ImgCarousel
 				filter={{ ...filter, position: '10% 58%' }}
 				backgroundStyle={{
 					scale: 1.08,
@@ -64,16 +64,17 @@ const RoomSectionMain = ({ clickFn }) => {
 					opacity: 0.3,
 				}}
 				position={carouselPosition}
-			/> */}
-			<ImgCarousel filter={filter} position={carouselPosition} />
-			{/* <ImgCarousel
+				color={'white'}
+			/>
+			{/* <ImgCarousel filter={filter} position={carouselPosition} /> */}
+			<ImgCarousel
 				filter={filter}
 				imgList={imgList}
 				position={carouselPosition}
 				pagePosition={3}
-			/> */}
+			/>
 			<RoomSectionContent clickFn={clickFn} />
-			{/* <ScrollPromptText color={'white'} /> */}
+			<ScrollPromptText color={'white'} />
 		</Container>
 	);
 };

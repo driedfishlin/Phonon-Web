@@ -119,7 +119,7 @@ const pauseAnimationStyle = { animationPlayState: 'paused' };
 
 //SECTION> React Component
 const IntroSectionContent = ({ pageState }) => {
-	console.log(pageState);
+	// console.log(pageState);
 	//PART>
 	return (
 		<Container>
