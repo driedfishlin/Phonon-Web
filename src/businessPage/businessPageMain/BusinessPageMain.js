@@ -38,8 +38,12 @@ const BusinessPageMain = () => {
 	//PART>
 	const toggleShoppingCartPage = event => {
 		event.preventDefault();
-		if (shoppingCartPageState === false)
+		if (shoppingCartPageState === false) {
+			document.documentElement.style.overflowY = 'hidden';
 			context.message.setState(prev => ({ ...prev, show: false }));
+		} else {
+			document.documentElement.style.overflowY = 'auto';
+		}
 		setShoppingCartPageState(prev => !prev);
 	};
 	//PART>

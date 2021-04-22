@@ -181,7 +181,7 @@ export const commoditiesList = {
 	room: [
 		{
 			name: '101',
-			kind: ['獨立練習室', '室內樂練習室'],
+			kind: ['獨立練習室'],
 			numOfUser: 2,
 			price: '50',
 			equipment: ['直立鋼琴'],
@@ -200,7 +200,7 @@ export const commoditiesList = {
 		},
 		{
 			name: 'B03',
-			kind: ['團體練習室', '室內樂練習室'],
+			kind: ['團體練習室'],
 			numOfUser: 3,
 			price: '150',
 			equipment: ['各式打擊樂器'],
@@ -210,7 +210,7 @@ export const commoditiesList = {
 		},
 		{
 			name: '505',
-			kind: ['演奏廳', '團體練習室', '室內樂練習室'],
+			kind: ['演奏廳'],
 			numOfUser: 3,
 			price: '150',
 			equipment: ['平台鋼琴'],
