@@ -74,7 +74,7 @@ const RoomSectionMain = ({ clickFn }) => {
 				pagePosition={3}
 			/>
 			<RoomSectionContent clickFn={clickFn} />
-			<ScrollPromptText color={'white'} />
+			<ScrollPromptText color={'black'} />
 		</Container>
 	);
 };

@@ -4,16 +4,17 @@ import styled from '@emotion/styled';
 import { ReactComponent as LogoSVG } from '../../image/logo/phonon_art_logo.svg';
 
 const Container = styled.div`
+	z-index: 11;
 	position: relative;
-	// right: 0;
-	// bottom: 5%;
-	margin: 50px;
-	max-width: 600px;
+	margin-bottom: 12%;
+	box-sizing: border-box;
 	display: flex;
+	min-width: 480px;
+	max-width: 500px;
 `;
 
 const TextBlock = styled.div`
-	width: 50%;
+	width: 60%;
 	& > p {
 		margin-top: 15px;
 		padding: 0 0px 0 20px;
@@ -30,7 +31,7 @@ const TextBlock = styled.div`
 
 const LogoBlock = styled.div`
 	position: relative;
-	width: 50%;
+	width: 40%;
 `;
 
 const Logo = styled.div`
@@ -40,7 +41,8 @@ const Logo = styled.div`
 		position: relative;
 		top: 15px;
 		margin-bottom: 100px;
-		width: 180px;
+		// width: 180px;
+		height: 400px;
 		& path,
 		& polygon,
 		& line {

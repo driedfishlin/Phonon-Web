@@ -50,6 +50,7 @@ const CommodityName = styled.a`
 	width: 0px;
 	padding-top: 28px;
 	font-family: 'Noto Serif TC', serif;
+	pointer-events: none;
 `;
 const CommodityNameTc = styled.h6`
 	font-size: 55px;

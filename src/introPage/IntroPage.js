@@ -44,7 +44,7 @@ const SideNavBarContainer = styled.div`
 `;
 
 //SECTION> REACT COMPONENT
-const IntroPage = () => {
+const IntroPage = ({ appPageState }) => {
 	//PART> React State
 	const [sideNavBarState, setSideNavBarState] = useState({
 		target: null,
@@ -154,7 +154,8 @@ const IntroPage = () => {
 			);
 			setSideNavBarState(prev => {
 				setPageState(prev.prevPage);
-				window.scrollTo({ top: 0 });
+				console.dir(event.target.tagName);
+				if (event.target.tagName === 'IMG') window.scrollTo({ top: 0 });
 				return {
 					target: prev.target,
 					isOpen: false,

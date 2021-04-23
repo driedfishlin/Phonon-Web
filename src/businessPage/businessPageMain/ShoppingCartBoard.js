@@ -22,6 +22,7 @@ const Background = styled.div`
 	align-items: center;
 `;
 const Container = styled.div`
+	max-width: 1000px;
 	position: relative;
 	background: #fff;
 	overflow: hidden;
@@ -100,6 +101,7 @@ const CommitBlock = styled.div`
 			border-radius: 20px;
 			border: none;
 			margin: 0 20px 0 10px;
+			max-width: 200px;
 			&:focus {
 				outline: none;
 			}

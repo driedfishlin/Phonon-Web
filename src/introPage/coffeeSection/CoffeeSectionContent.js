@@ -11,6 +11,7 @@ const Container = styled.div`
 	max-width: 500px;
 	display: flex;
 	align-items: flex-end;
+	z-index: 11;
 `;
 
 const TextBlock = styled.div`
@@ -40,7 +41,8 @@ const Logo = styled.div`
 		position: relative;
 		top: 15px;
 		margin-bottom: 50px;
-		width: 150px;
+		// width: 150px;
+		height: 400px;
 		& path,
 		& polygon,
 		& line {

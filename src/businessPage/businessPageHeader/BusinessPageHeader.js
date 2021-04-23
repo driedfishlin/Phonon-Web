@@ -31,6 +31,7 @@ const Main = styled.div`
 const LogoArea = styled.div`
 	flex: initial;
 	& > h1 {
+		width: 10px;
 		position: absolute;
 		overflow: hidden;
 		white-space: nowrap;
