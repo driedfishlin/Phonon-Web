@@ -4,8 +4,8 @@
 import introCarouseImg_A from './image/carousel/phonon_coffee_4.jpg';
 import introCarouseImg_B from './image/carousel/phonon_coffee_3.jpg';
 import introCarouseImg_C from './image/carousel/phonon_coffee_5.jpg';
-import introCarouseImg_D from './image/carousel/phonon_coffee_2.jpg';
-import introCarouseImg_E from './image/carousel/phonon_coffee_1.jpg';
+// import introCarouseImg_D from './image/carousel/phonon_coffee_2.jpg';
+// import introCarouseImg_E from './image/carousel/phonon_coffee_1.jpg';
 // import introCarouseImg_D from './image/_Temporary_pic/room/roberto-nickson-rEJxpBskj3Q-unsplash.jpg';
 // For PhononSectionMain
 import { ReactComponent as phononArtLogo } from './image/logo/phonon_art_logo.svg';

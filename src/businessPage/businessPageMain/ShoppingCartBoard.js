@@ -50,6 +50,7 @@ const HeaderBlock = styled.div`
 	}
 `;
 const ListBlock = styled.div`
+	min-height: 350px;
 	margin: 0 40px 0 40px;
 	overflow-y: scroll;
 	max-height: 300px;

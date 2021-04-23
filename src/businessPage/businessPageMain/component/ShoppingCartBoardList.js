@@ -7,7 +7,6 @@ import ShoppingCartListItem from './ShoppingCartListItem';
 
 const CommoditiesType = ({ type }) => {
 	const CommoditiesTypeStyle = css`
-		// background: #f7f6f8;
 		padding: 0 0 0 15px;
 		border-radius: 15px;
 		margin: 20px 10px 10px 0;

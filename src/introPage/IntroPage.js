@@ -66,16 +66,6 @@ const IntroPage = () => {
 		phononCoffeeSection,
 	];
 
-	//PART> Intersection Observer API
-	useEffect(() => {
-		const sectionObserver = new IntersectionObserver(scrollPage, {
-			rootMargin: '-5px',
-		});
-		sectionNodeList.map(section =>
-			sectionObserver.observe(section.current)
-		);
-	}, []);
-
 	//PART> FUNCTION
 	// 呼叫 setState 以更新左側 UI
 	const UpdateCurrentPage = entries => {
@@ -107,6 +97,16 @@ const IntroPage = () => {
 			UpdateCurrentPage(entries);
 		}
 	};
+
+	//PART> Intersection Observer API
+	useEffect(() => {
+		const sectionObserver = new IntersectionObserver(scrollPage, {
+			rootMargin: '-5px',
+		});
+		sectionNodeList.map(section =>
+			sectionObserver.observe(section.current)
+		);
+	}, [scrollPage, sectionNodeList]);
 
 	// 側邊導覽列（產品項目）切換功能
 	const sideNavBarToggle = event => {

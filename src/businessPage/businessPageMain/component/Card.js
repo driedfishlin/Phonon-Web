@@ -39,6 +39,7 @@ const Container = styled.div`
 					display: block;
 					box-sizing: border-box;
 					& > span {
+						width: auto;
 						position: absolute;
 						bottom: 8px;
 						right: 35px;
@@ -113,9 +114,10 @@ const TitleBlock = styled.div`
 		transition: font-size 0.3s;
 		height: 50px;
 		& > span {
+			position: absolute;
 			opacity: 0;
 			font-size: 0px;
-			display: inline-block;
+			width: 0px;
 		}
 	}
 `;
@@ -151,6 +153,7 @@ const ContentDetailBlock = styled.div`
 const PersonIcon = styled.div`
 	display: flex;
 	justify-content: center;
+	align-items: flex-start;
 	margin-top: 20px;
 	& > svg {
 		width: 20px;
@@ -201,6 +204,7 @@ const activeCardClass = css`
 				display: block;
 				box-sizing: border-box;
 				& > span {
+					width: auto;
 					position: absolute;
 					bottom: 8px;
 					right: 35px;
