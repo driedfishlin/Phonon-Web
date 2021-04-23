@@ -24,7 +24,7 @@ const svgFilter = introPageIntroSectionCarouselImg.svgFilterBase64;
 //SECTION> CUSTOM DATA & STATE
 
 // [自訂] 一張圖片動畫的週期（秒）
-const totalAnimationTime = 5;
+const totalAnimationTime = 4;
 
 //SECTION> CSS COMPONENT
 const Container = styled.div`

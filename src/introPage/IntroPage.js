@@ -102,7 +102,7 @@ const IntroPage = ({ appPageState }) => {
 	//PART> Intersection Observer API
 	useEffect(() => {
 		const sectionObserver = new IntersectionObserver(scrollPage, {
-			rootMargin: '-5px',
+			rootMargin: '-1px',
 		});
 		sectionNodeList.map(section =>
 			sectionObserver.observe(section.current)

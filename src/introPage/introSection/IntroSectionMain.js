@@ -56,7 +56,7 @@ const IntroSectionMain = ({ pageState }) => {
 				}}
 			/>
 			<ImgCarousel
-				imgList={[imgList[0]]}
+				imgList={imgList}
 				position={carouselPosition}
 				pagePosition={1}
 				pageState={pageState}
