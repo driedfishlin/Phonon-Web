@@ -11,7 +11,7 @@ import PageMenu from './component/shared/PageMenu';
 import Footer from './footerSection/Footer';
 
 //SECTION> EVENT LISTENER
-window.addEventListener('beforeunload', event => {
+window.addEventListener('unload', event => {
 	event.preventDefault();
 	window.scrollTo({ top: 0 });
 });
@@ -21,6 +21,7 @@ window.addEventListener('beforeunload', event => {
 const Container = styled.div`
 	width: 100%;
 	overflow: hidden;
+	-moz-overflow: hidden;
 `;
 
 const Section = styled.div(props => ({
@@ -74,13 +75,13 @@ const IntroPage = () => {
 			// 1. 增進動畫配合度上的視覺銜接
 			// 2. 將動畫與捲動分開執行減少 drop frame
 			case phononIndexSection.current:
-				return setTimeout(() => setPageState(1), 300);
+				return setTimeout(() => setPageState(1), 500);
 			case phononIntro.current:
-				return setTimeout(() => setPageState(2), 300);
+				return setTimeout(() => setPageState(2), 500);
 			case phononArtSection.current:
-				return setTimeout(() => setPageState(3), 300);
+				return setTimeout(() => setPageState(3), 500);
 			case phononCoffeeSection.current:
-				return setTimeout(() => setPageState(4), 300);
+				return setTimeout(() => setPageState(4), 500);
 			default:
 				return;
 		}
@@ -106,7 +107,7 @@ const IntroPage = () => {
 		sectionNodeList.map(section =>
 			sectionObserver.observe(section.current)
 		);
-	}, [scrollPage, sectionNodeList]);
+	}, []); // 這裡不給 dependent
 
 	// 側邊導覽列（產品項目）切換功能
 	const sideNavBarToggle = event => {
