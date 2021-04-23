@@ -43,8 +43,9 @@ const Box = styled.div`
 
 const Img = styled.img`
 	will-change: opacity;
-	min-width: 100%;
-	min-height: 100%;
+	// min-width: 100%;
+	height: 100%;
+	object-fit: contain;
 	opacity: 1;
 `;
 

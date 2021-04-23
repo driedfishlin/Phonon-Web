@@ -1,10 +1,12 @@
 /* 檔案用途：統一管理資料結構並匯出 */
 
 // For IntroSectionMain
-import introCarouseImg_A from './image/_Temporary_pic/room/kara-eads-L7EwHkq1B2s-unsplash.jpg';
-import introCarouseImg_B from './image/_Temporary_pic/room/kari-shea-tOVmshavtoo-unsplash.jpg';
-import introCarouseImg_C from './image/_Temporary_pic/room/michael-oxendine-GHCVUtBECuY-unsplash.jpg';
-import introCarouseImg_D from './image/_Temporary_pic/room/roberto-nickson-rEJxpBskj3Q-unsplash.jpg';
+import introCarouseImg_A from './image/carousel/phonon_coffee_4.jpg';
+import introCarouseImg_B from './image/carousel/phonon_coffee_3.jpg';
+import introCarouseImg_C from './image/carousel/phonon_coffee_5.jpg';
+import introCarouseImg_D from './image/carousel/phonon_coffee_2.jpg';
+import introCarouseImg_E from './image/carousel/phonon_coffee_1.jpg';
+// import introCarouseImg_D from './image/_Temporary_pic/room/roberto-nickson-rEJxpBskj3Q-unsplash.jpg';
 // For PhononSectionMain
 import { ReactComponent as phononArtLogo } from './image/logo/phonon_art_logo.svg';
 import { ReactComponent as phononCoffeeLogo } from './image/logo/phonon_cafe_logo.svg';
@@ -41,26 +43,22 @@ export const commoditiesInfo = {
 		{
 			nameTc: '獨立練習室',
 			nameEng: 'Personal Practice Room',
-			imgUrl:
-				'./img/_Temporary_pic/room/kara-eads-L7EwHkq1B2s-unsplash.jpg',
+			imgUrl: './img/commodities/large/B04_L.jpg',
 		},
 		{
 			nameTc: '室內樂練習室',
 			nameEng: 'Chamber Music Practice Room',
-			imgUrl:
-				'./img/_Temporary_pic/room/kari-shea-tOVmshavtoo-unsplash.jpg',
+			imgUrl: './img/commodities/large/B01_L.jpg',
 		},
 		{
 			nameTc: '團體練習室',
 			nameEng: 'Group Practice Room',
-			imgUrl:
-				'./img/_Temporary_pic/room/michael-oxendine-GHCVUtBECuY-unsplash.jpg',
+			imgUrl: './img/commodities/large/B03_L.jpg',
 		},
 		{
 			nameTc: '演奏廳',
 			nameEng: 'Concert Hall',
-			imgUrl:
-				'./img/_Temporary_pic/room/roberto-nickson-rEJxpBskj3Q-unsplash.jpg',
+			imgUrl: './img/commodities/large/504_L.jpg',
 		},
 	],
 };
@@ -72,12 +70,13 @@ export const navListItem = [{ name: '琴房預約' }, { name: '餐點訂製' }];
 
 //PART> For IntroSectionMain
 export const introPageIntroSectionCarouselImg = {
-	introSection: [
-		introCarouseImg_A,
-		introCarouseImg_B,
-		introCarouseImg_C,
-		introCarouseImg_D,
-	],
+	introSection: [introCarouseImg_A, introCarouseImg_B, introCarouseImg_C],
+	// introSection: [
+	// 	introCarouseImg_A,
+	// 	introCarouseImg_B,
+	// 	introCarouseImg_C,
+	// 	introCarouseImg_D,
+	// ],
 	svgFilterBase64:
 		'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI0LjMuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IuWcluWxpF8yXzFfIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiCgkgeT0iMHB4IiB2aWV3Qm94PSIwIDAgODQyLjcgNTI4LjIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDg0Mi43IDUyOC4yOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxwYXRoIGQ9Ik02MS41LDEwMi43QzEyNSw1NCwxODcuNyw1NS44LDIzNi42LDY0LjdjMzkuNSw2LjIsNTgsMjAuNSwxMTYuMywyM2M4Ni40LDMuNywxNjkuOS0zNC40LDE5NS4zLTQ2CglDNTgzLjYsMjUuNiw1OTQsMTUuOCw2MjcsNy45YzktMi4yLDY0LjgtMTUuNiwxMTEuMS0xLjVjNzkuNCwyNC4zLDk1LjMsMTE4LjgsMTAxLDE1My4yYzQuMiwyNS4yLDIxLjQsMTUxLjEtODQuOCwyNDkuOAoJYy01MS40LDQ3LjgtMTA4LjQsNjcuNS0xNTMuNyw4Mi44Yy0zOS4xLDEzLjEtMjI1LjgsNzUuOC00MDEuOS0yLjlDMTY4LjksNDc2LjEsMTMuNCw0MDIuMywxLjIsMjY0LjEKCUMtMC43LDI0Mi40LTguMywxNTYuMiw2MS41LDEwMi43eiIvPgo8L3N2Zz4K',
 };
@@ -111,7 +110,7 @@ export const phononTeams = [
 export const phononTeamInfoCardColor = ['#7E2DAA', '#D93178', '#FE7439'];
 
 export const introPageRoomSectionCarouselImg = {
-	imgs: [introCarouseImg_A],
+	imgs: [introCarouseImg_C],
 	svgFilterBase64:
 		'data:image/svg+xml;base64,PHN2ZyBpZD0i5ZyW5bGkXzEiIGRhdGEtbmFtZT0i5ZyW5bGkIDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDQ5OCAxMjk1Ij48cGF0aCBkPSJNNywxMTEzLjA4YzEuNzUsMjMuODQsNi45LDQzLjU3LDE2LjUzLDYzLjcsMTQuNiwzMC4zNCwzNC40LDQ4LjIxLDgyLjExLDc0LjIyLDIyLjEyLDEyLjExLDM2LjQ4LDE4LjI1LDUyLjE5LDIyLjUxLDI4LDcuNTUsNDguMTEsOC45Miw2Ny41Miw0LjI2LDQuOTMtMS4wOCw1LTEuMDgsOC40NSwyLjJBMjEuNDQsMjEuNDQsMCwwLDAsMjQ4LDEyODUuN2MzLjcuMDksMTUuMzgtMywyMC41NC01LjUzLDIuNzMtMS4zMyw2Ljk0LTEuNzQsMTktMS43NiwxMy4yMS0uMTksMTcuMzItLjYsMjcuMjgtMywxMi0yLjkyLDM1LjM2LTEwLjg4LDQ5LjEtMTYuNzZhNzUuMjgsNzUuMjgsMCwwLDEsOC4xNy0zLjEyYy40LDAsMSwxLjQzLDEuMzMsMywuODgsNS4yMiw1LjgzLDExLjczLDExLDE0LjM1LDguNyw0LjUxLDE5Ljc0LDIuODYsMjYtMy43LDYuNzYtNyw4LjMxLTE3LjcxLDMuNy0yNS45Mi0xLjQ0LTIuNjMtMy4yOC01LjE3LTQuMTctNS42OS0xLjE5LS43My0uMDYtMS45MSw1LjUzLTUuNzhhMTk2Ljg5LDE5Ni44OSwwLDAsMCw0Ni40Ny00NS43NGMxOS40NC0yNy40NSwyNy41OS01NS4xNywyOC40NS05Ni44Ni4zLTE3LjMuMTEtMjIuMTEtMS41OS0zMC41NS0zLjU3LTE4LjQ5LTE0LjktNTYuNDYtMjQuNDEtODItMy41OC05LjY5LTcuMTMtMjAuNTgtNy44NC0yNC4xOS0yLjMyLTEyLjM2LS45LTI2LjEzLDMuNjMtMzYuMTNsMi00LjU1LTMuOTUtNi42LTMuOTQtNi42OS01LjQ4LDMuMThjLTguODIsNS0yMC44Myw1LjIxLTMwLjQyLjQ5LTUuNjQtMi43My0xNi42OS0xMy42OS0yMi4yLTIxLjgyLTEwLjA2LTE0Ljg0LTE2Ljc2LTM2LjUtMjIuNzktNzMuOTUtMy4zMi0yMS0yLjQ0LTQxLjU2LDIuMjktNTEuNjYsNC04LjUxLDE1LjkyLTEzLjQzLDM4LjY4LTE1LjkxbDQuODEtLjQ4LDQuMy04LjMxLDQuMzktOC4yLTIuNTItMy40NmMtMy42OS01LTctMTIuNTYtOS4zMi0yMC45Mi0xLjg1LTYuNDQtMi04Ljg1LTEuMjctMTguNTNhMTc3Ljc1LDE3Ny43NSwwLDAsMSwzLjczLTIzYzYuMTktMjUuMjcsNi4zMS0yNi4xNiw3LjQyLTUyLjU0LDEuMTUtMjguMTkuNjctMzcuNS0zLjExLTUxLjU5LTUuNy0yMS43NC0xNC4wNi0zNi4zNC0zMC41Ny01My41Mi0yNS4zOS0yNi41LTU0LjU5LTQwLjA4LTEwMC40NS00Ni41NGwtMTQuMDYtMS45My4wOS0zLjc5QzI3Ny44OCw0NDMsMjczLDM0Mi4yMywyNjUsMTgwLjNjLS40Mi03LjcxLS45My0xNi4xMy0xLjA3LTE4LjgzbC0uNDktNC43MiwxNS42LjM3YzguOC4yLDE2LjUxLS4xMiwxNy41Mi0uNiwxLjUxLS43NiwyLjQxLS41NCwzLjg3LDFhMTIuNzEsMTIuNzEsMCwwLDEsMi4yMywzLjE1Yy4yOC45MSwxLjU5LjY0LDQuODMtMSwzLjk0LTEuOSw2LjM1LTIuMjUsMTcuMzUtMi4yOSwxMS42MS0uMTQsMTIuOTEtLjMxLDE0LjI2LTIuMTdhMTEsMTEsMCwwLDAsMS42Mi01LjE3Yy4xMy01LjYtLjY2LTYtMTMuMDYtNi4zLTEwLjQtLjI0LTExLjc5LS40OC0xNy41My0zLjMxLTUuMzQtMi42Mi02LjMzLTIuODUtOC0xLjY4LTEuMzMsMS4wNy01LjYzLDEuMTctMjAuOTIuNjEtMjIuMDktLjgxLTE5LjcyLjc1LTIwLjU4LTE0LjA4bC0uNS04LjgxLDEzLjM4LDFjNy4zOS41NywxNCwxLjUyLDE0LjY2LDIsLjg4LjgyLDEuNzkuNjQsMy4xMi0uNjMsMi44NS0yLjQzLDUuODItMS4wNyw2LjQzLDMsMS41OCw5LjQ0LDEyLjQ2LDE0Ljc5LDIxLjA2LDEwLjI5LDEwLjQzLTUuMzYsMTguMDUtMTQuODksMTguMTQtMjIuNzkuMDUtMTAuOC05Ljg5LTIyLjMzLTIwLjg1LTI0LjA5LTYuMTgtLjk0LTkuNDIuNTktMTIuOTQsNmE4NC4xMSw4NC4xMSwwLDAsMS01LjI4LDcuNDhjLTIuMTYsMi41NS0yLjM2LDIuNjQtMy41Mi45Mi0xLjA3LTEuNTMtMS42Ny0xLjU0LTMuODktLjU5LTEuNzIuNzYtNy45MiwxLTE3LC44bC0xNC4zLS4zMy0uNTUtNi41MWMtLjQ2LTUuODItLjI0LTYuNzEsMS43LTguNTdzMi4xNy0yLjg1LDEuODItOS4yNmMtLjMxLTMuOTEtLjcyLTgtMS05LjIyLS41Ni0xLjgyLS4yNS0yLDIuNDQtMS41NSw0LjI4LjcsOC45My0xLjI5LDEwLjgxLTQuODUsMi4zLTQsMy4yLTEyLjkzLDEuNzktMTYuNTYtMS4yMy0zLjIzLTYuMDYtNi4yNC0xMC4yNi02LjM0LTIuMi0uMDUtMi41OS0uNTYtMi41My0yLjg2LjEtNC42LTEuNzctMTAuMTQtMy43NC0xMS4yOWExMy43MywxMy43MywwLDAsMC01LTEuMTFjLTIuOC0uMDctMy0uMjctMi4yMy0yLjg2LDItNi45NS0uMjgtOS42MS0xMC4xMy0xMkMyMjYuNTYsMi43NiwyMjAsNS43MSwyMTkuNzMsMTYuODFjLS4xNCw1Ljg5LS4xNCw1Ljg5LTMsNS44My00LjktLjEyLTguMzgsMy42LTksOS40OWwtLjYyLDUuMDktNC41MS40OWMtNi4yMi42Ni04LjI1LDItMTAuNTYsNi42Ni0zLjU3LDcuNTItMi40MiwxMy44NSwzLjc2LDE5LjI5LDIuNTUsMi4xNiw0LDIuNyw3LjM0LDIuNDdsNC4yMS0uMi0uNjEsNC42OWMtLjc1LDYuMjgsMCw5LjEsMy40MSwxMi41OGwyLjgzLDMtMS4zMSwxMy40N2MtLjY3LDcuMzktMS4zMSwxMy40Ny0xLjQxLDEzLjU3cy05LjMxLjA5LTIwLjUxLS4wN2MtMTMuNi0uMTItMjAuNTktLjU4LTIxLjI3LTEuM3MtMi41OS0uNDYtNi41MywxLjE1Yy05LDMuNy0xNCw0LjM4LTIxLjY3LDIuOC04LjQ3LTEuNjktOS43OC0uOTItOS45NCw2LS4xNyw3LjEsMi4yLDguNDYsMTMuMjIsNy44MSw2LjkxLS4zNCw5LjYsMCwxNSwxLjc1LDMuNTgsMS4xOCw2Ljc0LDIuNjYsNy4xMywzLjI3czEuNTEtLjI3LDIuNjUtMmMxLjY2LTIuNjcsMi4zNy0zLjA1LDQuMTUtMi4zMSwxLjE5LjQzLDEwLjE4LDEuMjQsMTkuODcsMS41NmwxNy43OS44MS0uMzYsMTUuNC0uMzYsMTUuNS0xNS0uMzVjLTkuNS0uMjItMTUuODktLjc3LTE3LjU3LTEuNjEtMi4xOC0xLjA1LTIuNzgtMS4wNi0zLjkxLjQxcy0xLjM0LDEuNDctMy4xOS0uNjdhNDUuNzYsNDUuNzYsMCwwLDEtNC42My03LjExYy00LjQyLTgtNy4zOS05LjE4LTE3LjA2LTYuNi05LjI2LDIuNDktMTcuOSwxMy4wOS0xOC4yMSwyMi4xOS0uMjUsMTAuNTksMTMuNjIsMjUuMjIsMjQuMzEsMjUuNDdBMTQuNDcsMTQuNDcsMCwwLDAsMTY4LjQ1LDE4NGMuNzktNC4wOCwzLjgyLTUuMzEsNi41Ni0yLjc0LDEuMjcsMS4zMywyLjE3LDEuNTUsMy4wOC44Ny43Mi0uNTksNy45My0xLjEyLDE1Ljk0LTEuMzNsMTQuNjEtLjM3LjA4LDIyLjMxYy4xMiwxMi4zMS0uOSw3My41LTIuMjUsMTM2LjA5bC0yLjMzLDExMy42Ny04LjYuMmExMTIsMTEyLDAsMCwwLTE3LjE2LDIuMTFjLTE3LjQ5LDMuNjktNDcuNDgsMTYtNjIuNSwyNS40NkM5Ny41LDQ5Miw3OS4yOSw1MTMuODksNjguNjUsNTM3LjE1Yy04LjEyLDE3LjcyLTExLjQxLDM0LjU0LTExLDU3LjQ2LjIzLDE2LjMxLDEuNjMsMjQuOTQsMTEuNTMsNzIuMjksNC4xNCwyMC4xLDQuOTIsMjUuMTIsNC4zMiwyOS44LTEuMTEsOC44OC00LjQsMTYuOTEtMTAuNCwyNS42Ny0xLjY2LDIuMzYtMS41NiwyLjY2LDMuMTYsMTAuMzhDNzAsNzM5LDcxLjM0LDc0MC40Nyw3Mi43NSw3NDBjMTAuMy00LjA2LDE2LjgtNCwyNC43MS0uMTMsOSw0LjUxLDE1LDEyLjY1LDE3LjM3LDIzLjExLDUuOCwyNS45NCwzLDY5LjM5LTYuMjMsOTYuNTgtNy44NCwyMi45My0yMy4yOSw0Mi4zNy0zOSw0OS4xMS03LjM3LDMuMTMtMTkuNTcsMi42NS0yOC44OC0xLjI3YTY1LjUzLDY1LjUzLDAsMCwwLTctMi41NmMtLjExLjItMiwzLjQ1LTQuMTcsNy40bC00LDcsMy42LDQuMzljOS4xNSwxMS4yMSw4LjI2LDIzLjU5LTUuMDgsNzIuOC05LjYzLDM1LjM5LTEzLjE0LDUzLjExLTE1Ljg1LDc5LjU1QzcsMTA4OC42Nyw2LjM4LDExMDUuMjYsNywxMTEzLjA4WiIvPjwvc3ZnPg==',
 };
@@ -271,7 +270,7 @@ export const commoditiesList = {
 			kind: '糕點',
 			price: '50',
 			description: '外表輕柔蓬鬆，口感鬆軟溼潤，散發出的蛋與咖啡的香氣。',
-			pic: './img/commodities/small/food/cake_4.jpg',
+			pic: './img/commodities/small/food/cake_5.jpg',
 		},
 		{
 			name: '乳酪蛋糕',
@@ -282,12 +281,12 @@ export const commoditiesList = {
 			pic: './img/commodities/small/food/cake_2.jpg',
 		},
 		{
-			name: '焦糖烤布蕾',
+			name: '烤布蕾',
 			kind: '布丁',
 			price: '50',
 			description:
 				'使用特選雞蛋與頂級鮮奶油，經過繁瑣工序的嚴格把關，成就濃而不膩入口即化的細緻口感。',
-			pic: './img/commodities/small/food/pudding_1.jpg',
+			pic: './img/commodities/small/food/pudding_3.jpg',
 		},
 		{
 			name: '鮮奶布丁',
