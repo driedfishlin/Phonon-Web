@@ -154,7 +154,7 @@ const IntroPage = ({ appPageState }) => {
 			);
 			setSideNavBarState(prev => {
 				setPageState(prev.prevPage);
-				console.dir(event.target.tagName);
+				// 選單展開時點擊關閉按鈕將不觸發 scroll
 				if (event.target.tagName === 'IMG') window.scrollTo({ top: 0 });
 				return {
 					target: prev.target,
