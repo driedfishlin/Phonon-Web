@@ -53,6 +53,10 @@ const IntroPage = () => {
 		arrowDelay: false,
 		prevPage: null,
 	});
+	const [sideNavMenuState, setSideNavMenuState] = useState({
+		isOpen: false,
+		prevPage: null,
+	});
 	const [pageState, setPageState] = useState(1);
 	//PART> Element Selector
 	const phononIndexSection = useRef(null),
@@ -172,7 +176,10 @@ const IntroPage = () => {
 		<Container>
 			<PageMenu page={pageState} changPage={setPageState} />
 			<MainNavigationBar clickFn={sideNavBarToggle} page={pageState} />
-			<NavSideMenu />
+			<NavSideMenu
+				page={pageState}
+				useSideNavMenuState={[sideNavMenuState, setSideNavMenuState]}
+			/>
 			<SideNavBarContainer ref={sideNavBar}>
 				<CommoditiesGroup
 					clickState={sideNavBarState}
