@@ -49,6 +49,11 @@ const Container = styled.div`
 	left: 15vw;
 	transition: transform 1.2s;
 	z-index: 15;
+	@media (max-width: 1024px) {
+		left: 8vw;
+		top: 30vh;
+		transform: scale(0.85);
+	}
 `;
 const AnimationWrapX = styled.div`
 	position: relative;

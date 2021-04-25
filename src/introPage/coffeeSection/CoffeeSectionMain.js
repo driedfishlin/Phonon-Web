@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/css';
 
 import ImgCarousel from '../component/carousel/ImgCarousel';
 import CoffeeSectionContent from './CoffeeSectionContent';
@@ -46,7 +47,7 @@ const filter = {
 	position: '10% 58%',
 };
 
-const CoffeeSectionMain = ({ clickFn }) => {
+const CoffeeSectionMain = () => {
 	return (
 		<Container>
 			<Background />
@@ -60,6 +61,11 @@ const CoffeeSectionMain = ({ clickFn }) => {
 					}}
 					position={carouselPosition}
 					color={'white'}
+					rwdOption={css`
+						@media (max-width: 1024px) {
+							opacity: 0.3;
+						}
+					`}
 				/>
 				{/* <ImgCarousel filter={filter} position={carouselPosition} /> */}
 				<ImgCarousel
@@ -67,9 +73,14 @@ const CoffeeSectionMain = ({ clickFn }) => {
 					imgList={data.imgs}
 					position={carouselPosition}
 					pagePosition={4}
+					rwdOption={css`
+						@media (max-width: 1024px) {
+							opacity: 0.5;
+						}
+					`}
 				/>
 			</CarouselContainer>
-			<CoffeeSectionContent clickFn={clickFn} />
+			<CoffeeSectionContent />
 		</Container>
 	);
 };

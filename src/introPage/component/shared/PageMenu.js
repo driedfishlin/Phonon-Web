@@ -63,6 +63,9 @@ const Container = styled.div`
 			height: 30px;
 		}
 	}
+	@media (max-width: 1024px) {
+		display: none;
+	}
 `;
 const Button = styled.a`
 	height: 10px;

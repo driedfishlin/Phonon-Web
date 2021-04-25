@@ -4,13 +4,16 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const Container = styled.div`
-	// position: absolute;
 	margin-top: 50px;
 	display: inline-block;
-	// max-width: 65%;
 	& > p {
 		font-size: 20px;
 		text-align: justify;
+	}
+	@media (max-width: 699px) {
+		> p {
+			font-size: 17px;
+		}
 	}
 `;
 

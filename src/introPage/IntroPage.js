@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 // Component
 import MainNavigationBar from './component/navBar/MainNavigationBar';
+import NavSideMenu from './component/navBar/NavSideMenu';
 import IntroSectionMain from './introSection/IntroSectionMain';
 import PhononSectionMain from './phononSection/PhononSectionMain';
 import RoomSectionMain from './roomSection/RoomSectionMain';
@@ -44,7 +45,7 @@ const SideNavBarContainer = styled.div`
 `;
 
 //SECTION> REACT COMPONENT
-const IntroPage = ({ appPageState }) => {
+const IntroPage = () => {
 	//PART> React State
 	const [sideNavBarState, setSideNavBarState] = useState({
 		target: null,
@@ -170,7 +171,8 @@ const IntroPage = ({ appPageState }) => {
 	return (
 		<Container>
 			<PageMenu page={pageState} changPage={setPageState} />
-			<MainNavigationBar clickFn={sideNavBarToggle} />
+			<MainNavigationBar clickFn={sideNavBarToggle} page={pageState} />
+			<NavSideMenu />
 			<SideNavBarContainer ref={sideNavBar}>
 				<CommoditiesGroup
 					clickState={sideNavBarState}
@@ -190,10 +192,10 @@ const IntroPage = ({ appPageState }) => {
 				ref={phononArtSection}
 				id={'phononArtSection'}
 			>
-				<RoomSectionMain clickFn={sideNavBarToggle} />
+				<RoomSectionMain />
 			</Section>
 			<Section height={'80vh'} bgc={'#F8DC54'} ref={phononCoffeeSection}>
-				<CoffeeSectionMain clickFn={sideNavBarToggle} />
+				<CoffeeSectionMain />
 			</Section>
 			<Footer bgc={'#4C2556'} height={'20vh'} />
 		</Container>
