@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from '@emotion/styled';
+
+import { pageStateContext } from '../../App';
 
 import { ReactComponent as LogoSVG } from '../../image/logo/phonon_art_logo.svg';
 
@@ -11,6 +13,12 @@ const Container = styled.div`
 	display: flex;
 	min-width: 480px;
 	max-width: 500px;
+	@media (max-width: 1024px) {
+		position: absolute;
+		top: 50%;
+		right: 10%;
+		transform: translateY(-50%);
+	}
 `;
 
 const TextBlock = styled.div`
@@ -41,7 +49,6 @@ const Logo = styled.div`
 		position: relative;
 		top: 15px;
 		margin-bottom: 100px;
-		// width: 180px;
 		height: 400px;
 		& path,
 		& polygon,
@@ -80,7 +87,8 @@ const ButtonBlock = styled.div`
 	}
 `;
 
-const RoomSectionContent = ({ clickFn }) => {
+const RoomSectionContent = () => {
+	const context = useContext(pageStateContext);
 	return (
 		<Container>
 			<LogoBlock>
@@ -88,7 +96,17 @@ const RoomSectionContent = ({ clickFn }) => {
 					<LogoSVG />
 				</Logo>
 				<ButtonBlock>
-					<button onClick={clickFn}>琴房預約</button>
+					<button
+						onClick={() => {
+							context.switchToBusinessPage();
+							context.setCommoditiesState({
+								type: 'room',
+								filter: 'all',
+							});
+						}}
+					>
+						琴房預約
+					</button>
 				</ButtonBlock>
 			</LogoBlock>
 			<TextBlock>

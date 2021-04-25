@@ -93,6 +93,7 @@ const ImgCarousel = ({
 	pagePosition,
 	float,
 	color,
+	rwdOption,
 }) => {
 	// 當前輪播中的圖片索引數字
 	const [carouselState, setCarouselState] = useState(0);
@@ -184,7 +185,7 @@ const ImgCarousel = ({
 	// 並可進一步設定其樣式改變其位置及透明度作為陪襯（添加自訂樣式則會有飄移動畫）
 	if (!imgList)
 		return (
-			<Container>
+			<Container className={rwdOption}>
 				<Box
 					style={
 						position
@@ -213,7 +214,7 @@ const ImgCarousel = ({
 	// 單張的無動畫靜態圖片
 	if (imgCount === 1)
 		return (
-			<Container>
+			<Container className={rwdOption}>
 				<Box
 					className={
 						filterClass +
@@ -244,7 +245,7 @@ const ImgCarousel = ({
 			</Box>
 		</Container>
 		*/
-		<Container>
+		<Container className={rwdOption}>
 			{imgList.map((item, index) => (
 				<Box
 					key={index}

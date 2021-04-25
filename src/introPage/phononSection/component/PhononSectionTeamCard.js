@@ -15,6 +15,19 @@ const ImgContainer = styled.div`
 	right: 60px;
 	top: -10px;
 	margin-top: 50px;
+
+	@media (max-width: 1110px) and (min-width: 860px) {
+		transform: scale(0.8);
+		right: 0px;
+	}
+	@media (max-width: 859px) and (min-width: 700px) {
+		transform: scale(0.7);
+		right: -30px;
+		top: 30px;
+	}
+	@media (max-width: 699px) {
+		display: none;
+	}
 `;
 
 const ImgBlock = styled.div`

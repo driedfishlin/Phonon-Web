@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/css';
 // component
 import NavigationTextButton from './NavigationTextButton';
+// import NavMenuButton from './NavMenuButton';
 // SVG
 import { ReactComponent as phononLogo } from './../../../image/logo/phonon_art_logo_text_white.svg';
 
@@ -16,6 +18,7 @@ const Container = styled.div`
 	background: transparent;
 	z-index: 50;
 	transition: background 1s 0.5s;
+
 	& > ul {
 		float: right;
 		margin: 0 30px;
@@ -32,13 +35,21 @@ const Container = styled.div`
 		opacity: 1;
 		transition: opacity 0.3s;
 	}
+	@media (max-width: 1024px) {
+		> ul {
+			display: none;
+		}
+		&:hover {
+			background: rgba(4, 4, 4, 0);
+		}
+	}
 `;
 
 const Logo = styled(phononLogo)`
 	& path,
 	& polygon {
-		fill: white;
 		stroke: none;
+		transition: fill 0.4s;
 	}
 	filter: none;
 	transition: filter 0.2s;
@@ -47,29 +58,43 @@ const Logo = styled(phononLogo)`
 	}
 `;
 
-const h1Style = {
-	position: 'absolute',
-	top: '10px',
-	left: '50%',
-	transform: 'translateX(-50%)',
-	width: '50px',
-	cursor: 'pointer',
-	padding: '10px 20px',
-	fontSize: '0px',
-};
+const H1 = styled.h1`
+	position: absolute;
+	top: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 50px;
+	cursor: pointer;
+	padding: 10px 20px;
+	fontsize: 0px;
+	@media (max-width: 1024px) {
+		left: 15px;
+		top: 30px;
+		transform: translateX(0);
+	}
+`;
 
 //SECTION> React Component
-const MinNavigationBar = ({ clickFn }) => {
+const MinNavigationBar = ({ clickFn, page }) => {
 	return (
 		<Container>
-			<h1 style={h1Style}>
+			<H1>
 				聲子藝棧
 				<Logo
+					className={css`
+						@media (max-width: 1024px) {
+							& path,
+							& polygon {
+								fill: ${page % 2 === 1 ? 'white' : 'black'};
+							}
+						}
+					`}
 					onClick={() => {
 						window.location.reload();
 					}}
 				/>
-			</h1>
+			</H1>
+
 			<ul style={{ marginRight: '90px' }}>
 				{navListItem.map(item => (
 					<NavigationTextButton key={item.name} clickFn={clickFn}>
@@ -77,6 +102,7 @@ const MinNavigationBar = ({ clickFn }) => {
 					</NavigationTextButton>
 				))}
 			</ul>
+			{/* <NavMenuButton /> */}
 		</Container>
 	);
 };

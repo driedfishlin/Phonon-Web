@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from '@emotion/styled';
+
+import { pageStateContext } from '../../App';
 
 import { ReactComponent as LogoSVG } from '../../image/logo/phonon_cafe_logo.svg';
 
@@ -80,7 +82,8 @@ const ButtonBlock = styled.div`
 	}
 `;
 
-const CoffeeSectionContent = ({ clickFn }) => {
+const CoffeeSectionContent = () => {
+	const context = useContext(pageStateContext);
 	return (
 		<Container>
 			<LogoBlock>
@@ -88,7 +91,17 @@ const CoffeeSectionContent = ({ clickFn }) => {
 					<LogoSVG />
 				</Logo>
 				<ButtonBlock>
-					<button onClick={clickFn}>餐點訂製</button>
+					<button
+						onClick={() => {
+							context.switchToBusinessPage();
+							context.setCommoditiesState({
+								type: 'food',
+								filter: 'all',
+							});
+						}}
+					>
+						餐點訂製
+					</button>
 				</ButtonBlock>
 			</LogoBlock>
 			<TextBlock>

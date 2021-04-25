@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+// import { css } from '@emotion/css';
 // Component
 import IntroSectionContent from './IntroSectionContent';
 import ImgCarousel from '../component/carousel/ImgCarousel';
@@ -56,10 +57,21 @@ const IntroSectionMain = ({ pageState }) => {
 				}}
 			/>
 			<ImgCarousel
-				imgList={imgList}
+				imgList={[imgList[0]]}
 				position={carouselPosition}
 				pagePosition={1}
 				pageState={pageState}
+				// className={css`
+				// 	> div {
+				// 		transform: translateY(39%);
+				// 		@media (max-width: 768px) and (min-width: 429px) {
+				// 			// position: relative;
+				// 			// top: 100px;
+				// 			position: absolute;
+				// 			top: 0px;
+				// 		}
+				// 	}
+				// `}
 			/>
 			<IntroSectionContent pageState={pageState} />
 			<ScrollPromptText color={'black'} pageState={pageState} />

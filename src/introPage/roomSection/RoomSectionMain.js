@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/css';
 
 import RoomSectionContent from './RoomSectionContent';
 import ImgCarousel from '../component/carousel/ImgCarousel';
@@ -50,7 +51,7 @@ const filter = {
 	position: '10% 58%',
 };
 
-const RoomSectionMain = ({ clickFn }) => {
+const RoomSectionMain = () => {
 	return (
 		<Container>
 			<Background>
@@ -65,6 +66,11 @@ const RoomSectionMain = ({ clickFn }) => {
 				}}
 				position={carouselPosition}
 				color={'white'}
+				rwdOption={css`
+					@media (max-width: 1024px) {
+						opacity: 0.3;
+					}
+				`}
 			/>
 			{/* <ImgCarousel filter={filter} position={carouselPosition} /> */}
 			<ImgCarousel
@@ -72,8 +78,13 @@ const RoomSectionMain = ({ clickFn }) => {
 				imgList={imgList}
 				position={carouselPosition}
 				pagePosition={3}
+				rwdOption={css`
+					@media (max-width: 1024px) {
+						opacity: 0.5;
+					}
+				`}
 			/>
-			<RoomSectionContent clickFn={clickFn} />
+			<RoomSectionContent />
 			<ScrollPromptText color={'black'} />
 		</Container>
 	);

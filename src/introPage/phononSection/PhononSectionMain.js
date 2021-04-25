@@ -72,10 +72,16 @@ const Description = styled.p`
 	font-size: 20px;
 	color: black;
 	width: 100%;
+	@media (max-width: 699px) {
+		font-size: 17px;
+	}
 `;
 
 const TextContainer = styled.div`
 	max-width: 60%;
+	@media (max-width: 699px) {
+		max-width: 100%;
+	}
 `;
 
 //SECTION> React Component
