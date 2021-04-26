@@ -1,3 +1,7 @@
+/*
+入口頁第三頁文字部分
+*/
+
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 
@@ -5,11 +9,9 @@ import { pageStateContext } from '../../App';
 
 import { ReactComponent as LogoSVG } from '../../image/logo/phonon_art_logo.svg';
 
+//SECTION>
+
 const Container = styled.div`
-	// outline: 1px solid #fff;
-	// * {
-	// 	outline: 1px solid #fff;
-	// }
 	z-index: 11;
 	position: relative;
 	margin-bottom: 12%;
@@ -77,7 +79,7 @@ const TextBlock = styled.div`
 		}
 	}
 	@media (max-width: 374px) {
-		> p:nth-child(2) {
+		> p:nth-of-type(2) {
 			display: none;
 		}
 	}
@@ -162,6 +164,8 @@ const ButtonBlock = styled.div`
 		}
 	}
 `;
+
+//SECTION>
 
 const RoomSectionContent = () => {
 	const context = useContext(pageStateContext);

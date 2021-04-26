@@ -1,3 +1,7 @@
+/*
+入口頁第三頁
+*/
+
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/css';
@@ -10,6 +14,8 @@ import { ReactComponent as ImgSVG } from '../../image/background/player_01.svg';
 
 import { introPageRoomSectionCarouselImg } from '../../dataTemplate';
 const imgList = introPageRoomSectionCarouselImg.imgs;
+
+//SECTION>
 
 const Container = styled.div`
 	width: 1280px;
@@ -38,6 +44,8 @@ const Background = styled.div`
 	}
 `;
 
+//SECTION>
+
 const carouselPosition = {
 	top: '0px',
 	left: '5vw',
@@ -50,6 +58,8 @@ const filter = {
 	size: '100%',
 	position: '10% 58%',
 };
+
+//SECTION>
 
 const RoomSectionMain = () => {
 	return (
@@ -72,7 +82,6 @@ const RoomSectionMain = () => {
 					}
 				`}
 			/>
-			{/* <ImgCarousel filter={filter} position={carouselPosition} /> */}
 			<ImgCarousel
 				filter={filter}
 				imgList={imgList}

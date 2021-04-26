@@ -1,3 +1,6 @@
+/*
+購物車頁的 header
+*/
 import styled from '@emotion/styled';
 import { useContext } from 'react';
 
@@ -12,6 +15,8 @@ import { ReactComponent as ArtLogo } from '../../image/logo/phonon_art_logo.svg'
 import { ReactComponent as CoffeeLogo } from '../../image/logo/phonon_cafe_logo.svg';
 import { ReactComponent as FbSvg } from '../../image/icon/facebook-brands.svg';
 import { ReactComponent as InsSvg } from '../../image/icon/instagram-brands.svg';
+
+//SECTION>
 
 const Container = styled.div`
 	min-height: 200px;
@@ -113,6 +118,8 @@ const ExternalLink = styled.div`
 		display: none;
 	}
 `;
+
+//SECTION>
 
 const BusinessPageHeader = () => {
 	const context = useContext(pageStateContext);

@@ -1,8 +1,14 @@
+/*
+商品頁的商品分類清單，作為按鈕切換所顯示的商品分類。
+*/
+
 import styled from '@emotion/styled';
 import { css } from '@emotion/css';
 import { useContext } from 'react';
 import { pageStateContext } from '../../App';
 import { commoditiesInfo } from '../../dataTemplate';
+
+//SECTION>
 
 const Container = styled.div`
 	padding: 30px;
@@ -27,6 +33,8 @@ const CommoditiesKind = styled.p`
 	margin-bottom: 20px;
 	letter-spacing: 1px;
 `;
+
+//SECTION>
 
 const ListItem = ({ children, clickFn }) => {
 	const context = useContext(pageStateContext);

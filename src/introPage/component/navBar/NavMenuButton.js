@@ -1,5 +1,11 @@
+/*
+行動裝置版面入口頁右上方的導覽按鈕，點下將滑出隱藏的導覽列
+*/
+
 import styled from '@emotion/styled';
 import { css } from '@emotion/css';
+
+//SECTION>
 
 const Container = styled.div`
 	cursor: pointer;
@@ -30,14 +36,9 @@ const Element = styled.div(({ page, isOpen }) => ({
 	margin: '3px;',
 	borderRadius: '30px;',
 	transition: 'background 0.4s',
-	// `
-	// 	position: relative;
-	// 	background: black;
-	// 	height: 5px;
-	// 	margin: 3px;
-	// 	border-radius: 30px;
-	// `;
 }));
+
+//SECTION>
 
 const NavMenuButton = ({ propClass, page, clickFn, isOpen }) => {
 	return (

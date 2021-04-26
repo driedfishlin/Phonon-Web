@@ -1,16 +1,20 @@
 import React, { useState, Fragment, createContext, useEffect } from 'react';
-import smoothscroll from 'smoothscroll-polyfill';
-
-//SECTION> React Component
+import smoothscroll from 'smoothscroll-polyfill'; // 針對 safari 頁面平滑滾動效果
 
 import IntroPage from './introPage/IntroPage';
 import BusinessPage from './businessPage/BusinessPage';
 import MessageComponent from './component/MessageComponent';
 
+//SECTION>
+
 smoothscroll.polyfill();
+
+//SECTION>
 
 // 掌管主、商品頁的切換狀態，以及商品頁面的商品種類顯示
 export const pageStateContext = createContext(null);
+
+//SECTION>
 
 function App() {
 	//PART>
@@ -34,9 +38,10 @@ function App() {
 		switchToBusinessPage: () => setAppPageState('businessPage'),
 		message: { state: messageState, setState: setMessageState },
 	};
-	//PART>
 
+	//PART>
 	useEffect(() => {
+		// 設定初次訊息
 		setTimeout(() => {
 			setMessageState({
 				show: true,

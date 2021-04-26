@@ -1,12 +1,13 @@
+/*
+商品頁主頁面。
+*/
+
 import styled from '@emotion/styled';
 import BusinessPageHeader from './businessPageHeader/BusinessPageHeader';
 import BusinessPageMain from './businessPageMain/BusinessPageMain';
 import Footer from '../introPage/footerSection/Footer';
 
 const Container = styled.div`
-	* {
-		// outline: 1px solid #555;
-	}
 	min-height: 100%;
 	display: flex;
 	flex-direction: column;

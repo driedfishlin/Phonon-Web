@@ -1,3 +1,7 @@
+/*
+入口頁的最後一頁
+*/
+
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/css';
@@ -6,6 +10,8 @@ import ImgCarousel from '../component/carousel/ImgCarousel';
 import CoffeeSectionContent from './CoffeeSectionContent';
 
 import { introPageCoffeeSectionCarouselImg as data } from '../../dataTemplate';
+
+//SECTION>
 
 const Container = styled.div`
 	height: 100%;
@@ -34,6 +40,8 @@ const CarouselContainer = styled.div`
 	height: 100vh;
 `;
 
+//PART> style
+
 const carouselPosition = {
 	top: '0',
 	right: '-5%',
@@ -46,6 +54,8 @@ const filter = {
 	size: '100%',
 	position: '10% 58%',
 };
+
+//SECTION>
 
 const CoffeeSectionMain = () => {
 	return (
@@ -67,7 +77,6 @@ const CoffeeSectionMain = () => {
 						}
 					`}
 				/>
-				{/* <ImgCarousel filter={filter} position={carouselPosition} /> */}
 				<ImgCarousel
 					filter={filter}
 					imgList={data.imgs}

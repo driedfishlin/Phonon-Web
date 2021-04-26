@@ -1,6 +1,8 @@
-import React from 'react';
+/*
+入口頁第一頁
+*/
+
 import styled from '@emotion/styled';
-// import { css } from '@emotion/css';
 // Component
 import IntroSectionContent from './IntroSectionContent';
 import ImgCarousel from '../component/carousel/ImgCarousel';
@@ -11,6 +13,7 @@ import { introPageIntroSectionCarouselImg } from '../../dataTemplate';
 const imgList = introPageIntroSectionCarouselImg.introSection;
 
 //SECTION> CSS COMPONENT
+
 const Container = styled.div`
 	position: relative;
 	height: 100%;
@@ -28,7 +31,8 @@ const Background = styled.div`
 	}
 `;
 
-//SECTION>
+//SECTION> css style
+
 const carouselPosition = {
 	top: '50px',
 	left: '40vw',
@@ -36,20 +40,14 @@ const carouselPosition = {
 	height: '100vh',
 };
 
+//SECTION>
+
 const IntroSectionMain = ({ pageState }) => {
 	return (
 		<Container>
 			<Background>
 				<img src={pngFile} alt="background" />
 			</Background>
-			{/* <ImgCarousel
-				backgroundStyle={{
-					scale: 1.05,
-					rotate: -8,
-					opacity: 0.5,
-				}}
-				position={carouselPosition}
-			/> */}
 			<ImgCarousel
 				position={carouselPosition}
 				backgroundStyle={{
@@ -61,17 +59,6 @@ const IntroSectionMain = ({ pageState }) => {
 				position={carouselPosition}
 				pagePosition={1}
 				pageState={pageState}
-				// className={css`
-				// 	> div {
-				// 		transform: translateY(39%);
-				// 		@media (max-width: 768px) and (min-width: 429px) {
-				// 			// position: relative;
-				// 			// top: 100px;
-				// 			position: absolute;
-				// 			top: 0px;
-				// 		}
-				// 	}
-				// `}
 			/>
 			<IntroSectionContent pageState={pageState} />
 			<ScrollPromptText color={'black'} pageState={pageState} />

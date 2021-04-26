@@ -1,6 +1,9 @@
+/*
+入口頁 Logo 區塊
+*/
+
 import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/css';
-
 // SVG
 import { ReactComponent as PhononLogo } from './../../image/logo/phonon_art_logo.svg';
 
@@ -10,6 +13,7 @@ import { ReactComponent as PhononLogo } from './../../image/logo/phonon_art_logo
 const floatAnimationDuration = 3;
 
 //SECTION> CSS ANIMATION KEYFRAMES
+
 const floatKeyframesX = keyframes`
 	from{
 		transform: translateX(-5px);
@@ -18,6 +22,7 @@ const floatKeyframesX = keyframes`
 		transform: translateX(5px);
 	}
 	`;
+
 const floatKeyframesY = keyframes`
 	from{
 		transform: translateY(-5px);
@@ -26,6 +31,7 @@ const floatKeyframesY = keyframes`
 		transform: translateY(5px);
 	}
 	`;
+
 const textSlideKeyframes = keyframes`
 	from{
 		opacity: 0;
@@ -42,7 +48,9 @@ const textSlideKeyframes = keyframes`
 
 	}
 `;
+
 //SECTION> CSS COMPONENT
+
 const Container = styled.div`
 	position: absolute;
 	top: 20vh;
@@ -63,16 +71,19 @@ const Container = styled.div`
 		transform: scale(0.6) translateY(-90%);
 	}
 `;
+
 const AnimationWrapX = styled.div`
 	position: relative;
 	animation: ${floatKeyframesX} ${floatAnimationDuration}s
 		${-floatAnimationDuration / 2}s infinite ease-in-out alternate;
 `;
+
 const AnimationWrapY = styled.div`
 	position: relative;
 	animation: ${floatKeyframesY} ${floatAnimationDuration * 2}s infinite
 		ease-in-out alternate;
 `;
+
 const Logo = styled(PhononLogo)`
 	& path {
 		fill: black;
@@ -86,6 +97,7 @@ const Logo = styled(PhononLogo)`
 	padding-left: 20px;
 	transform: skewX(-17deg) rotate(-17deg) scale(1, 1.3);
 `;
+
 const TextContent = styled.div`
 	position: relative;
 	top: 70px;
@@ -111,6 +123,7 @@ const TextContent = styled.div`
 		}
 	}
 `;
+
 const H2 = styled.h2(props => ({
 	paddingLeft: props.paddingLeft,
 	position: 'relative',
@@ -132,9 +145,8 @@ const slideText = css`
 const pauseAnimationStyle = { animationPlayState: 'paused' };
 
 //SECTION> React Component
+
 const IntroSectionContent = ({ pageState }) => {
-	// console.log(pageState);
-	//PART>
 	return (
 		<Container>
 			<AnimationWrapX

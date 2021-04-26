@@ -1,3 +1,7 @@
+/*
+商品頁主要內容區塊
+*/
+
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import styled from '@emotion/styled';
 
@@ -7,6 +11,8 @@ import CommoditiesBlock from './CommoditiesBlock';
 import BusinessPageSideBar from './BusinessPageSideBar';
 import SelectDateBlock from './component/SelectDateBlock';
 import ShoppingCartBoard from './ShoppingCartBoard';
+
+//SECTION>
 
 const Container = styled.div`
 	width: 100%;
@@ -26,9 +32,13 @@ const ContentContainer = styled.div`
 	}
 `;
 
-export const shoppingCartContext = createContext(null);
+//SECTION>
 
+export const shoppingCartContext = createContext(null);
+// 從瀏覽器取回先前儲存使用者加入購物車的商品清單
 const oldData = JSON.parse(localStorage.getItem('phononWebShoppingCartList'));
+
+//SECTION>
 
 const BusinessPageMain = () => {
 	//PART>

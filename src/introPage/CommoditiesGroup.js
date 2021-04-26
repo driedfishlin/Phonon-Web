@@ -1,3 +1,7 @@
+/*
+桌面版網頁隱藏的商品分類選單，由按鈕觸發彈出
+*/
+
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import { pageStateContext } from './../App';
@@ -6,11 +10,12 @@ import { ReactComponent as arrow } from '../image/icon/arrow-circle-left-solid.s
 import { commoditiesInfo } from '../dataTemplate';
 
 //SECTION> CSS Component
+
 const Container = styled.div`
 	display: flex;
 	height: 100%;
 `;
-// 頁面區塊，每一塊為一種產品分類
+
 const Item = styled.div`
 	flex: 1 0 5%;
 	transition: flex 0.5s 0.1s;
@@ -37,6 +42,7 @@ const Item = styled.div`
 		}
 	}
 `;
+
 const CommodityName = styled.a`
 	color: white;
 	text-decoration: none;
@@ -52,6 +58,7 @@ const CommodityName = styled.a`
 	font-family: 'Noto Serif TC', serif;
 	pointer-events: none;
 `;
+
 const CommodityNameTc = styled.h6`
 	font-size: 55px;
 	letter-spacing: 8px;
@@ -62,6 +69,7 @@ const CommodityNameTc = styled.h6`
 	opacity: 1;
 	user-select: none;
 `;
+
 const CommodityNameEng = styled.p`
 	font-family: 'Noto Serif TC', serif;
 	font-size: 20px;
@@ -76,6 +84,7 @@ const CommodityNameEng = styled.p`
 	opacity: 0;
 	user-select: none;
 `;
+
 const CommodityImg = styled.img`
 	height: 110%;
 	position: absolute;
@@ -88,7 +97,7 @@ const CommodityImg = styled.img`
 		filter: brightness(0.6);
 	}
 `;
-// 「回前頁」按鈕
+
 const BackButton = styled.a`
 	position: absolute;
 	top: 30px;
@@ -129,7 +138,8 @@ const BackButton = styled.a`
 	}
 `;
 
-//SECTION> Callback Function
+//SECTION> Function
+
 const showInfoToggle = state => {
 	switch (state) {
 		case '琴房預約':

@@ -1,3 +1,7 @@
+/*
+商品頁中，顯示商品卡片的區塊。
+*/
+
 import styled from '@emotion/styled';
 
 import Card from './component/Card';
@@ -6,26 +10,25 @@ import { commoditiesList } from '../../dataTemplate';
 import { useContext } from 'react';
 import { pageStateContext } from './../../App';
 
+//SECTION>
+
 const Container = styled.div`
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
 `;
 
+//SECTION>
+
 const CommoditiesBlock = () => {
 	const context = useContext(pageStateContext);
-	// console.log(context);
 	const list = commoditiesList[context.commoditiesState.type];
-	// console.log(list);
-	// 針對當前環境指定的條件顯示產品卡片
 	const filteredList =
 		context.commoditiesState.filter === 'all'
 			? list
 			: list.filter(item => {
 					return item.kind.includes(context.commoditiesState.filter);
 			  });
-	// console.log(filteredList);
-
 	// 針對預約練習室頁面回傳畫面
 	if (context.commoditiesState.type === 'room') {
 		return (
@@ -46,7 +49,6 @@ const CommoditiesBlock = () => {
 			</Container>
 		);
 	}
-
 	// 針對預約餐點頁面回傳畫面
 	if (context.commoditiesState.type === 'food')
 		return (

@@ -1,7 +1,11 @@
-/* 入口頁 Section 2 個別團隊簡介區塊模組 */
+/*
+入口頁 Section 2 個別團隊簡介區塊模組
+*/
 
 import React from 'react';
 import styled from '@emotion/styled';
+
+//SECTION>
 
 const Container = styled.div`
 	margin-top: 50px;
@@ -26,6 +30,8 @@ const H3 = styled.h3`
 	font-size: 24px;
 	margin-bottom: 20px;
 `;
+
+//SECTION>
 
 const PhononSectionTeamInfo = ({ name, description, teamState }) => (
 	<Container

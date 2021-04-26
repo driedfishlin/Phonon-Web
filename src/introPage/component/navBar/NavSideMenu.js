@@ -1,3 +1,7 @@
+/*
+行動裝置版面入口頁右側隱藏的導覽列
+*/
+
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/css';
@@ -5,6 +9,8 @@ import NavMenuButton from './NavMenuButton';
 
 import { pageStateContext } from '../../../App';
 import { commoditiesInfo } from '../../../dataTemplate';
+
+//SECTION>
 
 const Background = styled.div`
 	width: 100vw;
@@ -14,6 +20,9 @@ const Background = styled.div`
 	left: 0;
 	z-index: 99;
 	background: rgba(0, 0, 0, 0.3);
+	@media (min-width: 1025px) {
+		display: none;
+	}
 `;
 
 const Container = styled.div`
@@ -26,6 +35,9 @@ const Container = styled.div`
 	z-index: 100;
 	border-radius: 30px 0 0 30px;
 	transition: transform 0.5s;
+	@media (min-width: 1025px) {
+		display: none;
+	}
 	@media (max-width: 768px) {
 		width: 300px;
 	}
@@ -87,6 +99,8 @@ const ListBlock = styled.div`
 	}
 `;
 
+//PART> class
+
 const hideClass = css`
 	transform: translateX(100%);
 `;
@@ -94,6 +108,8 @@ const hideClass = css`
 const moveButtonClass = css`
 	transform: translateX(-120px);
 `;
+
+//SECTION>
 
 const NavSideMenu = ({ page, useSideNavMenuState }) => {
 	const context = useContext(pageStateContext);

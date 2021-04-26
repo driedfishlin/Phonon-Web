@@ -1,7 +1,11 @@
-/* 入口頁 Section 2 主版面左側的頁籤 */
+/*
+入口頁 Section 2 主版面左側的頁籤
+*/
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/css';
+
+//SECTION>
 
 const Body = styled.div`
 	z-index: 10;
@@ -39,6 +43,8 @@ const Body = styled.div`
 		}
 	}
 `;
+
+//SECTION>
 
 const PhononSectionTabs = ({ name, teamState, setFn, index }) => {
 	return (

@@ -1,3 +1,8 @@
+/*
+時間計時器，顯示執行當下的時間，每秒更新一次。
+格式為 "yyyy 年 mm 月 dd 日　hh:mm"
+*/
+
 import React, { useState, useEffect } from 'react';
 
 const DateText = () => {

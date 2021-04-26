@@ -1,5 +1,11 @@
+/*
+浮動於入口頁視窗上緣的導覽列之按鈕
+*/
+
 import React from 'react';
 import styled from '@emotion/styled';
+
+//SECTION>
 
 const Button = styled.li`
 	display: inline-block;
@@ -35,6 +41,8 @@ const Anchor = styled.a`
 		left: 10px;
 	}
 `;
+
+//SECTION>
 
 const NavigationTextButton = ({ children, clickFn }) => {
 	return (

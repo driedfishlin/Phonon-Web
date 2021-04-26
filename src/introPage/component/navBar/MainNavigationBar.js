@@ -1,16 +1,19 @@
+/*
+浮動於入口頁視窗上緣之導覽列
+*/
+
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/css';
 // component
 import NavigationTextButton from './NavigationTextButton';
-// import NavMenuButton from './NavMenuButton';
 // SVG
 import { ReactComponent as phononLogo } from './../../../image/logo/phonon_art_logo_text_white.svg';
-
 // Data Template
 import { navListItem } from '../../../dataTemplate';
 
 //SECTION> CSS Component
+
 const Container = styled.div`
 	width: 100%;
 	position: fixed;
@@ -75,6 +78,7 @@ const H1 = styled.h1`
 `;
 
 //SECTION> React Component
+
 const MinNavigationBar = ({ clickFn, page }) => {
 	return (
 		<Container>
@@ -102,7 +106,6 @@ const MinNavigationBar = ({ clickFn, page }) => {
 					</NavigationTextButton>
 				))}
 			</ul>
-			{/* <NavMenuButton /> */}
 		</Container>
 	);
 };

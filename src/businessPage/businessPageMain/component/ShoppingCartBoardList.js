@@ -1,7 +1,27 @@
+/*
+購物車視窗中，顯示目前選中商品的清單區塊。
+*/
+
 import styled from '@emotion/styled';
 import { css } from '@emotion/css';
 import ShoppingCartListItem from './ShoppingCartListItem';
 
+//SECTION>
+
+const Message = styled.div`
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	> p {
+		font-size: 20px;
+		text-align: center;
+	}
+`;
+
+//SECTION>
+
+// 作為辨識不同商品種類的分隔行
 const CommoditiesType = ({ type }) => {
 	const CommoditiesTypeStyle = css`
 		padding: 0 0 0 15px;
@@ -50,17 +70,6 @@ const CommoditiesType = ({ type }) => {
 	return null;
 };
 
-const Message = styled.div`
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	> p {
-		font-size: 20px;
-		text-align: center;
-	}
-`;
-
 const ShoppingCartBoardList = ({ items, setItems }) => {
 	const list = [];
 	// 針對購物車的內容渲染清單
@@ -80,7 +89,6 @@ const ShoppingCartBoardList = ({ items, setItems }) => {
 			);
 		}
 	}
-	console.log(list);
 
 	return (
 		<>

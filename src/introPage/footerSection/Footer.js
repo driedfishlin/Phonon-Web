@@ -1,3 +1,7 @@
+/*
+網頁 footer 區塊
+*/
+
 import React from 'react';
 import styled from '@emotion/styled';
 
@@ -6,6 +10,8 @@ import { phononInformation as data } from '../../dataTemplate';
 
 import { ReactComponent as FbSvg } from '../../image/icon/facebook-brands.svg';
 import { ReactComponent as InsSvg } from '../../image/icon/instagram-brands.svg';
+
+//SECTION>
 
 const Container = styled.div`
 	overflow: hidden;
@@ -90,8 +96,7 @@ const ExternalLink = styled.div`
 	}
 `;
 
-// 地址、電話、粉專、信箱、地圖
-// icon
+//SECTION>
 
 const Footer = ({ bgc, height }) => {
 	return (

@@ -1,8 +1,13 @@
+/*
+購物頁 header 的導覽列
+*/
+
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/css';
-
 import { pageStateContext } from '../../../../App';
+
+//SECTION>
 
 const Container = styled.div`
 	height: 60px;
@@ -51,6 +56,8 @@ const UnOrderedLists = styled.ul`
 		}
 	}
 `;
+
+//SECTION>
 
 const List = ({ children, clickFn, propClass }) => {
 	return (

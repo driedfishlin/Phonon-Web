@@ -1,12 +1,9 @@
-/* 檔案用途：統一管理資料結構並匯出 */
+/* 檔案用途：統一管理資料並匯出 */
 
 // For IntroSectionMain
 import introCarouseImg_A from './image/carousel/phonon_coffee_4.jpg';
 import introCarouseImg_B from './image/carousel/phonon_coffee_3.jpg';
 import introCarouseImg_C from './image/carousel/phonon_coffee_5.jpg';
-// import introCarouseImg_D from './image/carousel/phonon_coffee_2.jpg';
-// import introCarouseImg_E from './image/carousel/phonon_coffee_1.jpg';
-// import introCarouseImg_D from './image/_Temporary_pic/room/roberto-nickson-rEJxpBskj3Q-unsplash.jpg';
 // For PhononSectionMain
 import { ReactComponent as phononArtLogo } from './image/logo/phonon_art_logo.svg';
 import { ReactComponent as phononCoffeeLogo } from './image/logo/phonon_cafe_logo.svg';
@@ -17,7 +14,6 @@ import { ReactComponent as phononMusicLogo } from './image/logo/phonon_music_log
 //PART> For CommoditiesGroup, BusinessPageSideBar
 export const commoditiesInfo = {
 	food: [
-		//UNDONE> 圖片網址為暫時的假圖
 		{
 			nameTc: '飲品',
 			nameEng: 'Drink',
@@ -71,12 +67,7 @@ export const navListItem = [{ name: '琴房預約' }, { name: '餐點訂製' }];
 //PART> For IntroSectionMain
 export const introPageIntroSectionCarouselImg = {
 	introSection: [introCarouseImg_A, introCarouseImg_B, introCarouseImg_C],
-	// introSection: [
-	// 	introCarouseImg_A,
-	// 	introCarouseImg_B,
-	// 	introCarouseImg_C,
-	// 	introCarouseImg_D,
-	// ],
+
 	svgFilterBase64:
 		'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI0LjMuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IuWcluWxpF8yXzFfIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiCgkgeT0iMHB4IiB2aWV3Qm94PSIwIDAgODQyLjcgNTI4LjIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDg0Mi43IDUyOC4yOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxwYXRoIGQ9Ik02MS41LDEwMi43QzEyNSw1NCwxODcuNyw1NS44LDIzNi42LDY0LjdjMzkuNSw2LjIsNTgsMjAuNSwxMTYuMywyM2M4Ni40LDMuNywxNjkuOS0zNC40LDE5NS4zLTQ2CglDNTgzLjYsMjUuNiw1OTQsMTUuOCw2MjcsNy45YzktMi4yLDY0LjgtMTUuNiwxMTEuMS0xLjVjNzkuNCwyNC4zLDk1LjMsMTE4LjgsMTAxLDE1My4yYzQuMiwyNS4yLDIxLjQsMTUxLjEtODQuOCwyNDkuOAoJYy01MS40LDQ3LjgtMTA4LjQsNjcuNS0xNTMuNyw4Mi44Yy0zOS4xLDEzLjEtMjI1LjgsNzUuOC00MDEuOS0yLjlDMTY4LjksNDc2LjEsMTMuNCw0MDIuMywxLjIsMjY0LjEKCUMtMC43LDI0Mi40LTguMywxNTYuMiw2MS41LDEwMi43eiIvPgo8L3N2Zz4K',
 };

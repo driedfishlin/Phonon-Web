@@ -1,3 +1,7 @@
+/*
+聲子咖啡頁之內文部分
+*/
+
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 
@@ -5,11 +9,9 @@ import { pageStateContext } from '../../App';
 
 import { ReactComponent as LogoSVG } from '../../image/logo/phonon_cafe_logo.svg';
 
+//SECTION>
+
 const Container = styled.div`
-	// outline: 1px solid #000;
-	// * {
-	// 	outline: 1px solid #000;
-	// }
 	position: absolute;
 	lift: 0;
 	bottom: 3%;
@@ -147,6 +149,8 @@ const ButtonBlock = styled.div`
 		}
 	}
 `;
+
+//SECTION>
 
 const CoffeeSectionContent = () => {
 	const context = useContext(pageStateContext);

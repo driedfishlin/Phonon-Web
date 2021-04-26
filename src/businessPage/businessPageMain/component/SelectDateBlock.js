@@ -1,3 +1,7 @@
+/*
+商品頁選擇時間與人數的區塊，帶有購物車進入按鈕。
+*/
+
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/css';
@@ -5,7 +9,9 @@ import { css } from '@emotion/css';
 import { shoppingCartContext } from '../BusinessPageMain';
 
 import { ReactComponent as ClipBroad } from '../../../image/icon/clipboard-regular.svg';
+
 //SECTION>
+
 const Container = styled.form`
 	padding: 30px;
 	padding-top: 0;
@@ -121,8 +127,10 @@ const ClipBroadContainer = styled.div`
 		margin-top: 35px;
 	}
 `;
+
 //SECTION>
 
+// 產生預設日期作為 placeholder
 const date = new Date().toISOString();
 const dateNow = date.split('T')[0];
 let timeNow = date.split('T')[1].split('.')[0].split(':');
@@ -130,6 +138,7 @@ timeNow.pop(2);
 timeNow = timeNow.join(':');
 
 //SECTION>
+
 const SelectDateBlock = ({ togglePageFn }) => {
 	const context = useContext(shoppingCartContext);
 	// 購物車圖示上，顯示當前被選取的商品數量

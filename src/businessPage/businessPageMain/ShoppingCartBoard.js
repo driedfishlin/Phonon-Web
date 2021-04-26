@@ -1,3 +1,7 @@
+/*
+購物車視窗，於商品頁點選購物車按鈕後彈出。
+*/
+
 import React, { useContext, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/css';
@@ -21,6 +25,7 @@ const Background = styled.div`
 	justify-content: center;
 	align-items: center;
 `;
+
 const Container = styled.div`
 	max-width: 1000px;
 	position: relative;
@@ -40,6 +45,7 @@ const Container = styled.div`
 		overflow-y: auto;
 	}
 `;
+
 const HeaderBlock = styled.div`
 	padding: 40px;
 	margin-top: 10px;
@@ -67,6 +73,7 @@ const HeaderBlock = styled.div`
 		}
 	}
 `;
+
 const ListBlock = styled.div`
 	position: relative;
 	min-height: 350px;
@@ -107,6 +114,7 @@ const PriceBlock = styled.div`
 		}
 	}
 `;
+
 const CommitBlock = styled.div`
 	padding: 40px;
 	margin-top: 30px;

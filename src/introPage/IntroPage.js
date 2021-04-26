@@ -1,3 +1,7 @@
+/*
+入口頁
+*/
+
 import React, { useRef, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 // Component
@@ -12,6 +16,7 @@ import PageMenu from './component/shared/PageMenu';
 import Footer from './footerSection/Footer';
 
 //SECTION> EVENT LISTENER
+
 window.addEventListener('unload', event => {
 	event.preventDefault();
 	window.scrollTo({ top: 0 });
@@ -45,6 +50,7 @@ const SideNavBarContainer = styled.div`
 `;
 
 //SECTION> REACT COMPONENT
+
 const IntroPage = () => {
 	//PART> React State
 	const [sideNavBarState, setSideNavBarState] = useState({
@@ -58,6 +64,7 @@ const IntroPage = () => {
 		prevPage: null,
 	});
 	const [pageState, setPageState] = useState(1);
+
 	//PART> Element Selector
 	const phononIndexSection = useRef(null),
 		phononIntro = useRef(null),
@@ -73,6 +80,7 @@ const IntroPage = () => {
 	];
 
 	//PART> FUNCTION
+
 	// 呼叫 setState 以更新左側 UI
 	const UpdateCurrentPage = entries => {
 		switch (entries[0].target) {
@@ -99,7 +107,6 @@ const IntroPage = () => {
 				top: window.pageYOffset + entries[0].boundingClientRect.y,
 				behavior: 'smooth',
 			});
-			// 更新目前聚焦頁面頁碼
 			UpdateCurrentPage(entries);
 		}
 	};

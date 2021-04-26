@@ -1,3 +1,7 @@
+/*
+入口頁第二頁
+*/
+
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/css';
@@ -10,9 +14,11 @@ import ScrollPromptText from '../component/shared/ScrollPromptText';
 import backgroundPNG from '../../image/background/ins.png';
 
 //SECTION> DATA
+
 import { phononDescription, phononTeams } from '../../dataTemplate';
 
 //SECTION> CSS Component
+
 const Container = styled.div`
 	max-width: 1280px;
 	margin: 0 auto;
@@ -120,6 +126,7 @@ const TextContainer = styled.div`
 `;
 
 //SECTION> React Component
+
 const PhononSectionMain = () => {
 	const [teamState, setTeamState] = useState('聲子藝棧');
 	return (

@@ -1,5 +1,4 @@
 /*
-
 	作為圖片跑馬燈的可重用元件，可傳入 position 物件設定位置及尺寸、 filter 物件控制形狀。
 	作為輪播使用，需傳入具圖片網址的陣列（imgList）使用。
 	如果不傳入該陣列，預設將產出靜態的黑色色塊。傳入 backgroundStyle 時該色塊將帶有動畫。
@@ -11,7 +10,6 @@
 	・ backgroundStyle 所接受的參數 { opacity, rotate, scale }
 	・ position 所接受的參數 { width, height, top, left }
 	・ filter 所接受的參數 { size, src, position }
-	
 */
 
 import React, { useState, useEffect, useRef } from 'react';

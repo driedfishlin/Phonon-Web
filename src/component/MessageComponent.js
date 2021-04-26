@@ -7,6 +7,8 @@ import styled from '@emotion/styled';
 
 import { pageStateContext } from '../App';
 
+//SECTION>
+
 const Container = styled.div`
 	position: fixed;
 	right: 60px;
@@ -55,6 +57,8 @@ const Container = styled.div`
 		// transform: translate(-50%, 100%);
 	}
 `;
+
+//SECTION>
 
 const MessageComponent = () => {
 	const context = useContext(pageStateContext);

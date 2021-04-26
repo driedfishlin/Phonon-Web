@@ -1,4 +1,10 @@
+/*
+購物車中，個別商品的容器元件。
+*/
+
 import styled from '@emotion/styled';
+
+//SECTION>
 
 const Container = styled.div`
 	background: #f7f6f8;
@@ -18,6 +24,7 @@ const Container = styled.div`
 		}
 	}
 `;
+
 const Name = styled.div`
 	display: flex;
 	align-items: center;
@@ -35,6 +42,7 @@ const Name = styled.div`
 		}
 	}
 `;
+
 const Price = styled.div`
 	position: relative;
 	> p {
@@ -49,6 +57,7 @@ const Price = styled.div`
 		margin: 0 -10px 0 10px;
 	}
 `;
+
 const Count = styled.div`
 	display: flex;
 	align-items: center;
@@ -91,6 +100,7 @@ const Count = styled.div`
 		}
 	}
 `;
+
 const Sum = styled.div`
 	position: relative;
 
@@ -118,6 +128,7 @@ const Sum = styled.div`
 		}
 	}
 `;
+
 const DeleteButton = styled.div`
 	position: relative;
 	> button {
@@ -141,6 +152,8 @@ const DeleteButton = styled.div`
 		order: 4;
 	}
 `;
+
+//SECTION>
 
 const ShoppingCartListItem = ({ name, price, type, setFn, count }) => {
 	//PART>

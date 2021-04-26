@@ -1,5 +1,7 @@
-/* 主頁面左下的當前頁面指標，隨畫面移動改變指標位置 */
-/* 點選指標的個別按鈕，進入動畫並跳轉至該頁面 */
+/*
+主頁面左下的當前頁面指標，隨畫面移動改變指標位置
+點選指標的個別按鈕，進入動畫並跳轉至該頁面
+*/
 
 import React, { useRef, Fragment } from 'react';
 import styled from '@emotion/styled';
@@ -7,6 +9,7 @@ import { css, keyframes } from '@emotion/css';
 import { ReactComponent as LogoSVG } from '../../../image/logo/phonon_art_logo.svg';
 
 //SECTION> Custom Data
+
 // [自訂] 左下按鈕的個數
 const buttonCount = 4;
 // [自訂] 跳轉動畫遮罩方塊的個數
@@ -15,6 +18,7 @@ const maskCount = 4;
 const animationDuration = 1.5;
 
 //SECTION> Animation Keyframes
+
 const maskKeyframes = keyframes`
     from{
         transform: translateX(-120%);
@@ -29,6 +33,7 @@ const maskKeyframes = keyframes`
         transform: translateX(120%);
     }
 `;
+
 const logoKeyframes = keyframes`
     from,25%{
         opacity: 0;
@@ -45,6 +50,7 @@ const logoKeyframes = keyframes`
 `;
 
 //SECTION> CSS Component
+
 const Container = styled.div`
 	position: fixed;
 	left: 0px;
@@ -67,6 +73,7 @@ const Container = styled.div`
 		display: none;
 	}
 `;
+
 const Button = styled.a`
 	height: 10px;
 	width: 10px;
@@ -118,7 +125,7 @@ const Logo = styled(LogoSVG)`
 	animation-timing-function: linear;
 `;
 
-//SECTION> CSS Style
+//SECTION> Style
 
 const activeStyle = {
 	backgroundColor: 'rgba(255, 255, 255, 0.8)',
@@ -126,6 +133,7 @@ const activeStyle = {
 };
 
 //SECTION> React Component
+
 const PageMenu = ({ page, changPage }) => {
 	const maskRef = useRef(null);
 	return (

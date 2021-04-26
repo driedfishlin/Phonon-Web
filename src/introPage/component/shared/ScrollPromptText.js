@@ -1,13 +1,19 @@
+/*
+浮動於入口頁下方的捲動提示文字
+*/
+
 import React, { useEffect, useState, useRef } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/css';
 import { keyframes } from '@emotion/css';
 import { ReactComponent as ArrowDown } from '../../../image/icon/chevron-down-solid.svg';
 
-// [Custom]
+//SECTION>
+
+// Custom Data
 const animationDuration = 4;
 
 //SECTION>
+
 const Container = styled.div`
 	cursor: pointer;
     position: absolute;
@@ -91,7 +97,6 @@ const ScrollPromptText = ({ color, pageState, propClass }) => {
 			fill: ${color};
 		}
 	`;
-	console.log(propClass);
 	return (
 		<Container
 			onClick={scrollToNextPage}

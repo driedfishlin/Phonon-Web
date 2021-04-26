@@ -1,13 +1,17 @@
-/* 入口頁 Section 2 右下角的 Logo 卡片模組 */
+/*
+入口頁第二頁，右下角的 Logo 卡片模組
+*/
 
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/css';
 
 //SECTION> DATA
+
 import { phononTeams, phononTeamInfoCardColor } from '../../../dataTemplate.js';
 
 //SECTION> CSS COMPONENT
+
 const ImgContainer = styled.div`
 	width: 180px;
 	height: 300px;
@@ -58,6 +62,8 @@ const ImgBlock = styled.div`
 	}
 `;
 
+//SECTION> function => CSS style
+
 const ifCardActive = (teamState, name, index) =>
 	teamState === name
 		? {
@@ -72,6 +78,8 @@ const ifCardActive = (teamState, name, index) =>
 				left: `${-(index + 1) * 10}px`,
 				zIndex: -index + 5,
 		  };
+
+//SECTION>
 
 const PhononTeamInfoCardColor = ({ teamState }) => {
 	return (
