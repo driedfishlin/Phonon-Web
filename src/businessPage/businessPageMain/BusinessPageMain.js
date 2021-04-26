@@ -9,16 +9,21 @@ import SelectDateBlock from './component/SelectDateBlock';
 import ShoppingCartBoard from './ShoppingCartBoard';
 
 const Container = styled.div`
-	width: 1280px;
+	width: 100%;
+	max-width: 1280px;
 	margin: 0 auto;
 	margin-bottom: 50px;
 	box-sizing: border-box;
+	flex: 1;
 `;
 
 const ContentContainer = styled.div`
 	display: flex;
 	padding-right: 30px;
 	box-sizing: border-box;
+	@media (max-width: 767px) {
+		flex-direction: column;
+	}
 `;
 
 export const shoppingCartContext = createContext(null);

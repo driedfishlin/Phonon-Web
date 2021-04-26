@@ -15,6 +15,7 @@ import { ReactComponent as InsSvg } from '../../image/icon/instagram-brands.svg'
 
 const Container = styled.div`
 	min-height: 200px;
+	width: 100%;
 	max-width: 1280px;
 	margin: 0 auto;
 	margin-top: 20px;
@@ -26,6 +27,9 @@ const Main = styled.div`
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 30px;
+	@media (max-width: 500px) {
+		flex-direction: column;
+	}
 `;
 
 const LogoArea = styled.div`
@@ -62,6 +66,13 @@ const LogoArea = styled.div`
 			font-size: 20px;
 		}
 	}
+	@media (max-width: 500px) {
+		> button {
+			position: relative;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
 `;
 
 const OtherContent = styled.div`
@@ -75,6 +86,12 @@ const OtherContent = styled.div`
 		color: black;
 		line-height: 17px;
 		letter-spacing: 1px;
+	}
+	@media (max-width: 500px) {
+		> p {
+			text-align: center;
+			margin-top: 20px;
+		}
 	}
 `;
 
@@ -91,6 +108,9 @@ const ExternalLink = styled.div`
 		& path {
 			fill: black;
 		}
+	}
+	@media (max-width: 500px) {
+		display: none;
 	}
 `;
 

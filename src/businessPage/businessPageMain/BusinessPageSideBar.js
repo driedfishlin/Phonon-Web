@@ -9,6 +9,13 @@ const Container = styled.div`
 	width: 260px;
 	min-width: 260px;
 	box-sizing: border-box;
+	@media (max-width: 767px) {
+		width: 100%;
+		> ul {
+			display: flex;
+			flex-wrap: wrap;
+		}
+	}
 `;
 
 const CommoditiesKind = styled.p`
@@ -21,9 +28,12 @@ const CommoditiesKind = styled.p`
 	letter-spacing: 1px;
 `;
 
-const UnOrderLists = styled.ul`
-	& > li {
+const ListItem = ({ children, clickFn }) => {
+	const context = useContext(pageStateContext);
+
+	const Li = styled.li`
 		height: 45px;
+		position: relative;
 		& > button {
 			width: 100%;
 			height: 45px;
@@ -35,20 +45,10 @@ const UnOrderLists = styled.ul`
 			background: transparent;
 			border: none;
 			color: black;
+			cursor: pointer;
 			&:focus {
 				outline: none;
 			}
-		}
-	}
-`;
-
-const ListItem = ({ children, clickFn }) => {
-	const context = useContext(pageStateContext);
-
-	const Li = styled.li`
-		position: relative;
-		& > button {
-			cursor: pointer;
 			&::before {
 				position: absolute;
 				top: 0;
@@ -62,10 +62,33 @@ const ListItem = ({ children, clickFn }) => {
 				}
 			}
 		}
+		@media (max-width: 767px) {
+			margin-bottom: 20px;
+			button {
+				font-size: 16px;
+				width: auto;
+				margin-right: 20px;
+				border: 2px solid #000;
+				border-radius: 20px;
+				padding: 5px 10px;
+				display: inline;
+				line-height: 20px;
+				color: white;
+				background: #000;
+				::before {
+					opacity: 0;
+				}
+			}
+		}
 	`;
 	const generalClass = css`
 		&::before {
 			display: none;
+		}
+
+		@media (max-width: 767px) {
+			color: black !important;
+			background: #fff !important;
 		}
 	`;
 	const activeClass = css`
@@ -104,7 +127,7 @@ const BusinessPageSideBar = () => {
 				{context.commoditiesState.type === 'room' && '琴房預約'}
 				{context.commoditiesState.type === 'food' && '餐點訂製'}
 			</CommoditiesKind>
-			<UnOrderLists>
+			<ul>
 				{/* 「所有產品」之按鈕 */}
 				<ListItem
 					clickFn={() =>
@@ -131,7 +154,7 @@ const BusinessPageSideBar = () => {
 						{item.nameTc}
 					</ListItem>
 				))}
-			</UnOrderLists>
+			</ul>
 		</Container>
 	);
 };

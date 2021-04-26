@@ -15,7 +15,7 @@ export const pageStateContext = createContext(null);
 function App() {
 	//PART>
 	// 用於切換主、次頁面 (introPage, businessPage)
-	const [appPageState, setAppPageState] = useState('introPage');
+	const [appPageState, setAppPageState] = useState('businessPage');
 	// 用於存裝商品狀態
 	const [commoditiesState, setCommoditiesState] = useState({
 		type: 'room',
@@ -52,6 +52,7 @@ function App() {
 			<pageStateContext.Provider value={contextValue}>
 				<div
 					style={{
+						height: '100%',
 						display:
 							appPageState === 'introPage' ? 'block' : 'none',
 					}}
@@ -63,6 +64,7 @@ function App() {
 				</div>
 				<div
 					style={{
+						height: '100%',
 						display:
 							appPageState === 'businessPage' ? 'block' : 'none',
 					}}

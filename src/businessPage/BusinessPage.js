@@ -7,6 +7,10 @@ const Container = styled.div`
 	* {
 		// outline: 1px solid #555;
 	}
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 `;
 
 const BusinessPage = () => {
@@ -14,7 +18,7 @@ const BusinessPage = () => {
 		<Container>
 			<BusinessPageHeader />
 			<BusinessPageMain />
-			<Footer bgc={'#4C2556'} height={'200px'} />
+			<Footer bgc={'#4C2556'} height={'200px'} flexBottom />
 		</Container>
 	);
 };

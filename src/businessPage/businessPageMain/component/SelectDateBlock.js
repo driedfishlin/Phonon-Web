@@ -35,6 +35,71 @@ const Container = styled.form`
 			font-size: 15px;
 		}
 	}
+	@media (max-width: 580px) {
+		align-items: flex-start;
+	}
+`;
+
+const InputArea = styled.div`
+	display: flex;
+
+	& > div > label {
+		font-size: 20px;
+		padding-right: 15px;
+	}
+	& > div > input,
+	& > div > select {
+		height: 30px;
+		font-size: 18px;
+		border-radius: 25px;
+		margin-right: 25px;
+		padding: 5px 13px;
+		border: 2px solid #000;
+		box-sizing: content-box;
+		text-align: center;
+		-webkit-appearance: none;
+		max-width: 180px;
+		&:focus {
+			outline: none;
+		}
+		> option {
+			font-size: 15px;
+		}
+	}
+	@media (max-width: 780px) {
+		> div {
+			> label {
+				display: block;
+				margin: 0 0 5px 5px;
+				font-size: 15px;
+			}
+		}
+	}
+	@media (max-width: 580px) {
+		flex-wrap: wrap;
+		> div {
+			margin-bottom: 15px;
+			> label {
+				display: inline-block;
+				font-size: 20px;
+			}
+		}
+	}
+	@media (max-width: 420px) {
+		flex-direction: column;
+		width: 100%;
+		> div {
+			width: 100%;
+			// padding: 0 30px;
+			> label {
+				display: block;
+			}
+			> input,
+			> select {
+				width: 100%;
+			}
+		}
+	}
 `;
 
 const ClipBroadContainer = styled.div`
@@ -51,6 +116,9 @@ const ClipBroadContainer = styled.div`
 	}
 	& svg {
 		width: 27px;
+	}
+	@media (max-width: 420px) {
+		margin-top: 35px;
 	}
 `;
 //SECTION>
@@ -89,19 +157,37 @@ const SelectDateBlock = ({ togglePageFn }) => {
 	`;
 	return (
 		<Container>
-			<label htmlFor="reservation_date">預約日期</label>
-			<input type="date" id="reservation_date" placeholder={dateNow} />
-			<label htmlFor="reservation_time">時間</label>
-			<input type="time" id="reservation_time" placeholder={timeNow} />
-			<label htmlFor="numOfUsers">人數</label>
-			<select style={{ textAlign: 'center', textAlignLast: 'center' }}>
-				<option value={1}>1</option>
-				<option value={2}>2</option>
-				<option value={3}>3</option>
-				<option value={4}>4</option>
-				<option value={5}>5</option>
-				<option value={'else'}>其他</option>
-			</select>
+			<InputArea>
+				<div>
+					<label htmlFor="reservation_date">預約日期</label>
+					<input
+						type="date"
+						id="reservation_date"
+						placeholder={dateNow}
+					/>
+				</div>
+				<div>
+					<label htmlFor="reservation_time">時間</label>
+					<input
+						type="time"
+						id="reservation_time"
+						placeholder={timeNow}
+					/>
+				</div>
+				<div>
+					<label htmlFor="numOfUsers">人數</label>
+					<select
+						style={{ textAlign: 'center', textAlignLast: 'center' }}
+					>
+						<option value={1}>1</option>
+						<option value={2}>2</option>
+						<option value={3}>3</option>
+						<option value={4}>4</option>
+						<option value={5}>5</option>
+						<option value={'else'}>其他</option>
+					</select>
+				</div>
+			</InputArea>
 			<ClipBroadContainer>
 				<button
 					onClick={togglePageFn}

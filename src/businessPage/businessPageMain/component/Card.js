@@ -15,7 +15,7 @@ import { ReactComponent as BreadSVG } from '../../../image/icon/bread-slice-soli
 import { ReactComponent as PuddingSVG } from '../../../image/icon/pudding.svg';
 import { ReactComponent as CakeSVG } from '../../../image/icon/cheese-solid.svg';
 
-//SECTION>
+//SECTION> CSS Component
 
 const Container = styled.div`
 	position: relative;
@@ -30,6 +30,9 @@ const Container = styled.div`
 	&:hover {
 		& > .card_text_block {
 			width: 60%;
+			@media (max-width: 450px) {
+				width: 80%;
+			}
 			& > .card_text_title_block {
 				& > h3 {
 					position: relative;
@@ -46,6 +49,13 @@ const Container = styled.div`
 						font-size: 15px;
 						opacity: 1;
 						transition: opacity 0.3s 0.3s;
+					}
+					@media (max-width: 350px) {
+						font-size: 28px;
+						line-height: 38px;
+						& > span {
+							font-size: 13px;
+						}
 					}
 				}
 			}
@@ -74,6 +84,9 @@ const Container = styled.div`
 		}
 		& > .card_img_block {
 			width: 40%;
+			@media (max-width: 450px) {
+				width: 20%;
+			}
 		}
 	}
 `;
@@ -189,10 +202,23 @@ const ReservationButton = styled.button`
 		border: 2px solid #ac25a6;
 		background-color: #ac25a6;
 		color: white;
+		@media (max-width: 1024px) {
+			border: 2px solid #000;
+			background-color: transparent;
+			color: black;
+		}
 	}
 `;
 
+//SECTION> class
+
 const activeCardClass = css`
+	& > .card_img_block {
+		width: 40%;
+		@media (max-width: 450px) {
+			width: 20%;
+		}
+	}
 	& > .card_text_block {
 		width: 60%;
 		& > .card_text_title_block {
@@ -211,6 +237,13 @@ const activeCardClass = css`
 					font-size: 15px;
 					opacity: 1;
 					transition: opacity 0.3s 0.3s;
+				}
+				@media (max-width: 350px) {
+					font-size: 28px;
+					line-height: 38px;
+					& > span {
+						font-size: 13px;
+					}
 				}
 			}
 		}
@@ -241,9 +274,9 @@ const activeCardClass = css`
 				}
 			}
 		}
-	}
-	& > .card_img_block {
-		width: 40%;
+		@media (max-width: 450px) {
+			width: 80%;
+		}
 	}
 `;
 

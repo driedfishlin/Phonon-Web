@@ -179,6 +179,7 @@ const RoomSectionContent = () => {
 								type: 'room',
 								filter: 'all',
 							});
+							window.scrollTo({ top: 0 });
 						}}
 					>
 						琴房預約

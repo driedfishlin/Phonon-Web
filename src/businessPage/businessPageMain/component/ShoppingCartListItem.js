@@ -6,12 +6,33 @@ const Container = styled.div`
 	border-radius: 15px;
 	margin: 10px 10px 10px 0;
 	display: grid;
-	grid-template-columns: 25% 15% 40% 10% 10%;
+	grid-template-columns: 25% 15% 30% 15% 15%;
+	@media (max-width: 540px) {
+		display: flex;
+		flex-wrap: wrap;
+		height: 120px;
+		justify-content: space-between;
+		padding: 25p 5px 25px 5px;
+		> div {
+			width: 33%;
+		}
+	}
 `;
 const Name = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
 	> h6 {
 		font-size: 17px;
 		text-align: center;
+	}
+	@media (max-width: 540px) {
+		margin: 0 -10px;
+
+		> h6 {
+			font-size: 15px;
+		}
 	}
 `;
 const Price = styled.div`
@@ -24,6 +45,9 @@ const Price = styled.div`
 		text-align: center;
 		font-size: 17px;
 	}
+	@media (max-width: 540px) {
+		margin: 0 -10px 0 10px;
+	}
 `;
 const Count = styled.div`
 	display: flex;
@@ -32,7 +56,7 @@ const Count = styled.div`
 	> input {
 		text-align: center;
 		font-size: 17px;
-		width: 50px;
+		width: 28px;
 		border: none;
 		background: transparent;
 	}
@@ -52,6 +76,20 @@ const Count = styled.div`
 			outline: none;
 		}
 	}
+	@media (max-width: 540px) {
+		margin: 0 10px;
+		> input {
+			font-size: 17px;
+			width: 20px;
+		}
+		> button {
+			font-size: 17px;
+			width: 20px;
+			height: 20px;
+			min-width: 20px;
+			line-height: 16px;
+		}
+	}
 `;
 const Sum = styled.div`
 	position: relative;
@@ -63,6 +101,21 @@ const Sum = styled.div`
 		transform: translate(-50%, -50%);
 		text-align: center;
 		font-size: 17px;
+		white-space: nowrap;
+	}
+	@media (max-width: 540px) {
+		order: 5;
+		flex: 2;
+		> p {
+			width: 100%;
+			text-align: right;
+			white-space: nowrap;
+			padding-right: 10px;
+			> span {
+				margin: 5px;
+				font-size: 20px;
+			}
+		}
 	}
 `;
 const DeleteButton = styled.div`
@@ -83,6 +136,9 @@ const DeleteButton = styled.div`
 		:focus {
 			outline: none;
 		}
+	}
+	@media (max-width: 540px) {
+		order: 4;
 	}
 `;
 
@@ -136,7 +192,11 @@ const ShoppingCartListItem = ({ name, price, type, setFn, count }) => {
 				</button>
 			</Count>
 			<Sum>
-				<p>{count * price}</p>
+				<p>
+					<span>小計</span>
+					{count * price}
+					<span>元</span>
+				</p>
 			</Sum>
 			<DeleteButton>
 				<button onClick={deleteCommodity}>刪除</button>

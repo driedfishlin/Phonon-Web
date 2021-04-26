@@ -164,6 +164,7 @@ const CoffeeSectionContent = () => {
 								type: 'food',
 								filter: 'all',
 							});
+							window.scrollTo({ top: 0 });
 						}}
 					>
 						餐點訂製

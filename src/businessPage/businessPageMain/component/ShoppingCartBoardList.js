@@ -1,9 +1,6 @@
-// import React, { useContext } from 'react';
-// import styled from '@emotion/styled';
+import styled from '@emotion/styled';
 import { css } from '@emotion/css';
 import ShoppingCartListItem from './ShoppingCartListItem';
-
-// import { shoppingCartContext } from '../businessPageMain/BusinessPageMain';
 
 const CommoditiesType = ({ type }) => {
 	const CommoditiesTypeStyle = css`
@@ -11,10 +8,23 @@ const CommoditiesType = ({ type }) => {
 		border-radius: 15px;
 		margin: 20px 10px 10px 0;
 		display: grid;
-		grid-template-columns: 25% 15% 40% 10% 10%;
+		grid-template-columns: 25% 15% 30% 15% 15%;
 		> p {
+			white-space: nowrap;
 			font-size: 15px;
 			text-align: center;
+		}
+		@media (max-width: 540px) {
+			display: flex;
+			flex-wrap: wrap;
+			overflow: hidden;
+			height: 18px;
+			padding: 0;
+			> p {
+				width: 33%;
+				font-size: 13px;
+				letter-spacing: 0;
+			}
 		}
 	`;
 	if (type === 'room')
@@ -40,6 +50,17 @@ const CommoditiesType = ({ type }) => {
 	return null;
 };
 
+const Message = styled.div`
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	> p {
+		font-size: 20px;
+		text-align: center;
+	}
+`;
+
 const ShoppingCartBoardList = ({ items, setItems }) => {
 	const list = [];
 	// 針對購物車的內容渲染清單
@@ -59,8 +80,19 @@ const ShoppingCartBoardList = ({ items, setItems }) => {
 			);
 		}
 	}
+	console.log(list);
 
-	return <>{list.length === 0 ? <p>您未選取任何項目</p> : list}</>;
+	return (
+		<>
+			{list.length === 0 ? (
+				<Message>
+					<p>您未選取任何項目</p>
+				</Message>
+			) : (
+				list
+			)}
+		</>
+	);
 };
 
 export default ShoppingCartBoardList;

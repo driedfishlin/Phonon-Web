@@ -30,6 +30,15 @@ const Container = styled.div`
 	* {
 		letter-spacing: 1px;
 	}
+	@media (max-width: 760px) {
+		height: 100%;
+		width: 100%;
+		border-radius: 0px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		overflow-y: auto;
+	}
 `;
 const HeaderBlock = styled.div`
 	padding: 40px;
@@ -49,13 +58,22 @@ const HeaderBlock = styled.div`
 			color: #f50;
 		}
 	}
+	@media (max-width: 380px) {
+		h2 {
+			font-size: 25px;
+		}
+		> p {
+			font-size: 18px;
+		}
+	}
 `;
 const ListBlock = styled.div`
+	position: relative;
 	min-height: 350px;
 	margin: 0 40px 0 40px;
 	overflow-y: scroll;
 	max-height: 300px;
-	> p {
+	> ul > li {
 		font-size: 18px;
 		text-align: center;
 		padding: 50px 0;
@@ -78,8 +96,15 @@ const PriceBlock = styled.div`
 			color: #f50;
 		}
 	}
-	& > p {
+	& > ul > li {
 		font-size: 15px;
+	}
+	@media (max-width: 600px) {
+		flex-direction: column;
+		align-items: flex-start;
+		> h5 {
+			margin-bottom: 20px;
+		}
 	}
 `;
 const CommitBlock = styled.div`
@@ -88,22 +113,26 @@ const CommitBlock = styled.div`
 	background: #4c2556;
 
 	& > form {
-		& > label {
-			font-size: 17px;
-			color: white;
-			font-weight: 600;
-		}
-		& > input {
-			font-size: 17px;
-			box-sizing: border-box;
-			padding: 5px 20px;
-			height: 35px;
-			border-radius: 20px;
-			border: none;
-			margin: 0 20px 0 10px;
-			max-width: 200px;
-			&:focus {
-				outline: none;
+		display: flex;
+		& > div {
+			display: flex;
+			& > div > label {
+				font-size: 17px;
+				color: white;
+				font-weight: 600;
+			}
+			& > div > input {
+				font-size: 17px;
+				box-sizing: border-box;
+				padding: 5px 20px;
+				height: 35px;
+				border-radius: 20px;
+				border: none;
+				margin: 0 20px 0 10px;
+				max-width: 200px;
+				&:focus {
+					outline: none;
+				}
 			}
 		}
 		& > button {
@@ -118,12 +147,57 @@ const CommitBlock = styled.div`
 			font-weight: 600;
 			cursor: pointer;
 			user-select: none;
+			min-width: 64px;
 			&:focus {
 				outline: none;
 			}
 			&:hover {
 				background: #fff;
 				color: #4c2556;
+			}
+		}
+	}
+	@media (max-width: 715px) {
+		padding: 20px 40px;
+		> form {
+			justify-content: space-between;
+			align-items: flex-end;
+			> div {
+				flex-direction: column;
+				align-items: flex-end;
+				> div {
+					margin: 10px 0;
+					> input {
+						max-width: none;
+					}
+				}
+			}
+			> button {
+				height: 35px;
+				position: relative;
+				bottom: 10px;
+			}
+		}
+	}
+	@media (max-width: 500px) {
+		> form {
+			flex-direction: column;
+			align-items: center;
+			> div {
+				> div {
+					display: flex;
+					flex-direction: column;
+					> input {
+					}
+					> label {
+						margin: 0 0 10px 10px;
+					}
+				}
+			}
+			> button {
+				align-self: flex-end;
+				margin-top: 30px;
+				right: 30px;
 			}
 		}
 	}
@@ -242,39 +316,44 @@ const ShoppingCartBoard = ({ togglePageFn }) => {
 					<h5>
 						總計 <span> {totalAmount} </span> 元
 					</h5>
-					<p>
-						・五人以上團體用餐，請直接來電詢問訂位
-						<br />
-						・練習室最長使用時間一次為五小時
-						<br />
-						・有特殊的器材借調需求，請預先聯絡我們
-						<br />
-						・本預約系統僅作為畫面展示用途，並無實質功能
-						<br />
-					</p>
+					<ul>
+						<li>五人以上團體用餐，請直接來電詢問訂位</li>
+
+						<li> 練習室最長使用時間一次為五小時</li>
+
+						<li> 有特殊的器材借調需求，請預先聯絡我們</li>
+
+						<li> 本預約系統僅作為畫面展示用途，並無實質功能</li>
+					</ul>
 				</PriceBlock>
 				<CommitBlock>
 					<form ref={formRef}>
-						<label htmlFor="memberId">會員編號</label>
-						<input
-							type="text"
-							id="memberId"
-							name="memberId"
-							onChange={onFormChange}
-							value={formState.id}
-							onBlur={formValidation}
-							required
-						/>
-						<label htmlFor="memberPassword">密碼</label>
-						<input
-							type="password"
-							id="memberPassword"
-							name="memberPassword"
-							onChange={onFormChange}
-							value={formState.password}
-							onBlur={formValidation}
-							required
-						/>
+						<div>
+							<div>
+								<label htmlFor="memberId">會員編號</label>
+								<input
+									type="text"
+									id="memberId"
+									name="memberId"
+									onChange={onFormChange}
+									value={formState.id}
+									onBlur={formValidation}
+									required
+								/>
+							</div>
+							<div>
+								<label htmlFor="memberPassword">密碼</label>
+								<input
+									type="password"
+									id="memberPassword"
+									name="memberPassword"
+									onChange={onFormChange}
+									value={formState.password}
+									onBlur={formValidation}
+									required
+								/>
+							</div>
+						</div>
 						<button
 							type="submit"
 							onClick={submitAndSetMessage}

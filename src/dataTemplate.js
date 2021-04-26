@@ -244,8 +244,7 @@ export const commoditiesList = {
 			numOfUser: 3,
 			price: '1400',
 			equipment: ['平台鋼琴'],
-			description:
-				'可容納約 50 名觀眾，適合小型的室內樂演出。演奏廳亦可作為樂團排練空間使用，可容納約 40 人。',
+			description: '可容納約 50 名觀眾，適合小型的室內樂演出。',
 			pic: './img/commodities/small/room/504.jpg',
 		},
 	],

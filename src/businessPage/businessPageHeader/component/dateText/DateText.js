@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 const DateText = () => {
-	// console.log('render');
 	const [time, setTime] = useState(new Date());
 	const [colonFlash, setColonFlash] = useState(true);
 

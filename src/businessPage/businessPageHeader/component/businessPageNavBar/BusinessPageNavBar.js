@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/css';
 
 import { pageStateContext } from '../../../../App';
 
@@ -25,10 +26,8 @@ const Anchor = styled.a`
 `;
 
 const UnOrderedLists = styled.ul`
-	top: 0;
-	left: 0;
 	display: flex;
-	& > li {
+	> li {
 		position: relative;
 		& > div {
 			height: 3px;
@@ -42,17 +41,20 @@ const UnOrderedLists = styled.ul`
             opacity: 0;
 		}
 	}
-	&> li:hover > div {
+	> li:hover > div {
         transition: width 0.3s, opacity 0s;
         opacity:1;
         width: 100%;
 		}
+		@media (max-width: 500px) {
+			justify-content: center;
+		}
 	}
 `;
 
-const List = ({ children, clickFn }) => {
+const List = ({ children, clickFn, propClass }) => {
 	return (
-		<li>
+		<li className={propClass}>
 			<Anchor href={null} onClick={clickFn}>
 				{children}
 			</Anchor>
@@ -66,7 +68,16 @@ const BusinessPageNavBar = () => {
 	return (
 		<Container>
 			<UnOrderedLists>
-				<List clickFn={context.switchToIntroPage}>首頁</List>
+				<List
+					clickFn={context.switchToIntroPage}
+					propClass={css`
+						@media (max-width: 440px) {
+							display: none !important;
+						}
+					`}
+				>
+					首頁
+				</List>
 				<List
 					clickFn={() =>
 						context.setCommoditiesState({
