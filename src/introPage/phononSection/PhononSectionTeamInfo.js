@@ -10,9 +10,14 @@ const Container = styled.div`
 		font-size: 20px;
 		text-align: justify;
 	}
-	@media (max-width: 699px) {
+	@media (max-width: 768px) {
 		> p {
 			font-size: 17px;
+		}
+	}
+	@media (max-width: 670px) {
+		> p {
+			font-size: 15px;
 		}
 	}
 `;

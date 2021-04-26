@@ -13,6 +13,9 @@ const Container = styled.div`
 	padding: 35px;
 	display: flex;
 	align-items: center;
+	@media (max-width: 640px) {
+		padding: 15px;
+	}
 `;
 
 const ContentArea = styled.div`
@@ -22,6 +25,10 @@ const ContentArea = styled.div`
 	box-sizing: border-box;
 	display: flex;
 	justify-content: space-between;
+	@media (max-width: 500px) {
+		padding: 0 20px;
+		position: relative;
+	}
 `;
 
 const TextContent = styled.div`
@@ -33,6 +40,15 @@ const TextContent = styled.div`
 		letter-spacing: 1px;
 		line-height: 20px;
 	}
+	@media (max-width: 640px) {
+		padding-left: 0px;
+	}
+	@media (max-width: 375px) {
+		> p {
+			letter-spacing: 0px;
+			font-size: 13px;
+		}
+	}
 `;
 
 const Logo = styled(LogoSVG)`
@@ -43,6 +59,9 @@ const Logo = styled(LogoSVG)`
 	& line {
 		fill: white;
 		stroke: none;
+	}
+	@media (max-width: 640px) {
+		display: none;
 	}
 `;
 
@@ -58,6 +77,16 @@ const ExternalLink = styled.div`
 		& path {
 			fill: white;
 		}
+	}
+	@media (max-width: 500px) {
+		transform: scale(0.7);
+		position: absolute;
+		top: -10px;
+		right: 0;
+	}
+	@media (max-width: 375px) {
+		transform: scale(0.5);
+		right: -15px;
 	}
 `;
 

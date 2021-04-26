@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/css';
 
 import PhononSectionTeamInfo from './PhononSectionTeamInfo';
 import PhononSectionTabs from './component/PhononSectionTabs';
@@ -44,10 +45,19 @@ const BoardArea = styled.div`
 	border-radius: 30px;
 	display: flex;
 	justify-content: flex-end;
+	@media (max-width: 600px) {
+		justify-content: center;
+	}
+	@media (max-width: 375px) {
+		margin-top: 50px;
+	}
 `;
 
 const TabsContainer = styled.div`
 	z-index: 5;
+	@media (max-width: 600px) {
+		display: none;
+	}
 `;
 
 const Board = styled.div`
@@ -57,6 +67,10 @@ const Board = styled.div`
 	background: #fff;
 	border-radius: 0 30px 30px 30px;
 	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+	@media (max-width: 600px) {
+		width: 95%;
+		border-radius: 30px;
+	}
 `;
 
 const ContentArea = styled.div`
@@ -64,6 +78,9 @@ const ContentArea = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	@media (max-width: 430px) {
+		margin: 30px;
+	}
 `;
 
 const Description = styled.p`
@@ -72,8 +89,23 @@ const Description = styled.p`
 	font-size: 20px;
 	color: black;
 	width: 100%;
-	@media (max-width: 699px) {
+	@media (max-width: 768px) {
 		font-size: 17px;
+	}
+	@media (max-width: 670px) {
+		font-size: 15px;
+	}
+	@media (max-width: 600px) {
+		font-size: 20px;
+		line-height: 40px;
+	}
+	@media (max-width: 430px) {
+		font-size: 18px;
+		line-height: 30px;
+	}
+	@media (max-width: 340px) {
+		font-size: 17px;
+		line-height: 23px;
 	}
 `;
 
@@ -81,6 +113,9 @@ const TextContainer = styled.div`
 	max-width: 60%;
 	@media (max-width: 699px) {
 		max-width: 100%;
+	}
+	@media (max-width: 600px) {
+		display: none;
 	}
 `;
 
@@ -121,7 +156,14 @@ const PhononSectionMain = () => {
 					</ContentArea>
 				</Board>
 			</BoardArea>
-			<ScrollPromptText color={'black'} />
+			<ScrollPromptText
+				color={'black'}
+				propClass={css`
+					@media (max-width: 375px) {
+						display: none !important;
+					}
+				`}
+			/>
 		</Container>
 	);
 };

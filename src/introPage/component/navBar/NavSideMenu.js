@@ -13,6 +13,7 @@ const Background = styled.div`
 	top: 0;
 	left: 0;
 	z-index: 99;
+	background: rgba(0, 0, 0, 0.3);
 `;
 
 const Container = styled.div`
@@ -25,6 +26,12 @@ const Container = styled.div`
 	z-index: 100;
 	border-radius: 30px 0 0 30px;
 	transition: transform 0.5s;
+	@media (max-width: 768px) {
+		width: 300px;
+	}
+	@media (max-height: 670px) {
+		width: 250px;
+	}
 `;
 
 const ListBlock = styled.div`
@@ -40,8 +47,6 @@ const ListBlock = styled.div`
 		letter-spacing: 1px;
 		margin: 70px 0 20px 0;
 	}
-	ul > li {
-	}
 	> li > button {
 		font-size: 17px;
 		list-style: none;
@@ -53,6 +58,31 @@ const ListBlock = styled.div`
 		padding: 10px;
 		:hover {
 			outline: none;
+		}
+	}
+	@media (max-height: 740px) {
+		top: 30px;
+		> h6 {
+			margin: 50px 0 20px 0;
+		}
+		> li > button {
+			margin-bottom: 5px;
+		}
+	}
+	@media (max-height: 670px) {
+		transform: none;
+		top: 40px;
+		left: 70px;
+		> h6 {
+			margin: 50px 0 15px 0;
+		}
+		> li > button {
+			margin-bottom: 0px;
+		}
+	}
+	@media (max-height: 570px) {
+		> li > button {
+			margin-bottom: -10px;
 		}
 	}
 `;
@@ -71,13 +101,10 @@ const NavSideMenu = ({ page, useSideNavMenuState }) => {
 	// 控制選單顯示切換
 	const toggleSideMenu = () => {
 		setSideMenuState(prev => {
-			if (prev.isOpen === false) {
+			if (prev.isOpen === false)
 				document.documentElement.style.overflowY = 'hidden';
-				console.log(true);
-			} else {
-				document.documentElement.style.overflowY = 'auto';
-				console.log(false);
-			}
+			else document.documentElement.style.overflowY = 'auto';
+
 			return { ...prev, isOpen: !prev.isOpen };
 		});
 	};
@@ -99,6 +126,8 @@ const NavSideMenu = ({ page, useSideNavMenuState }) => {
 						<li key={item.nameEng}>
 							<button
 								onClick={() => {
+									toggleSideMenu();
+									window.scrollTo({ top: 0 });
 									context.switchToBusinessPage();
 									context.setCommoditiesState({
 										type: 'room',
@@ -115,6 +144,8 @@ const NavSideMenu = ({ page, useSideNavMenuState }) => {
 						<li key={item.nameEng}>
 							<button
 								onClick={() => {
+									toggleSideMenu();
+									window.scrollTo({ top: 0 });
 									context.switchToBusinessPage();
 									context.setCommoditiesState({
 										type: 'food',

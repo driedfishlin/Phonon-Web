@@ -85,7 +85,14 @@ const RoomSectionMain = () => {
 				`}
 			/>
 			<RoomSectionContent />
-			<ScrollPromptText color={'black'} />
+			<ScrollPromptText
+				color={'white'}
+				propClass={css`
+					@media (max-width: 375px) {
+						display: none !important;
+					}
+				`}
+			/>
 		</Container>
 	);
 };

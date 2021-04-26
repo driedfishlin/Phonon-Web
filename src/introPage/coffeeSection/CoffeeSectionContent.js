@@ -6,6 +6,10 @@ import { pageStateContext } from '../../App';
 import { ReactComponent as LogoSVG } from '../../image/logo/phonon_cafe_logo.svg';
 
 const Container = styled.div`
+	// outline: 1px solid #000;
+	// * {
+	// 	outline: 1px solid #000;
+	// }
 	position: absolute;
 	lift: 0;
 	bottom: 3%;
@@ -14,6 +18,15 @@ const Container = styled.div`
 	display: flex;
 	align-items: flex-end;
 	z-index: 11;
+	@media (max-width: 600px) {
+		width: 100%;
+		margin: 0;
+		bottom: 10%;
+		flex-direction: column;
+		align-items: center;
+		margin: 0;
+		max-width: none;
+	}
 `;
 
 const TextBlock = styled.div`
@@ -30,10 +43,41 @@ const TextBlock = styled.div`
 		text-indent: 36px;
 		text-align: justify;
 	}
+	@media (max-width: 600px) {
+		width: 100%;
+		box-sizing: border-box;
+		padding: 40px;
+		> p {
+			font-size: 20px;
+			padding: 0;
+			line-height: 35px;
+		}
+	}
+	@media (max-width: 500px) {
+		> p {
+			font-size: 18px;
+			padding: 0;
+			line-height: 30px;
+		}
+	}
+	@media (max-width: 430px) {
+		padding: 20px 40px;
+		> p {
+			font-size: 16px;
+		}
+	}
 `;
 
 const LogoBlock = styled.div`
 	width: 50%;
+	@media (max-width: 600px) {
+		display: flex;
+		width: 100%;
+		justify-content: center;
+	}
+	@media (max-width: 430px) {
+		order: 2;
+	}
 `;
 
 const Logo = styled.div`
@@ -43,7 +87,6 @@ const Logo = styled.div`
 		position: relative;
 		top: 15px;
 		margin-bottom: 50px;
-		// width: 150px;
 		height: 400px;
 		& path,
 		& polygon,
@@ -51,6 +94,16 @@ const Logo = styled.div`
 			stroke: none;
 			fill: black;
 		}
+	}
+	@media (max-width: 600px) {
+		> svg {
+			height: 200px;
+			margin: 0 20px;
+			top: 0;
+		}
+	}
+	@media (max-width: 430px) {
+		display: none;
 	}
 `;
 
@@ -78,6 +131,19 @@ const ButtonBlock = styled.div`
 		}
 		&:focus {
 			outline: none;
+		}
+	}
+	@media (max-width: 600px) {
+		width: auto;
+		align-items: flex-end;
+		margin: 0 20px;
+		> button {
+			font-size: 25px;
+		}
+	}
+	@media (max-width: 430px) {
+		> button {
+			font-size: 20px;
 		}
 	}
 `;

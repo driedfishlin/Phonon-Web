@@ -54,6 +54,14 @@ const Container = styled.div`
 		top: 30vh;
 		transform: scale(0.85);
 	}
+	@media (max-width: 540px) {
+		top: 50%;
+		transform: scale(0.85) translateY(-60%);
+	}
+	@media (max-width: 360px) {
+		left: -20px;
+		transform: scale(0.6) translateY(-90%);
+	}
 `;
 const AnimationWrapX = styled.div`
 	position: relative;
@@ -89,6 +97,7 @@ const TextContent = styled.div`
 		line-height: 50px;
 		font-size: 24px;
 		font-weight: 600;
+		white-space: nowrap;
 		& > span {
 			position: relative;
 			font-size: 50px;

@@ -18,6 +18,9 @@ const Button = styled.div`
 	justify-content: space-between;
 	box-sizing: border-box;
 	padding: 8px 3px;
+	@media (max-height: 820px) {
+		transform: scale(0.6) translate(-30px, -20px);
+	}
 `;
 
 const Element = styled.div(({ page, isOpen }) => ({
@@ -38,8 +41,8 @@ const Element = styled.div(({ page, isOpen }) => ({
 
 const NavMenuButton = ({ propClass, page, clickFn, isOpen }) => {
 	return (
-		<Container className={isOpen ? null : propClass} onClick={clickFn}>
-			<Button>
+		<Container className={isOpen ? null : propClass}>
+			<Button onClick={clickFn}>
 				<Element
 					page={page}
 					isOpen={isOpen}

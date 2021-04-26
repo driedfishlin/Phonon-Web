@@ -12,25 +12,23 @@ const Container = styled.div`
 	right: 60px;
 	bottom: 0;
 	transform: translateY(100%);
-	// bottom: -100px;
 	opacity: 0;
 	background: linear-gradient(45deg, #ff6b0c, #f1b51f);
 	min-width: 100px;
-	height: 80px;
+	height: auto;
 	z-index: 150;
 	border-radius: 20px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-	// transition: opacity 0.4s, bottom 1s;
 	transition: opacity 0.4s, transform 1s;
 	> p {
 		text-align: center;
 		font-size: 20px;
 		font-weight: 600;
 		color: white;
-		padding: 20px;
+		// padding: 20px;
 		letter-spacing: 2px;
 		margin: 20px;
 	}
@@ -45,6 +43,16 @@ const Container = styled.div`
 		:focus {
 			outline: none;
 		}
+	}
+	@media (max-width: 680px) {
+		> p {
+			font-size: 16px;
+		}
+	}
+	@media (max-width: 570px) {
+		right: auto;
+		margin: 0 20px;
+		// transform: translate(-50%, 100%);
 	}
 `;
 
@@ -69,10 +77,8 @@ const MessageComponent = () => {
 			color = 'linear-gradient(45deg, #ff6b0c, #f1b51f)';
 	}
 	const showStyle = {
-		// bottom: '30px',
 		transform: 'translateY(-50%)',
 		opacity: 1,
-		// transition: 'opacity 0.5s 0.2s, bottom 0.7s',
 		transition: 'opacity 0.5s 0.2s, transform 0.7s',
 		background: color,
 	};

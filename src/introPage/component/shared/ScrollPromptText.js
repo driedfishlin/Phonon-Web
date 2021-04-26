@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/css';
 import { keyframes } from '@emotion/css';
 import { ReactComponent as ArrowDown } from '../../../image/icon/chevron-down-solid.svg';
 
@@ -70,7 +71,7 @@ const scrollToNextPage = () => {
 
 //SECTION> React Component
 
-const ScrollPromptText = ({ color, pageState }) => {
+const ScrollPromptText = ({ color, pageState, propClass }) => {
 	const [arrowState, setArrowState] = useState(true);
 	const arrowRef = useRef(null);
 
@@ -90,8 +91,13 @@ const ScrollPromptText = ({ color, pageState }) => {
 			fill: ${color};
 		}
 	`;
+	console.log(propClass);
 	return (
-		<Container onClick={scrollToNextPage} ref={arrowRef}>
+		<Container
+			onClick={scrollToNextPage}
+			ref={arrowRef}
+			className={propClass}
+		>
 			<Text style={{ color: color }}>SCROLL</Text>
 			<ArrowContainer>
 				<Arrow
