@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Phonon-Web/static/css/main.ceaafe96.chunk.css",
-    "main.js": "/Phonon-Web/static/js/main.f525b8fd.chunk.js",
-    "main.js.map": "/Phonon-Web/static/js/main.f525b8fd.chunk.js.map",
+    "main.js": "/Phonon-Web/static/js/main.ccff1dc8.chunk.js",
+    "main.js.map": "/Phonon-Web/static/js/main.ccff1dc8.chunk.js.map",
     "runtime-main.js": "/Phonon-Web/static/js/runtime-main.970020f0.js",
     "runtime-main.js.map": "/Phonon-Web/static/js/runtime-main.970020f0.js.map",
     "static/js/2.bb7596f8.chunk.js": "/Phonon-Web/static/js/2.bb7596f8.chunk.js",
@@ -36,6 +36,6 @@
     "static/js/runtime-main.970020f0.js",
     "static/js/2.bb7596f8.chunk.js",
     "static/css/main.ceaafe96.chunk.css",
-    "static/js/main.f525b8fd.chunk.js"
+    "static/js/main.ccff1dc8.chunk.js"
   ]
 }
