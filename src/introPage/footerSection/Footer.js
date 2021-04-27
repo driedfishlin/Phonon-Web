@@ -93,6 +93,7 @@ const ExternalLink = styled.div`
 	@media (max-width: 375px) {
 		transform: scale(0.5);
 		right: -15px;
+		top: -30px;
 	}
 `;
 
