@@ -18,7 +18,7 @@ const Background = styled.div`
 	top: 0;
 	left: 0;
 	width: 100vw;
-	height: 100vh;
+	height: 100%;
 	background: rgba(0, 0, 0, 0.3);
 	z-index: 100;
 	display: flex;
@@ -119,7 +119,7 @@ const CommitBlock = styled.div`
 	padding: 40px;
 	margin-top: 30px;
 	background: #4c2556;
-
+	max-width: 100%;
 	& > form {
 		display: flex;
 		& > div {
@@ -176,7 +176,7 @@ const CommitBlock = styled.div`
 				> div {
 					margin: 10px 0;
 					> input {
-						max-width: none;
+						max-width: 250px;
 					}
 				}
 			}

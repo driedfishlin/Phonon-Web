@@ -55,6 +55,7 @@ const Price = styled.div`
 	}
 	@media (max-width: 540px) {
 		margin: 0 -10px 0 10px;
+		left: -10px;
 	}
 `;
 
@@ -62,6 +63,7 @@ const Count = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	position: relative;
 	> input {
 		text-align: center;
 		font-size: 17px;
@@ -87,9 +89,10 @@ const Count = styled.div`
 	}
 	@media (max-width: 540px) {
 		margin: 0 10px;
+		left: -7px;
 		> input {
 			font-size: 17px;
-			width: 20px;
+			width: 25px;
 		}
 		> button {
 			font-size: 17px;
