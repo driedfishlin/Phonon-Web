@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/github.io/Phonon-Web/static/css/main.ceaafe96.chunk.css",
+    "main.js": "/github.io/Phonon-Web/static/js/main.f525b8fd.chunk.js",
+    "main.js.map": "/github.io/Phonon-Web/static/js/main.f525b8fd.chunk.js.map",
+    "runtime-main.js": "/github.io/Phonon-Web/static/js/runtime-main.fcec6517.js",
+    "runtime-main.js.map": "/github.io/Phonon-Web/static/js/runtime-main.fcec6517.js.map",
+    "static/js/2.bb7596f8.chunk.js": "/github.io/Phonon-Web/static/js/2.bb7596f8.chunk.js",
+    "static/js/2.bb7596f8.chunk.js.map": "/github.io/Phonon-Web/static/js/2.bb7596f8.chunk.js.map",
+    "index.html": "/github.io/Phonon-Web/index.html",
+    "static/css/main.ceaafe96.chunk.css.map": "/github.io/Phonon-Web/static/css/main.ceaafe96.chunk.css.map",
+    "static/js/2.bb7596f8.chunk.js.LICENSE.txt": "/github.io/Phonon-Web/static/js/2.bb7596f8.chunk.js.LICENSE.txt",
+    "static/media/arrow-circle-left-solid.ac422d7a.svg": "/github.io/Phonon-Web/static/media/arrow-circle-left-solid.ac422d7a.svg",
+    "static/media/bread-slice-solid.c6ce0b9a.svg": "/github.io/Phonon-Web/static/media/bread-slice-solid.c6ce0b9a.svg",
+    "static/media/cheese-solid.8f656a63.svg": "/github.io/Phonon-Web/static/media/cheese-solid.8f656a63.svg",
+    "static/media/chevron-down-solid.a4f409dd.svg": "/github.io/Phonon-Web/static/media/chevron-down-solid.a4f409dd.svg",
+    "static/media/clipboard-regular.5d059fd0.svg": "/github.io/Phonon-Web/static/media/clipboard-regular.5d059fd0.svg",
+    "static/media/coffee-solid.74588761.svg": "/github.io/Phonon-Web/static/media/coffee-solid.74588761.svg",
+    "static/media/facebook-brands.033c50dd.svg": "/github.io/Phonon-Web/static/media/facebook-brands.033c50dd.svg",
+    "static/media/ins.4f99465e.png": "/github.io/Phonon-Web/static/media/ins.4f99465e.png",
+    "static/media/instagram-brands.90a80cd5.svg": "/github.io/Phonon-Web/static/media/instagram-brands.90a80cd5.svg",
+    "static/media/phonon_art_logo.2653bc1a.svg": "/github.io/Phonon-Web/static/media/phonon_art_logo.2653bc1a.svg",
+    "static/media/phonon_art_logo_text_white.ffc4b77c.svg": "/github.io/Phonon-Web/static/media/phonon_art_logo_text_white.ffc4b77c.svg",
+    "static/media/phonon_cafe_logo.0de9f19a.svg": "/github.io/Phonon-Web/static/media/phonon_cafe_logo.0de9f19a.svg",
+    "static/media/phonon_coffee_3.eb32ac93.jpg": "/github.io/Phonon-Web/static/media/phonon_coffee_3.eb32ac93.jpg",
+    "static/media/phonon_coffee_4.ae41fcd3.jpg": "/github.io/Phonon-Web/static/media/phonon_coffee_4.ae41fcd3.jpg",
+    "static/media/phonon_coffee_5.3c57447f.jpg": "/github.io/Phonon-Web/static/media/phonon_coffee_5.3c57447f.jpg",
+    "static/media/phonon_music_logo.b1b01332.svg": "/github.io/Phonon-Web/static/media/phonon_music_logo.b1b01332.svg",
+    "static/media/player_01.73f7b143.svg": "/github.io/Phonon-Web/static/media/player_01.73f7b143.svg",
+    "static/media/pudding.2f4750bf.svg": "/github.io/Phonon-Web/static/media/pudding.2f4750bf.svg",
+    "static/media/user-friends-solid.7077d9b7.svg": "/github.io/Phonon-Web/static/media/user-friends-solid.7077d9b7.svg",
+    "static/media/user-solid.93b18c33.svg": "/github.io/Phonon-Web/static/media/user-solid.93b18c33.svg",
+    "static/media/users-solid.90efc33f.svg": "/github.io/Phonon-Web/static/media/users-solid.90efc33f.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fcec6517.js",
+    "static/js/2.bb7596f8.chunk.js",
+    "static/css/main.ceaafe96.chunk.css",
+    "static/js/main.f525b8fd.chunk.js"
+  ]
+}
