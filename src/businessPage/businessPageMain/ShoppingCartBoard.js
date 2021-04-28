@@ -94,6 +94,7 @@ const PriceBlock = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
+	flex-shrink: 0;
 	& > h5 {
 		font-size: 20px;
 		font-weight: 600;
