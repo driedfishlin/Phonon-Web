@@ -52,6 +52,7 @@ const HeaderBlock = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
+	flex-shrink: 0;
 	& > h2 {
 		font-size: 28px;
 		font-weight: 600;
